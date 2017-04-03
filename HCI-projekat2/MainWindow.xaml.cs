@@ -36,5 +36,11 @@ namespace HCI_projekat2
             var t = new HCI_projekat2.Dialogs.NewResourceType();
             t.Show();
         }
+
+        private void NewResLabel_Click(object sender, RoutedEventArgs e)
+        {
+            var l = new HCI_projekat2.Dialogs.NewLabelDialog();
+            l.Show();
+        }
     }
 }
