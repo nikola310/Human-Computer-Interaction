@@ -23,5 +23,6 @@ namespace HCI_projekat2.Dialogs
         {
             InitializeComponent();
         }
+
     }
 }
