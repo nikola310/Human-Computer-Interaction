@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HCI_projekat2.Model;
+using System;
 using System.ComponentModel;
 using System.Windows;
 
@@ -9,9 +10,14 @@ namespace HCI_projekat2.Dialogs
     /// </summary>
     public partial class NewResourceDialog : Window, INotifyPropertyChanged
     {
-        private double _cena;
+        protected virtual void OnPropertyChanged(string name)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+        }
 
-        public double Cena
+        private decimal _cena;
+
+        public decimal Cena
         {
             get
             {
@@ -19,25 +25,27 @@ namespace HCI_projekat2.Dialogs
             }
             set
             {
-               if(value != _cena)
+                if (value != _cena)
                 {
                     _cena = value;
                     OnPropertyChanged("Cena");
                 }
             }
-        } 
+        }
 
+        private ResourceModel model;
         public NewResourceDialog()
         {
             InitializeComponent();
-            DataContext = this;
+            model = new ResourceModel();
+            DataContext = model;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        protected virtual void OnPropertyChanged(string name)
+        private void TextBox_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
         {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+
         }
     }
 }

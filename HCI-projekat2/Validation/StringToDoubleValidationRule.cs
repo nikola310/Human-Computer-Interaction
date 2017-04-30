@@ -15,8 +15,8 @@ namespace HCI_projekat2.Validation
             try
             {
                 var s = value as string;
-                double r;
-                if(double.TryParse(s, NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture, out r))
+                decimal r;
+                if(decimal.TryParse(s, NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture, out r))
                 {
                     return new ValidationResult(true, null);
                 }
