@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using HCI_projekat2.Model;
 
 namespace HCI_projekat2.Dialogs
 {
@@ -19,9 +20,13 @@ namespace HCI_projekat2.Dialogs
     /// </summary>
     public partial class NewResourceType : Window
     {
+        private TypeModel model;
         public NewResourceType()
         {
             InitializeComponent();
+            model = new TypeModel();
+            this.DataContext = model;
+
         }
     }
 }

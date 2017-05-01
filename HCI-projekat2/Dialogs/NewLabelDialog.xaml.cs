@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using HCI_projekat2.Model;
 
 namespace HCI_projekat2.Dialogs
 {
@@ -19,9 +20,12 @@ namespace HCI_projekat2.Dialogs
     /// </summary>
     public partial class NewLabelDialog : Window
     {
+        private LabelModel model;
         public NewLabelDialog()
         {
             InitializeComponent();
+            model = new LabelModel();
+            DataContext = model;
         }
 
     }
