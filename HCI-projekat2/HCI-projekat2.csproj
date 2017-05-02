@@ -85,6 +85,7 @@
     <Compile Include="Model\LabelModel.cs" />
     <Compile Include="Model\ResourceModel.cs" />
     <Compile Include="Model\TypeModel.cs" />
+    <Compile Include="Validation\RadioButtonCheckedConverter.cs" />
     <Compile Include="Validation\StringToDoubleValidationRule.cs" />
     <Page Include="Dialogs\NewLabelDialog.xaml">
       <SubType>Designer</SubType>

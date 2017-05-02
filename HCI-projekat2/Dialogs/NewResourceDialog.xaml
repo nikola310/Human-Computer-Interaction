@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:HCI_projekat2"
         xmlns:val="clr-namespace:HCI_projekat2.Validation"
         xmlns:b="clr-namespace:HCI_projekat2.Model"
+        xmlns:src="clr-namespace:HCI_projekat2.Dialogs"
         mc:Ignorable="d"
         Title="Dodaj Novi Resurs" Height="410.794" Width="1003.944"
         SizeToContent="WidthAndHeight">
@@ -30,7 +31,7 @@
             <ColumnDefinition Width="Auto" MinWidth="69" />
         </Grid.ColumnDefinitions>
 
-        <Image Grid.Column="0" Grid.Row="0" Grid.RowSpan="3" Source="/Images/oil.png"></Image>
+        <Image Grid.Column="0" Grid.Row="0" Grid.RowSpan="3" Source="{Binding IconPath}"></Image>
         <Button Grid.Row="3" Grid.Column="0" Margin="10,10,10,25" FontSize="16">Promeni ikonu</Button>
         <Label Grid.Column="1" Grid.Row="0" FontSize="16">ID:</Label>
         <TextBox Grid.Column="2" Grid.Row="0" FontSize="16" Margin="3" MaxLength="20" TextChanged="TextBox_TextChanged" 
@@ -40,7 +41,7 @@
         <Label Grid.Column="1" Grid.Row="1" FontSize="16">Ime:</Label>
         <TextBox Grid.Column="2" Grid.Row="1" FontSize="16" Margin="3" MaxLength="20" Text="{Binding Path=Name}"></TextBox>
         <Label Grid.Column="1" Grid.Row="2" FontSize="16" >Cena [USD]</Label>
-        <TextBox Grid.Column="2" Grid.Row="2" FontSize="16" Margin="3">
+        <TextBox Grid.Column="2" Grid.Row="2" FontSize="16" Margin="3" Name="price">
             <TextBox.Text>
                 <Binding Path="Cena" UpdateSourceTrigger="PropertyChanged">
                     <Binding.ValidationRules>
@@ -52,22 +53,11 @@
 
         </TextBox>
         <Label Grid.Column="1" Grid.Row="3" FontSize="16">Frekvencija:</Label>
-        <ComboBox Grid.Column="2" Grid.Row="3" Margin="10,10,95,25" FontSize="16">
-            <ComboBoxItem FontSize="16">Redak</ComboBoxItem>
-            <ComboBoxItem FontSize="16">Cest</ComboBoxItem>
-            <ComboBoxItem FontSize="16">Univerzalan</ComboBoxItem>
-        </ComboBox>
-        <Label Grid.Column="1" Grid.Row="4" FontSize="16">Obnovljiv:</Label>
-        <RadioButton Grid.Row="4" Grid.Column="2" Margin="10,10,216,5" FontSize="16" GroupName="GroupO">Da</RadioButton>
-        <RadioButton Grid.Row="4" Grid.Column="2" Margin="80,10,150,6" FontSize="16" GroupName="GroupO">Ne</RadioButton>
+        <ComboBox Grid.Column="2" Grid.Row="3" Margin="10,10,95,25" FontSize="16" Name="frequency" ItemsSource="{Binding Path=frekvencije}" IsEditable="False" />
 
-        <Label Grid.Column="1" Grid.Row="5" FontSize="16">Strateska vaznost:</Label>
-        <RadioButton Grid.Row="5" Grid.Column="2" Margin="10,10,216,4" FontSize="16" GroupName="GroupS">Da</RadioButton>
-        <RadioButton Grid.Row="5" Grid.Column="2"  FontSize="16" Margin="80,10,150,5" GroupName="GroupS">Ne</RadioButton>
-
-        <Label Grid.Column="1" Grid.Row="6" FontSize="16">Eksploatisanje</Label>
-        <RadioButton Grid.Row="6" Grid.Column="2" FontSize="16" Margin="10,10,216,10" GroupName="GroupE">Da</RadioButton>
-        <RadioButton Grid.Row="6" Grid.Column="2" Margin="79,10,150,10" FontSize="16" GroupName="GroupE">Ne</RadioButton>
+        <CheckBox Grid.Column="2" Grid.Row="4" FontSize="16" Name="renewable" Margin="3" IsChecked="{Binding Path=Renewable}">Obnovljiv resurs</CheckBox>
+        <CheckBox Grid.Column="2" Grid.Row="5" FontSize="16" Name="important" Margin="3">Strateski vazan resurs</CheckBox>
+        <CheckBox Grid.Column="2" Grid.Row="6" FontSize="16" Name="exploit" Margin="3">Moguce eksploatisanje</CheckBox>
 
         <Label Grid.Column="1" Grid.Row="7" FontSize="16">Datum otkrivanja:</Label>
         <Label Grid.Column="3" FontSize="16">Tip:</Label>
@@ -79,17 +69,12 @@
         <Button Grid.Column="5" Grid.Row="2" FontSize="16" Margin="3">Dodaj</Button>
         <Button Grid.Column="5" Grid.Row="3" FontSize="16" Margin="3,10,3,25">Obriši</Button>
 
-        <TextBox Grid.Column="4" FontSize="16" Margin="10,3,8,3"/>
-        <ComboBox Grid.Column="4" Grid.Row="1" FontSize="16" Margin="10,3,8,3">
-            <ComboBoxItem FontSize="16">Merica</ComboBoxItem>
-            <ComboBoxItem FontSize="16">Barel</ComboBoxItem>
-            <ComboBoxItem FontSize="16">Tona</ComboBoxItem>
-            <ComboBoxItem FontSize="16">Kilogram</ComboBoxItem>
-        </ComboBox>
-
-        <TextBox Grid.Column="4" Grid.Row="2" Grid.RowSpan="3" Margin="5,3,8,3"></TextBox>
+        <TextBox Grid.Column="4" FontSize="16" Margin="10,3,8,3" Text="{Binding Path=Type}"/>
+        <ComboBox Grid.Column="4" Grid.Row="1" FontSize="16" Margin="10,3,8,3" Name="measureUnit" ItemsSource="{Binding Path=mere}" IsEditable="False" />
+     
+        <TextBox Grid.Column="4" Grid.Row="2" Grid.RowSpan="3" Margin="10,3,8,3" Name="labels"></TextBox>
         <TextBox Grid.Column="4" Grid.Row="5" Grid.RowSpan="3" AcceptsReturn="True" TextWrapping="Wrap" FontSize="16" 
-                 Margin="5,3,8,3" HorizontalAlignment="Right" Width="267" Text="{Binding Path=Desc}"/>
+                 Margin="0,3,8,3" HorizontalAlignment="Right" Width="263" Text="{Binding Path=Desc}"/>
         <TextBlock Text="{Binding Path=Text, ElementName=BindTemp}" Grid.Column="4" Grid.Row="8"/>
         <Button Grid.Row="8" Grid.Column="2" Margin="10,3,171,10" FontSize="16">Dodaj resurs</Button>
         <Button Grid.Row="8" Grid.Column="2" Margin="151,3,37,10" FontSize="16">Odustani</Button>

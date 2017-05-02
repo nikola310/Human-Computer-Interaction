@@ -10,14 +10,20 @@ namespace HCI_projekat2.Model
     [Serializable]
     class ResourceModel : INotifyPropertyChanged
     {
-        public static int Redak = 1;
-        public static int Cest = 2;
-        public static int Univerzalan = 3;
+        public List<string> frekvencije { get; set; }
 
-        public static int Merica = 0;
-        public static int Barel = 1;
-        public static int Tona = 2;
-        public static int Kg = 3;
+        public static string Redak = "Redak";
+        public static string Cest = "Cest";
+        public static string Univerzalan = "Univerzalan";
+
+        public List<string> mere { get; set; }
+        
+        public static string Merica = "Merica";
+        public static string Barel = "Barel";
+        public static string Tona = "Tona";
+        public static string Kg = "Kilogram";
+
+        public string ValueString { get; set; }
 
         private string _id;
         public string ID
@@ -76,7 +82,20 @@ namespace HCI_projekat2.Model
             }
         }
 
-        //tip?
+        private TypeModel _type;
+        public TypeModel Type
+        {
+            get
+            {
+                return _type;
+            }
+            set
+            {
+                _type = value;
+                OnPropertyChanged("Type");
+            }
+        }
+
         private bool _renewable;
         public bool Renewable
         {
@@ -119,8 +138,8 @@ namespace HCI_projekat2.Model
             }
         }
 
-        private int _unit;
-        public int Unit
+        private string _unit;
+        public string Unit
         {
             get
             {
@@ -130,6 +149,7 @@ namespace HCI_projekat2.Model
             {
                 _unit = value;
                 OnPropertyChanged("Unit");
+                
             }
         }
 
@@ -156,8 +176,20 @@ namespace HCI_projekat2.Model
 
         public ResourceModel()
         {
+            mere = new List<string>();
+            mere.Add(Merica);
+            mere.Add(Barel);
+            mere.Add(Tona);
+            mere.Add(Kg);
+
+            frekvencije = new List<string>();
+            frekvencije.Add(Redak);
+            frekvencije.Add(Cest);
+            frekvencije.Add(Univerzalan);
+
             Desc = "TEST TEST TEST";
             Date = DateTime.Now;
+            IconPath = "/Images/oil.png";
         }
 
 
