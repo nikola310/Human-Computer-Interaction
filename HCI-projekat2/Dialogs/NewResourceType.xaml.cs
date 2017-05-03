@@ -24,10 +24,8 @@ namespace HCI_projekat2.Dialogs
         public NewResourceType()
         {
             model = new TypeModel();
-            this.DataContext = model;
+            DataContext = model;
             InitializeComponent();
-            
-
         }
     }
 }

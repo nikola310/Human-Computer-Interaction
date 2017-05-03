@@ -8,7 +8,7 @@ using System.ComponentModel;
 namespace HCI_projekat2.Model
 {
     [Serializable]
-    class ResourceModel : INotifyPropertyChanged
+    public class ResourceModel : INotifyPropertyChanged
     {
         public List<string> frekvencije { get; set; }
 
@@ -24,6 +24,19 @@ namespace HCI_projekat2.Model
         public static string Kg = "Kilogram";
 
         public string ValueString { get; set; }
+
+        private Guid _guid;
+        public Guid Guid
+        {
+            get
+            {
+                return _guid;
+            }
+            set
+            {
+                _guid = value;
+            }
+        }
 
         private string _id;
         public string ID

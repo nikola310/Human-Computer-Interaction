@@ -5,8 +5,22 @@ using System.Windows.Media;
 namespace HCI_projekat2.Model
 {
     [Serializable]
-    class LabelModel : INotifyPropertyChanged
+    public class LabelModel : INotifyPropertyChanged
     {
+        private Guid _gid;
+        public Guid Gid
+        {
+            get
+            {
+                return _gid;
+            }
+            set
+            {
+                _gid = value;
+            }
+        }
+
+
         public event PropertyChangedEventHandler PropertyChanged;
         protected virtual void OnPropertyChanged(string name)
         {
@@ -57,10 +71,17 @@ namespace HCI_projekat2.Model
 
         public LabelModel()
         {
-            ID = "Enter ID";
+            /*ID = "Enter ID";
             Desc = "Enter description";
-            Clr = Color.FromArgb(0, 0, 0, 0);
+            Clr = Color.FromArgb(0, 0, 0, 0);*/
         }
 
+        public LabelModel(string id, Color? selectedColor, string desc)
+        {
+            Gid = Guid.NewGuid();
+            ID = id;
+            Clr = selectedColor.Value;
+            Desc = desc;
+        }
     }
 }

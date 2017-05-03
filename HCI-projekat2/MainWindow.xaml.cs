@@ -1,4 +1,6 @@
 ﻿using HCI_projekat2.Model;
+using System;
+using System.Collections.Generic;
 using System.Windows;
 
 namespace HCI_projekat2
@@ -8,10 +10,48 @@ namespace HCI_projekat2
     /// </summary>
     public partial class MainWindow : Window
     {
+        public static Dictionary<Guid, ResourceModel> _resursi;
+        public static Dictionary<Guid, ResourceModel> Resursi
+        {
+            get
+            {
+                return _resursi;
+            }
+            set
+            {
+                _resursi = value;
+            }
+        }
+        public static Dictionary<Guid, TypeModel> _tipovi;
+        public static Dictionary<Guid, TypeModel> Tipovi
+        {
+            get
+            {
+                return _tipovi;
+            }
+            set
+            {
+                _tipovi = value;
+            }
+        }
+        public static Dictionary<Guid, LabelModel> _etikete;
+        public static Dictionary<Guid, LabelModel> Etikete
+        {
+            get
+            {
+                return _etikete;
+            }
+            set
+            {
+                _etikete = value;
+            }
+
+        }
 
         public MainWindow()
         {
             InitializeComponent();
+            Etikete = new Dictionary<Guid, LabelModel>();
         }
 
         private void AddNewRes_Click(object sender, RoutedEventArgs e)
@@ -32,7 +72,7 @@ namespace HCI_projekat2
             l.Show();
         }
 
-        
+
 
 
     }

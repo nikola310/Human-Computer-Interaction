@@ -10,8 +10,22 @@ using System.Windows.Media;
 namespace HCI_projekat2.Model
 {
     [Serializable]
-    class TypeModel : INotifyPropertyChanged
-    {   
+    public class TypeModel : INotifyPropertyChanged
+    {
+        private Guid _guid;
+        public Guid Guid
+        {
+            get
+            {
+                return _guid;
+            }
+            set
+            {
+                _guid = value;
+            }
+        }
+
+
         private string _name;
         public string Name
         {
