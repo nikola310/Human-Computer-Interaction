@@ -24,9 +24,9 @@ namespace HCI_projekat2.Dialogs
         private LabelModel model;
         public NewLabelDialog()
         {
-            InitializeComponent();
             model = new LabelModel();
             DataContext = model;
+            InitializeComponent();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -60,6 +60,11 @@ namespace HCI_projekat2.Dialogs
             
             LabelModel novo = new LabelModel(IDetikete.Text, Boja.SelectedColor, Opis.Text);
             Etikete.Add(novo.Gid, novo);
+            Close();
+        }
+
+        private void Close_Click(object sender, RoutedEventArgs e)
+        {
             Close();
         }
     }

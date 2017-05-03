@@ -52,6 +52,8 @@ namespace HCI_projekat2
         {
             InitializeComponent();
             Etikete = new Dictionary<Guid, LabelModel>();
+            Tipovi = new Dictionary<Guid, TypeModel>();
+            Resursi = new Dictionary<Guid, ResourceModel>();
         }
 
         private void AddNewRes_Click(object sender, RoutedEventArgs e)

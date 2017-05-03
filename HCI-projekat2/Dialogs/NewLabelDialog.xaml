@@ -27,6 +27,6 @@
         <xctk:ColorCanvas Name="Boja" Grid.Column="1" Grid.Row="1" Margin="3"></xctk:ColorCanvas>
 
         <Button Grid.Column="1" Grid.Row="3" FontSize="16" Margin="10,2,279,8" Click="Button_Click">Dodaj</Button>
-        <Button Grid.Column="1" Grid.Row="3" FontSize="16" Margin="72,2,206,8">Odustani</Button>
+        <Button Grid.Column="1" Grid.Row="3" FontSize="16" Margin="72,2,206,8" Click="Close_Click">Odustani</Button>
     </Grid>
 </Window>

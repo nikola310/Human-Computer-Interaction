@@ -12,16 +12,16 @@ namespace HCI_projekat2.Model
     [Serializable]
     public class TypeModel : INotifyPropertyChanged
     {
-        private Guid _guid;
-        public Guid Guid
+        private Guid _gid;
+        public Guid Gid
         {
             get
             {
-                return _guid;
+                return _gid;
             }
             set
             {
-                _guid = value;
+                _gid = value;
             }
         }
 
@@ -91,9 +91,6 @@ namespace HCI_projekat2.Model
 
         public TypeModel()
         {
-            Name = "Enter name";
-            ID = "Enter ID";
-            Desc = "Enter description";
             IconPath = "/Images/oil.png";
         }
     }
