@@ -58,7 +58,7 @@ namespace HCI_projekat2.Dialogs
                 }
             }
             
-            LabelModel novo = new LabelModel(IDetikete.Text, Boja.SelectedColor, Opis.Text);
+            LabelModel novo = new LabelModel(IDetikete.Text, Boja.SelectedColor.ToString(), Opis.Text);
             Etikete.Add(novo.Gid, novo);
             Close();
         }

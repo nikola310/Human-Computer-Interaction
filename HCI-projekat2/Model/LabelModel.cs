@@ -41,8 +41,8 @@ namespace HCI_projekat2.Model
             }
         }
 
-        private Color _clr;
-        private Color Clr
+        private string _clr;
+        public string Clr
         {
             get
             {
@@ -56,7 +56,7 @@ namespace HCI_projekat2.Model
         }
 
         private string _desc;
-        private string Desc
+        public string Desc
         {
             get
             {
@@ -76,11 +76,11 @@ namespace HCI_projekat2.Model
             Clr = Color.FromArgb(0, 0, 0, 0);*/
         }
 
-        public LabelModel(string id, Color? selectedColor, string desc)
+        public LabelModel(string id, string selectedColor, string desc)
         {
             Gid = Guid.NewGuid();
             ID = id;
-            Clr = selectedColor.Value;
+            Clr = selectedColor;
             Desc = desc;
         }
     }

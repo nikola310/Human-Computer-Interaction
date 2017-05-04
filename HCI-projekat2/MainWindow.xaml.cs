@@ -1,7 +1,9 @@
 ﻿using HCI_projekat2.Model;
+using HCI_projekat2.Dialogs;
 using System;
 using System.Collections.Generic;
 using System.Windows;
+using HCI_projekat2.Tabels;
 
 namespace HCI_projekat2
 {
@@ -58,24 +60,26 @@ namespace HCI_projekat2
 
         private void AddNewRes_Click(object sender, RoutedEventArgs e)
         {
-            var s = new HCI_projekat2.Dialogs.NewResourceDialog();
+            var s = new NewResourceDialog();
             s.Show();
         }
 
         private void NewResType_Click(object sender, RoutedEventArgs e)
         {
-            var t = new HCI_projekat2.Dialogs.NewResourceType();
+            var t = new NewResourceType();
             t.Show();
         }
 
         private void NewResLabel_Click(object sender, RoutedEventArgs e)
         {
-            var l = new HCI_projekat2.Dialogs.NewLabelDialog();
+            var l = new NewLabelDialog();
             l.Show();
         }
 
-
-
-
+        private void ShowLabels_Click(object sender, RoutedEventArgs e)
+        {
+            var l = new LabelTable();
+            l.Show();
+        }
     }
 }
