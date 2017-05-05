@@ -51,12 +51,40 @@ namespace HCI_projekat2
             }
 
         }
+        public string ResursiFajl;
+        public string TipoviFajl;
+        public string EtiketeFajl;
 
         public MainWindow()
         {
             InitializeComponent();
+
+            FileStream stream = null;
+            BinaryFormatter bf = new BinaryFormatter();
+
+            TipoviFajl = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "tipovi.nkvd");
+            if (File.Exists(TipoviFajl))
+            {
+                try
+                {
+                    stream = File.Open(TipoviFajl, FileMode.Open);
+                    Tipovi = (Dictionary<string, TypeModel>)bf.Deserialize(stream);
+                }
+                catch
+                {
+                    //nista
+                }
+                finally
+                {
+                    if (stream != null)
+                        stream.Dispose();
+                }
+            }else
+            {
+                Tipovi = new Dictionary<string, TypeModel>();
+            }
+
             Etikete = new Dictionary<string, LabelModel>();
-            Tipovi = new Dictionary<string, TypeModel>();
             Resursi = new Dictionary<string, ResourceModel>();
         }
 
@@ -105,7 +133,7 @@ namespace HCI_projekat2
             bool retVal = false;
             try
             {
-                stream = File.Open("resursi.nkvd", FileMode.OpenOrCreate);
+                stream = File.Open("tipovi.nkvd", FileMode.OpenOrCreate);
                 bf.Serialize(stream, _resursi);
             }
             catch

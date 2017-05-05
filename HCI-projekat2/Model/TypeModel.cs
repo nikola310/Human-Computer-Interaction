@@ -77,7 +77,7 @@ namespace HCI_projekat2.Model
 
         public TypeModel()
         {
-            IconPath = "/Images/oil.png";
+            IconPath = "/Images/qmark2.png";
         }
     }
 }

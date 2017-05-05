@@ -46,9 +46,9 @@ namespace HCI_projekat2.Dialogs
                 TipID.Focus();
                 return;
             }
-            if (model.IconPath == null || model.IconPath == "")
+            if (model.IconPath == null || model.IconPath == "/Images/qmark2.png")
             {
-                MessageBoxResult message = MessageBox.Show(this, "Morate odabrati ikonu tipa!", "Nedostaje vrednost", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBoxResult message = MessageBox.Show(this, "Morate odabrati ikonu!", "Nedostaje vrednost", MessageBoxButton.OK, MessageBoxImage.Error);
                 BrowseButton.Focus();
                 return;
             }

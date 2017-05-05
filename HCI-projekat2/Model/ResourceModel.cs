@@ -202,7 +202,7 @@ namespace HCI_projekat2.Model
 
             Desc = "TEST TEST TEST";
             Date = DateTime.Now;
-            IconPath = "/Images/oil.png";
+            IconPath = "/Images/qmark2.png";
         }
 
 
