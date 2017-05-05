@@ -12,20 +12,6 @@ namespace HCI_projekat2.Model
     [Serializable]
     public class TypeModel : INotifyPropertyChanged
     {
-        private Guid _gid;
-        public Guid Gid
-        {
-            get
-            {
-                return _gid;
-            }
-            set
-            {
-                _gid = value;
-            }
-        }
-
-
         private string _name;
         public string Name
         {

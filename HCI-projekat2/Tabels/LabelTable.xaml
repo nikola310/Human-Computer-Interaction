@@ -14,12 +14,12 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
-        <DataGrid ItemsSource="{Binding Path=etikete}" IsReadOnly="True" AutoGenerateColumns="False" IsSynchronizedWithCurrentItem="True">
-            <DataGrid.Columns>
+        <DataGrid ItemsSource="{Binding Path=etikete}" IsReadOnly="True" AutoGenerateColumns="True" IsSynchronizedWithCurrentItem="True">
+            <!--DataGrid.Columns>
                 <DataGridTextColumn Header="ID" MinWidth="60" Width="SizeToCells" Binding="{Binding Id}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Boja" MinWidth="60" Width="SizeToCells" Binding="{Binding Clr}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Opis" MinWidth="70" Width="*" Binding="{Binding Desc}"></DataGridTextColumn>
-            </DataGrid.Columns>
+            </-->
         </DataGrid>
 
 

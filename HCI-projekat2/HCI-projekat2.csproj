@@ -88,6 +88,12 @@
     <Compile Include="Tabels\LabelTable.xaml.cs">
       <DependentUpon>LabelTable.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Tabels\ResourceTable.xaml.cs">
+      <DependentUpon>ResourceTable.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Tabels\TypeTable.xaml.cs">
+      <DependentUpon>TypeTable.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Validation\RadioButtonCheckedConverter.cs" />
     <Compile Include="Validation\StringToDoubleValidationRule.cs" />
     <Page Include="Dialogs\NewLabelDialog.xaml">
@@ -124,6 +130,14 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Tabels\LabelTable.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Tabels\ResourceTable.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Tabels\TypeTable.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -7,20 +7,6 @@ namespace HCI_projekat2.Model
     [Serializable]
     public class LabelModel : INotifyPropertyChanged
     {
-        private Guid _gid;
-        public Guid Gid
-        {
-            get
-            {
-                return _gid;
-            }
-            set
-            {
-                _gid = value;
-            }
-        }
-
-
         public event PropertyChangedEventHandler PropertyChanged;
         protected virtual void OnPropertyChanged(string name)
         {
@@ -78,7 +64,6 @@ namespace HCI_projekat2.Model
 
         public LabelModel(string id, string selectedColor, string desc)
         {
-            Gid = Guid.NewGuid();
             ID = id;
             Clr = selectedColor;
             Desc = desc;

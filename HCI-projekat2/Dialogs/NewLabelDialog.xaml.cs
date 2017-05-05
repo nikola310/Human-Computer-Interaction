@@ -43,12 +43,12 @@ namespace HCI_projekat2.Dialogs
                 Boja.Focus();
                 return;
             }
-            if(Opis.Text == null)
+            if (Opis.Text == null)
             {
                 Opis.Text = "";
             }
 
-            foreach(LabelModel lbl in Etikete.Values)
+            foreach (LabelModel lbl in Etikete.Values)
             {
                 if (lbl.ID.Equals(IDetikete.Text))
                 {
@@ -57,9 +57,9 @@ namespace HCI_projekat2.Dialogs
                     return;
                 }
             }
-            
+
             LabelModel novo = new LabelModel(IDetikete.Text, Boja.SelectedColor.ToString(), Opis.Text);
-            Etikete.Add(novo.Gid, novo);
+            Etikete.Add(novo.ID, novo);
             Close();
         }
 

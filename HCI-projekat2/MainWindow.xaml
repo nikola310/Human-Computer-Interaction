@@ -19,8 +19,8 @@
                 <MenuItem Header="Novu _Etiketu Resursa" InputGestureText="Ctrl+Shift+E" Click="NewResLabel_Click"></MenuItem>
             </MenuItem>
             <MenuItem Header="P_regled">
-                <MenuItem Header="Evidentiranih _Resursa"/>
-                <MenuItem Header="Evidentiranih _Tipova Resursa" />
+                <MenuItem Header="Evidentiranih _Resursa" Click="ShowRes_Click"/>
+                <MenuItem Header="Evidentiranih _Tipova Resursa" Click="ShowTypes_Click"/>
                 <MenuItem Header="Evidentiranih _Etiketa Resursa" Click="ShowLabels_Click"/>
             </MenuItem>
             <MenuItem Header="_Pomoć"></MenuItem>

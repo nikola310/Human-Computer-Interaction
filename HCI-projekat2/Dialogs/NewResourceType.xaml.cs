@@ -70,8 +70,8 @@ namespace HCI_projekat2.Dialogs
                 }
             }
 
-            model.Gid = Guid.NewGuid();
-            Tipovi.Add(model.Gid, model);
+            
+            Tipovi.Add(model.ID, model);
             Close();
         }
 

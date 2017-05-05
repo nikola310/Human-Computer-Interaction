@@ -12,8 +12,8 @@ namespace HCI_projekat2
     /// </summary>
     public partial class MainWindow : Window
     {
-        public static Dictionary<Guid, ResourceModel> _resursi;
-        public static Dictionary<Guid, ResourceModel> Resursi
+        public static Dictionary<string, ResourceModel> _resursi;
+        public static Dictionary<string, ResourceModel> Resursi
         {
             get
             {
@@ -24,8 +24,8 @@ namespace HCI_projekat2
                 _resursi = value;
             }
         }
-        public static Dictionary<Guid, TypeModel> _tipovi;
-        public static Dictionary<Guid, TypeModel> Tipovi
+        public static Dictionary<string, TypeModel> _tipovi;
+        public static Dictionary<string, TypeModel> Tipovi
         {
             get
             {
@@ -36,8 +36,8 @@ namespace HCI_projekat2
                 _tipovi = value;
             }
         }
-        public static Dictionary<Guid, LabelModel> _etikete;
-        public static Dictionary<Guid, LabelModel> Etikete
+        public static Dictionary<string, LabelModel> _etikete;
+        public static Dictionary<string, LabelModel> Etikete
         {
             get
             {
@@ -53,9 +53,9 @@ namespace HCI_projekat2
         public MainWindow()
         {
             InitializeComponent();
-            Etikete = new Dictionary<Guid, LabelModel>();
-            Tipovi = new Dictionary<Guid, TypeModel>();
-            Resursi = new Dictionary<Guid, ResourceModel>();
+            Etikete = new Dictionary<string, LabelModel>();
+            Tipovi = new Dictionary<string, TypeModel>();
+            Resursi = new Dictionary<string, ResourceModel>();
         }
 
         private void AddNewRes_Click(object sender, RoutedEventArgs e)
@@ -79,6 +79,19 @@ namespace HCI_projekat2
         private void ShowLabels_Click(object sender, RoutedEventArgs e)
         {
             var l = new LabelTable();
+            l.Show();
+        }
+
+        private void ShowTypes_Click(object sender, RoutedEventArgs e)
+        {
+            var l = new TypeTable();
+            l.Show();
+
+        }
+
+        private void ShowRes_Click(object sender, RoutedEventArgs e)
+        {
+            var l = new ResourceTable();
             l.Show();
         }
     }

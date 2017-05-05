@@ -26,7 +26,7 @@
         <TextBox Name="TipID" Grid.Column="1" Grid.Row="1" FontSize="16" Margin="3" MaxLength="20" Text="{Binding Path=ID}"/>
         <Label Grid.Column="0" Grid.Row="2" FontSize="16">Opis:</Label>
         <TextBox Name="Opis" Grid.Column="1" Grid.Row="2" Margin="3,3,3,10" FontSize="16" TextWrapping="Wrap" 
-                 AcceptsReturn="True" MaxLines="30" Grid.RowSpan="3" Text="{Binding Path=Desc}"/>
+                 AcceptsReturn="True" MaxLines="30" Grid.RowSpan="3" Text="{Binding Path=Desc}" VerticalScrollBarVisibility="Auto"/>
 
         <Button Grid.Column="1" Grid.Row="5" FontSize="16" Margin="7,7,307,3" Click="Dodaj_Click">Dodaj</Button>
         <Button Grid.Column="1" Grid.Row="5" FontSize="16" Margin="96,7,200,3" Click="Close_Click">Odustani</Button>

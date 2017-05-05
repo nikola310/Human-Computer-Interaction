@@ -1,0 +1,32 @@
+﻿<Window x:Class="HCI_projekat2.Tabels.TypeTable"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HCI_projekat2.Tabels"
+        mc:Ignorable="d"
+        Title="TypeTable" Height="300" Width="300">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <DataGrid ItemsSource="{Binding Path=tipovi}" IsReadOnly="True" AutoGenerateColumns="False" IsSynchronizedWithCurrentItem="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" MinWidth="60" Width="SizeToCells" Binding="{Binding ID}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Naziv" MinWidth="60" Width="SizeToCells" Binding="{Binding Name}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Opis" MinWidth="70" Width="*" Binding="{Binding Desc}"></DataGridTextColumn>
+                <DataGridTemplateColumn Header="Ikona" MinWidth="70" Width="*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Image Source="{Binding IconPath}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Window>
