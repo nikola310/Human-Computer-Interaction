@@ -134,7 +134,7 @@ namespace HCI_projekat2
             try
             {
                 stream = File.Open("tipovi.nkvd", FileMode.OpenOrCreate);
-                bf.Serialize(stream, _resursi);
+                bf.Serialize(stream, _tipovi);
             }
             catch
             {
