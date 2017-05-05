@@ -79,13 +79,58 @@ namespace HCI_projekat2
                     if (stream != null)
                         stream.Dispose();
                 }
-            }else
+            }
+            else
             {
                 Tipovi = new Dictionary<string, TypeModel>();
             }
+            stream = null;
+            EtiketeFajl = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "etikete.nkvd");
+            if (File.Exists(EtiketeFajl))
+            {
+                try
+                {
+                    stream = File.Open(EtiketeFajl, FileMode.Open);
+                    Etikete = (Dictionary<string, LabelModel>)bf.Deserialize(stream);
+                }
+                catch
+                {
 
-            Etikete = new Dictionary<string, LabelModel>();
-            Resursi = new Dictionary<string, ResourceModel>();
+                }
+                finally
+                {
+                    if (stream != null)
+                        stream.Dispose();
+                }
+            }
+            else
+            {
+
+                Etikete = new Dictionary<string, LabelModel>();
+            }
+            stream = null;
+            ResursiFajl = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "resursi.nkvd");
+            if (File.Exists(ResursiFajl))
+            {
+                try
+                {
+                    stream = File.Open(ResursiFajl, FileMode.Open);
+                    Resursi = (Dictionary<string, ResourceModel>)bf.Deserialize(stream);
+                }
+                catch
+                {
+
+                }
+                finally
+                {
+                    if (stream != null)
+                        stream.Dispose();
+                }
+            }
+            else
+            {
+                Resursi = new Dictionary<string, ResourceModel>();
+            }
         }
 
         private void AddNewRes_Click(object sender, RoutedEventArgs e)

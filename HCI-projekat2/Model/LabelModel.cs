@@ -7,6 +7,7 @@ namespace HCI_projekat2.Model
     [Serializable]
     public class LabelModel : INotifyPropertyChanged
     {
+        [field: NonSerialized]
         public event PropertyChangedEventHandler PropertyChanged;
         protected virtual void OnPropertyChanged(string name)
         {

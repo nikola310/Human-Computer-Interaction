@@ -46,7 +46,7 @@ namespace HCI_projekat2.Dialogs
                 TipID.Focus();
                 return;
             }
-            if (model.IconPath == null || model.IconPath == "/Images/qmark2.png")
+            if (model.IconPath == null || model.IconPath == "/Images/qmark2.png" || model.IconPath == "")
             {
                 MessageBoxResult message = MessageBox.Show(this, "Morate odabrati ikonu!", "Nedostaje vrednost", MessageBoxButton.OK, MessageBoxImage.Error);
                 BrowseButton.Focus();
@@ -70,7 +70,7 @@ namespace HCI_projekat2.Dialogs
                 }
             }
 
-            
+
             Tipovi.Add(model.ID, model);
             Close();
         }
@@ -80,7 +80,7 @@ namespace HCI_projekat2.Dialogs
             Close();
         }
 
-        
+
     }
 }
 
