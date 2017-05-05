@@ -13,10 +13,15 @@
                     <DockPanel HorizontalAlignment="Left"></DockPanel>
                 </ItemsPanelTemplate>
             </Menu.ItemsPanel>
-            <MenuItem Header="_Dodaj">
+            <MenuItem Header="_Datoteka">
                 <MenuItem Header="Novi _Resurs" InputGestureText="Ctrl+Shift+N"  Click="AddNewRes_Click"></MenuItem>
                 <MenuItem Header="Novi _Tip Resursa" InputGestureText="Ctrl+Shift+T"  Click="NewResType_Click"></MenuItem>
                 <MenuItem Header="Novu _Etiketu Resursa" InputGestureText="Ctrl+Shift+E" Click="NewResLabel_Click"></MenuItem>
+                <Separator />
+                <MenuItem Header="_Sacuvaj sve" InputGestureText="Ctrl+Shift+S" Click="Sacuvaj_Sve_Click"></MenuItem>
+                <MenuItem Header="Sa_cuvaj resurse" Click="ResurseS_Click"></MenuItem>
+                <MenuItem Header="Sacuvaj ti_pove" Click="TipoveS_Click"></MenuItem>
+                <MenuItem Header="Sacuvaj et_ikete" Click="EtiketeS_Click"></MenuItem>
             </MenuItem>
             <MenuItem Header="P_regled">
                 <MenuItem Header="Evidentiranih _Resursa" Click="ShowRes_Click"/>
