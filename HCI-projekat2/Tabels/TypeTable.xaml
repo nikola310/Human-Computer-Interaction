@@ -21,7 +21,7 @@
                 <DataGridTextColumn Header="Opis" MinWidth="70" Width="*" Binding="{Binding Desc}"></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
-        <Grid Grid.Row="1" Grid.Column="0" DataContext="{Binding ElementName=dgrMain, Path=SelectedItem}">
+        <Grid Grid.Row="1" Grid.Column="0" DataContext="{Binding Path=mod}">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
@@ -42,8 +42,8 @@
             <Label Grid.Column="0" Grid.Row="2" FontSize="16">Opis:</Label>
             <TextBox Name="Opis" Grid.Column="1" Grid.Row="2" Margin="3,3,3,10" FontSize="16" TextWrapping="Wrap" 
                  AcceptsReturn="True" MaxLines="30" Grid.RowSpan="3" Text="{Binding Path=Desc}" VerticalScrollBarVisibility="Auto"/>
-            <Image Name="Ikona" Grid.Column="2" Grid.Row="0" Source="{Binding Path=IconPath }" Margin="19,12,21,13" 
-               Grid.RowSpan="4" RenderTransformOrigin="1.867,0.498" Width="64" Height="64">
+            <Image Name="Ikona" Grid.Column="2" Grid.Row="0" Source="{Binding Path=IconPath }" Margin="19,29,21,2" 
+               Grid.RowSpan="3" RenderTransformOrigin="1.867,0.498" Width="64" Height="64">
                 <Image.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform/>
@@ -53,10 +53,9 @@
                     </TransformGroup>
                 </Image.RenderTransform>
             </Image>
-            <Button Grid.Column="1" Grid.Row="5" FontSize="16" Margin="3,0,305,10" Click="Izmeni_Click">Izmeni</Button>
-            <Button Grid.Column="1" Grid.Row="5" FontSize="16" Margin="84,0,212,10" RenderTransformOrigin="0.494,0.4" Click="Obrisi_Click">Obriši tip</Button>
-            <Button Name="BrowseButton" Grid.Row="4" Grid.Column="2" RenderTransformOrigin="0.177,-0.236" Margin="10,10,10,47" Click="BrowseButton_Click">Promeni ikonu</Button>
-            <Button Grid.Column="1" Grid.Row="5" FontSize="16" Margin="177,0,119,10" RenderTransformOrigin="0.494,0.4" Content="Odustani" Click="Izmeni_Click"/>
+            <Button Grid.Column="1" Grid.Row="5" FontSize="16" Margin="0,0,296,10" RenderTransformOrigin="0.494,0.4" Click="Obrisi_Click">Obriši tip</Button>
+            <Button Name="BrowseButton" Grid.Row="3" Grid.Column="2" RenderTransformOrigin="0.177,-0.236" Margin="10,10,10,61" Click="BrowseButton_Click" Grid.RowSpan="2">Promeni ikonu</Button>
+            <Button Grid.Column="1" Grid.Row="5" FontSize="16" Margin="109,0,187,10" RenderTransformOrigin="0.494,0.4" Content="Izađi" Click="Odustani_Click"/>
         </Grid>
     </Grid>
 </Window>

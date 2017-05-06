@@ -82,6 +82,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Dialogs\ChangeLabelDialog.xaml.cs">
+      <DependentUpon>ChangeLabelDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\ChangeResourceDialog.xaml.cs">
+      <DependentUpon>ChangeResourceDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\ChangeTypeDialog.xaml.cs">
+      <DependentUpon>ChangeTypeDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Model\LabelModel.cs" />
     <Compile Include="Model\ResourceModel.cs" />
     <Compile Include="Model\TypeModel.cs" />
@@ -96,6 +105,18 @@
     </Compile>
     <Compile Include="Validation\RadioButtonCheckedConverter.cs" />
     <Compile Include="Validation\StringToDoubleValidationRule.cs" />
+    <Page Include="Dialogs\ChangeLabelDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dialogs\ChangeResourceDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dialogs\ChangeTypeDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Dialogs\NewLabelDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

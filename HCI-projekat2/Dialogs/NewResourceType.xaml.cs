@@ -34,13 +34,13 @@ namespace HCI_projekat2.Dialogs
 
         private void Dodaj_Click(object sender, RoutedEventArgs e)
         {
-            if (model.Name == "")
+            if (model.Name == "" || model.Name == null)
             {
                 MessageBoxResult message = MessageBox.Show(this, "Morate uneti ime tipa!", "Nedostaje vrednost", MessageBoxButton.OK, MessageBoxImage.Error);
                 Ime.Focus();
                 return;
             }
-            if (model.ID == "")
+            if (model.ID == "" || model.ID == null)
             {
                 MessageBoxResult message = MessageBox.Show(this, "Morate uneti ID tipa!", "Nedostaje vrednost", MessageBoxButton.OK, MessageBoxImage.Error);
                 TipID.Focus();

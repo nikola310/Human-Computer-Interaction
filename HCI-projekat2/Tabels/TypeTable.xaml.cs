@@ -11,6 +11,9 @@ namespace HCI_projekat2.Tabels
 
     public partial class TypeTable : Window
     {
+        public TypeModel mod = new TypeModel();
+
+
         public ObservableCollection<TypeModel> tipovi
         {
             get;
@@ -26,6 +29,7 @@ namespace HCI_projekat2.Tabels
                 tipovi.Add(s);
             }
             DataContext = this;
+            mod.Name = "jkdsnfjdsndnfjnj";
         }
 
         private void Odustani_Click(object sender, RoutedEventArgs e)
@@ -33,19 +37,19 @@ namespace HCI_projekat2.Tabels
             Close();
         }
 
-        private void Izmeni_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
         private void Obrisi_Click(object sender, RoutedEventArgs e)
         {
-            MessageBoxResult result = MessageBox.Show(this, "Jeste li sigurni da želite obrisati selektovani tip?", "Potvrda brisanja tipa", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            MessageBoxResult result = MessageBox.Show(this, "Jeste li sigurni da želite obrisati selektovani tip?", "Potvrda brisanja", MessageBoxButton.YesNo, MessageBoxImage.Question);
 
             if (result == MessageBoxResult.Yes)
             {
                 TypeModel model = (TypeModel)dgrMain.SelectedItem;
                 Tipovi.Remove(model.ID);
+                tipovi.Clear();
+                foreach(TypeModel t in Tipovi.Values)
+                {
+                    tipovi.Add(t);
+                }
                 MessageBox.Show(this, "Tip resursa je obrisan.", "Operacija uspešna", MessageBoxButton.OK, MessageBoxImage.Information);
             }
         }

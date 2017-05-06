@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HCI_projekat2.Tabels"
         mc:Ignorable="d"
-        Title="LabelTable" Height="300" Width="300">
+        Title="LabelTable" Height="342" Width="374">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition />
@@ -14,14 +14,17 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
-        <DataGrid ItemsSource="{Binding Path=etikete}" IsReadOnly="True" AutoGenerateColumns="True" IsSynchronizedWithCurrentItem="True">
-            <!--DataGrid.Columns>
-                <DataGridTextColumn Header="ID" MinWidth="60" Width="SizeToCells" Binding="{Binding Id}"></DataGridTextColumn>
+        <DataGrid x:Name="dgrMain" ItemsSource="{Binding Path=etikete}" IsReadOnly="True"  AutoGenerateColumns="False" IsSynchronizedWithCurrentItem="True" Margin="0,0,0,38" Grid.RowSpan="2">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" MinWidth="60" Width="SizeToCells" Binding="{Binding ID}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Boja" MinWidth="60" Width="SizeToCells" Binding="{Binding Clr}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Opis" MinWidth="70" Width="*" Binding="{Binding Desc}"></DataGridTextColumn>
-            </-->
+            </DataGrid.Columns>
         </DataGrid>
+      
+            <Button Grid.Row="1" FontSize="16" Margin="101,122,182,4">Obriši</Button>
+            <Button Grid.Row="1" FontSize="16" Margin="199,122,105,4" Content="Izađi"/>
+            <Button Grid.Row="1" FontSize="16" Margin="10,122,283,4" Content="Izmeni"/>
+        </Grid>
 
-
-    </Grid>
 </Window>
