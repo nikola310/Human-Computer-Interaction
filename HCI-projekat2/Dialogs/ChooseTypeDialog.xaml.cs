@@ -24,6 +24,8 @@ namespace HCI_projekat2.Dialogs
     {
         private TypeModel mod = new TypeModel();
         private NewResourceDialog res;
+        private ChangeResourceDialog chr;
+        private bool flag = false;
 
         public ObservableCollection<TypeModel> tipovi
         {
@@ -43,6 +45,18 @@ namespace HCI_projekat2.Dialogs
             DataContext = this;
         }
 
+        public ChooseTypeDialog(ChangeResourceDialog dg)
+        {
+            InitializeComponent();
+            tipovi = new ObservableCollection<TypeModel>();
+            chr = dg;
+            foreach (TypeModel s in Tipovi.Values)
+            {
+                tipovi.Add(s);
+            }
+            DataContext = this;
+        }
+
         private void Odustani_Click(object sender, RoutedEventArgs e)
         {
             Close();
@@ -51,7 +65,17 @@ namespace HCI_projekat2.Dialogs
         private void Izaberi_Tip_Click(object sender, RoutedEventArgs e)
         {
             TypeModel model = (TypeModel)dgrType.SelectedItem;
-            res.Model.Type = model;
+            //pre je bilo bez flaga i bez ovog ifa
+            //dakle samo
+            //res.Model.Type = model;
+            if (flag)
+            {
+                chr.Model.Type = model;
+            }
+            else
+            {
+                res.Model.Type = model;
+            }
             Close();
         }
     }

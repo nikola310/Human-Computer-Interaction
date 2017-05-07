@@ -5,8 +5,33 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HCI_projekat2.Tabels"
         mc:Ignorable="d"
-        Title="ResourceTable" Height="300" Width="300">
-    <Grid>
-        
+        Title="ResourceTable" Height="389.593" Width="927.15">
+    <Grid Margin="0,0,0,5">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="354*" />
+            <RowDefinition Height="37*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <DataGrid x:Name="dgrMain" ItemsSource="{Binding Path=resursi}" IsReadOnly="True" AutoGenerateColumns="False" IsSynchronizedWithCurrentItem="True" >
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" MinWidth="60" Width="SizeToCells" Binding="{Binding ID}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Naziv" MinWidth="60" Width="SizeToCells" Binding="{Binding Name}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Tip" MinWidth="60" Width="SizeToCells" Binding="{Binding Type.ID}"></DataGridTextColumn>
+                <DataGridCheckBoxColumn Header="Obnovljiv" MinWidth="60" Width="SizeToCells" Binding="{Binding Renewable}"></DataGridCheckBoxColumn>
+                <DataGridCheckBoxColumn Header="Strateška važnost" MinWidth="60" Width="SizeToCells" Binding="{Binding Importance}"></DataGridCheckBoxColumn>
+                <DataGridCheckBoxColumn Header="Moguće eksploatisanje" MinWidth="60" Width="SizeToCells" Binding="{Binding Exploit}"></DataGridCheckBoxColumn>
+                <DataGridTextColumn Header="Opis" MinWidth="70" Width="*" Binding="{Binding Desc}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Jedinica mere" MinWidth="70" Width="*" Binding="{Binding Unit}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Cena" MinWidth="70" Width="*" Binding="{Binding Price}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Frekvencija" MinWidth="70" Width="*" Binding="{Binding Freq}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Datum otkrivanja" MinWidth="70" Width="*" Binding="{Binding Date}"></DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <Button Grid.Row="1" FontSize="16"  Margin="113,5,718,5" Click="Obrisi_Click">Obriši</Button>
+        <Button Grid.Row="1" FontSize="16"   Content="Izmeni" Margin="10,5,824,5" Click="Izmeni_Click"/>
+        <Button Grid.Row="1" FontSize="16"  Content="Izađi" Margin="217,5,619,5" Click="Izadji_Click"/>
     </Grid>
 </Window>

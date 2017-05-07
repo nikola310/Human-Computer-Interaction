@@ -1,8 +1,10 @@
 ﻿using HCI_projekat2.Model;
 using Microsoft.Win32;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows;
+using System.Windows.Controls;
 using static HCI_projekat2.MainWindow;
 
 namespace HCI_projekat2.Dialogs
@@ -32,24 +34,6 @@ namespace HCI_projekat2.Dialogs
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }
-
-        private double _cena;
-        public double Cena
-        {
-            get
-            {
-                return _cena;
-            }
-            set
-            {
-                if (value != _cena)
-                {
-                    _cena = value;
-                    OnPropertyChanged("Cena");
-                }
-            }
-        }
-
 
         public NewResourceDialog()
         {
@@ -97,6 +81,13 @@ namespace HCI_projekat2.Dialogs
                 return;
             }
 
+            if (Resursi.ContainsKey(model.ID))
+            {
+                MessageBoxResult result = MessageBox.Show("Ne mogu postojati dva resursa sa istim ID. Molimo vas, promenite vrednost ID", "Nedozvoljena vrednost", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                IDResursa.Focus();
+                return;
+            }
+
             if (model.Name == "" || model.Name == null)
             {
                 ImeResursa.Focus();
@@ -115,7 +106,8 @@ namespace HCI_projekat2.Dialogs
                 Datum.Focus();
                 return;
             }
-
+            model.Date = (DateTime)Datum.SelectedDate;
+            
             model.Renewable = renewable.IsChecked.Value;
             model.Important = important.IsChecked.Value;
             model.Exploit = exploit.IsChecked.Value;
@@ -125,20 +117,37 @@ namespace HCI_projekat2.Dialogs
                 frequency.Focus();
                 return;
             }
+            model.Freq = ((ComboBoxItem)frequency.SelectedItem).Content.ToString();
 
             if (measureUnit.SelectedItem == null || measureUnit.SelectedItem.ToString() == "")
             {
                 measureUnit.Focus();
                 return;
             }
+            model.Unit = ((ComboBoxItem)measureUnit.SelectedItem).Content.ToString();
 
             if (Opis.Text == null || Opis.Text == "")
             {
                 model.Desc = "";
             }
 
+            List<LabelModel> tmp = new List<LabelModel>();
+            foreach(string et in EtiketeCheckList.SelectedItems)
+            {
+                foreach(LabelModel t in Etikete.Values)
+                {
+                    if (t.ID.Equals(et))
+                    {
+                        tmp.Add(t);
+                    }
+                }
+            }
 
+            model.Labels = tmp;
+            
 
+            Resursi.Add(model.ID, model);
+            Close();
         }
     }
 }

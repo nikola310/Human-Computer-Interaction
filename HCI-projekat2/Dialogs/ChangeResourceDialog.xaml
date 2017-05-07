@@ -3,10 +3,119 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        xmlns:val="clr-namespace:HCI_projekat2.Validation"
         xmlns:local="clr-namespace:HCI_projekat2.Dialogs"
         mc:Ignorable="d"
-        Title="ChangeResourceDialog" Height="300" Width="300">
+        Title="ChangeResourceDialog" Height="410.794" Width="1150.944" ResizeMode="CanMinimize"
+        SizeToContent="WidthAndHeight">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" MinHeight="31" />
+            <RowDefinition Height="Auto" MinHeight="33" />
+            <RowDefinition Height="47" />
+            <RowDefinition Height="48"/>
+            <RowDefinition Height="Auto" MinHeight="32" />
+            <RowDefinition Height="Auto" MinHeight="30" />
+            <RowDefinition Height="Auto" MinHeight="28" />
+            <RowDefinition Height="Auto" MinHeight="53" />
+            <RowDefinition Height="Auto" MinHeight="48"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" MinWidth="127" />
+            <ColumnDefinition Width="Auto" MinWidth="135" />
+            <ColumnDefinition Width="Auto" MinWidth="274"/>
+            <ColumnDefinition Width="Auto" MinWidth="63" />
+            <ColumnDefinition/>
+            <ColumnDefinition Width="124" />
+        </Grid.ColumnDefinitions>
+
+        <Image Grid.Column="0" Grid.Row="0" Grid.RowSpan="3" Source="{Binding IconPath}" Margin="17,10,10,10"></Image>
+        <Button Grid.Row="3" Grid.Column="0" Margin="10,10,10,11" FontSize="16" Click="Odustani_Click">Promeni ikonu</Button>
+        <Label Grid.Column="1" Grid.Row="0" FontSize="16">ID:</Label>
+        <TextBox Name="IDResursa" Grid.Column="2" Grid.Row="0" FontSize="16" Margin="3" MaxLength="20" Text="{Binding Path=ID}" IsReadOnly="True"/>
+
+
+        <Label Grid.Column="1" Grid.Row="1" FontSize="16">Ime:</Label>
+        <TextBox Name="ImeResursa" Grid.Column="2" Grid.Row="1" FontSize="16" Margin="3" MaxLength="20" Text="{Binding Path=Name}"></TextBox>
+        <Label Grid.Column="1" Grid.Row="2" FontSize="16" >Cena [USD]</Label>
+        <TextBox Grid.Column="2" Grid.Row="2" FontSize="16" Margin="3" Name="price">
+            <TextBox.Text>
+                <Binding Path="Price" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+                    <Binding.ValidationRules>
+                        <val:StringToDoubleValidationRule ValidationStep="RawProposedValue" />
+                        <val:MinimumValidationRule ValidationStep="ConvertedProposedValue" Min="0" />
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+            <Validation.ErrorTemplate>
+                <ControlTemplate>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <Border BorderBrush="Red" BorderThickness="2">
+                            <AdornedElementPlaceholder Grid.Column="0" Grid.Row="0" />
+                        </Border>
+                        <!--TextBlock Grid.Column="0" Grid.Row="1" Text="{Binding [0].ErrorContent}" Foreground="#FFA80D0D" 
+                                   FontSize="16"/-->
+                    </Grid>
+                </ControlTemplate>
+            </Validation.ErrorTemplate>
+        </TextBox>
+        <Label Grid.Column="1" Grid.Row="3" FontSize="16" HorizontalAlignment="Left" Width="135">Frekvencija:</Label>
+        <ComboBox Grid.Column="2" Grid.Row="3" Margin="3,10,102,15" FontSize="16" Name="frequency" IsEditable="False" >
+            <ComboBoxItem FontSize="16">Redak</ComboBoxItem>
+            <ComboBoxItem FontSize="16">Čest</ComboBoxItem>
+            <ComboBoxItem FontSize="16">Univerzalan</ComboBoxItem>
+        </ComboBox>
+
+        <CheckBox Grid.Column="2" Grid.Row="5" FontSize="16" Name="renewable" Margin="3" IsChecked="{Binding Path=Renewable}">Obnovljiv resurs</CheckBox>
+        <CheckBox Grid.Column="2" Grid.Row="6" FontSize="16" Name="important" Margin="3">Strateški važan resurs</CheckBox>
+        <CheckBox Grid.Column="2" Grid.Row="7" FontSize="16" Name="exploit" Margin="3">Moguće eksploatisanje</CheckBox>
+
+        <Label Grid.Column="1" Grid.Row="8" FontSize="16">Datum otkrivanja:</Label>
+        <Label Grid.Column="3" FontSize="16">Tip:</Label>
+        <Label Grid.Column="1" Grid.Row="4" FontSize="16" Height="51" VerticalAlignment="Top" HorizontalAlignment="Left" Width="135" Grid.RowSpan="2">Jedinica mere:</Label>
+        <Label Grid.Column="3" Grid.Row="1" FontSize="16">Etikete:</Label>
+        <Label Grid.Column="3" Grid.Row="5" FontSize="16">Opis:</Label>
+
+        <DatePicker  Grid.Column="2" Grid.Row="8" FontSize="16" Margin="3,3,3,21" Name="Datum"></DatePicker>
+
+        <TextBox Name="TipResursa" Grid.Column="4" FontSize="16" Margin="5,3,10,3" Text="{Binding Path=Type.ID}" IsReadOnly="True" />
+        <ComboBox Grid.Column="2" Grid.Row="4" FontSize="16" Name="measureUnit" IsEditable="False" Margin="3,0,102,24">
+            <ComboBoxItem FontSize="16">Merica</ComboBoxItem>
+            <ComboBoxItem FontSize="16">Barel</ComboBoxItem>
+            <ComboBoxItem FontSize="16">Tona</ComboBoxItem>
+            <ComboBoxItem FontSize="16">Kilogram</ComboBoxItem>
+        </ComboBox>
+
+        <xctk:CheckListBox Grid.Column="4" Grid.Row="1" Margin="3,3,10,3" Name="EtiketeCheckList" Grid.RowSpan="4" FontSize="16" />
+        <TextBox Grid.Column="4" Grid.Row="5" AcceptsReturn="True" TextWrapping="Wrap" FontSize="16" Grid.RowSpan="4"
+                 Margin="0,3,10,3" HorizontalAlignment="Right" Width="407" Text="{Binding Path=Desc, Mode=TwoWay}" Name="Opis"/>
+        <TextBlock Text="{Binding Path=Text, ElementName=BindTemp}" Grid.Column="4" Grid.Row="9"/>
+        <Button Grid.Row="9" Grid.Column="2" Margin="10,10,171,10" FontSize="16" Click="Izmeni_Resurs_Click" Content="Dodaj resurs">
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="IsEnabled" Value="false" />
+                    <Style.Triggers>
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding ElementName=price, Path=(Validation.HasError)}" Value="false" />
+                            </MultiDataTrigger.Conditions>
+                            <Setter Property="IsEnabled" Value="true" />
+                        </MultiDataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+        <Button Grid.Row="9" Grid.Column="2" Margin="151,10,37,10" FontSize="16" Content="Odustani" Click="Odustani_Click"/>
+        <Button Grid.Column="5" FontSize="16" Content="Izaberi" RenderTransformOrigin="0.492,-2.115" Margin="3" Click="Izaberi_Tip_Click"/>
     </Grid>
 </Window>

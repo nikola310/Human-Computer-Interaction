@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel;
+using System.Collections.ObjectModel;
 
 namespace HCI_projekat2.Model
 {
@@ -184,6 +185,20 @@ namespace HCI_projekat2.Model
             }
         }
 
+        private string _freq;
+        public string Freq
+        {
+            get
+            {
+                return _freq;
+            }
+            set
+            {
+                _freq = value;
+                OnPropertyChanged("Freq");
+            }
+        }
+
         [field: NonSerialized]
         public event PropertyChangedEventHandler PropertyChanged;
         protected virtual void OnPropertyChanged(string name)
@@ -196,8 +211,5 @@ namespace HCI_projekat2.Model
             Date = DateTime.Now;
             IconPath = "/Images/qmark2.png";
         }
-
-
-
     }
 }
