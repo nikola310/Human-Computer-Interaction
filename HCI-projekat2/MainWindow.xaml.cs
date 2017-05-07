@@ -55,9 +55,33 @@ namespace HCI_projekat2
         public string TipoviFajl;
         public string EtiketeFajl;
 
+        public static List<string> frekvencije { get; set; }
+
+        public static string Redak = "Redak";
+        public static string Cest = "Cest";
+        public static string Univerzalan = "Univerzalan";
+
+        public static List<string> mere { get; set; }
+
+        public static string Merica = "Merica";
+        public static string Barel = "Barel";
+        public static string Tona = "Tona";
+        public static string Kg = "Kilogram";
+
         public MainWindow()
         {
             InitializeComponent();
+            //brisi
+            mere = new List<string>();
+            mere.Add(Merica);
+            mere.Add(Barel);
+            mere.Add(Tona);
+            mere.Add(Kg);
+            frekvencije = new List<string>();
+            frekvencije.Add(Redak);
+            frekvencije.Add(Cest);
+            frekvencije.Add(Univerzalan);
+            //brisi
 
             FileStream stream = null;
             BinaryFormatter bf = new BinaryFormatter();

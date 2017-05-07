@@ -91,6 +91,9 @@
     <Compile Include="Dialogs\ChangeTypeDialog.xaml.cs">
       <DependentUpon>ChangeTypeDialog.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Dialogs\ChooseTypeDialog.xaml.cs">
+      <DependentUpon>ChooseTypeDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Model\LabelModel.cs" />
     <Compile Include="Model\ResourceModel.cs" />
     <Compile Include="Model\TypeModel.cs" />
@@ -115,6 +118,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Dialogs\ChangeTypeDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dialogs\ChooseTypeDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

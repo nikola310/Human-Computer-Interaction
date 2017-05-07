@@ -30,7 +30,6 @@ namespace HCI_projekat2.Tabels
                 tipovi.Add(s);
             }
             DataContext = this;
-            mod.Name = "jkdsnfjdsndnfjnj";
         }
 
         private void Odustani_Click(object sender, RoutedEventArgs e)

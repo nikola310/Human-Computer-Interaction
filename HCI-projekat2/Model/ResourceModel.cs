@@ -10,33 +10,9 @@ namespace HCI_projekat2.Model
     [Serializable]
     public class ResourceModel : INotifyPropertyChanged
     {
-        public List<string> frekvencije { get; set; }
 
-        public static string Redak = "Redak";
-        public static string Cest = "Cest";
-        public static string Univerzalan = "Univerzalan";
-
-        public List<string> mere { get; set; }
-        
-        public static string Merica = "Merica";
-        public static string Barel = "Barel";
-        public static string Tona = "Tona";
-        public static string Kg = "Kilogram";
 
         public string ValueString { get; set; }
-
-        private Guid _guid;
-        public Guid Guid
-        {
-            get
-            {
-                return _guid;
-            }
-            set
-            {
-                _guid = value;
-            }
-        }
 
         private string _id;
         public string ID
@@ -77,6 +53,20 @@ namespace HCI_projekat2.Model
             {
                 _desc = value;
                 OnPropertyChanged("Desc");
+            }
+        }
+
+        private List<LabelModel> _labels;
+        public List<LabelModel> Labels
+        {
+            get
+            {
+                return _labels;
+            }
+            set
+            {
+                _labels = value;
+                OnPropertyChanged("Labels");
             }
         }
 
@@ -162,7 +152,21 @@ namespace HCI_projekat2.Model
             {
                 _unit = value;
                 OnPropertyChanged("Unit");
-                
+
+            }
+        }
+
+        private double _price;
+        public double Price
+        {
+            get
+            {
+                return _price;
+            }
+            set
+            {
+                _price = value;
+                OnPropertyChanged("Price");
             }
         }
 
@@ -180,7 +184,7 @@ namespace HCI_projekat2.Model
             }
         }
 
-
+        [field: NonSerialized]
         public event PropertyChangedEventHandler PropertyChanged;
         protected virtual void OnPropertyChanged(string name)
         {
@@ -189,18 +193,6 @@ namespace HCI_projekat2.Model
 
         public ResourceModel()
         {
-            mere = new List<string>();
-            mere.Add(Merica);
-            mere.Add(Barel);
-            mere.Add(Tona);
-            mere.Add(Kg);
-
-            frekvencije = new List<string>();
-            frekvencije.Add(Redak);
-            frekvencije.Add(Cest);
-            frekvencije.Add(Univerzalan);
-
-            Desc = "TEST TEST TEST";
             Date = DateTime.Now;
             IconPath = "/Images/qmark2.png";
         }
