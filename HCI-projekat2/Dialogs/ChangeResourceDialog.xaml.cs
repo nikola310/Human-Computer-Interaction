@@ -50,7 +50,9 @@ namespace HCI_projekat2.Dialogs
 
         public ChangeResourceDialog(ResourceModel model)
         {
+            InitializeComponent();
             this.model = model;
+            DataContext = model;
         }
 
         private void Izmeni_Resurs_Click(object sender, RoutedEventArgs e)

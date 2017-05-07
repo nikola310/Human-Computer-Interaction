@@ -56,6 +56,7 @@ namespace HCI_projekat2.Tabels
             if (result == MessageBoxResult.Yes)
             {
                 ResourceModel model = (ResourceModel)dgrMain.SelectedItem;
+
                 Resursi.Remove(model.ID);
                 resursi.Clear();
                 foreach (ResourceModel t in Resursi.Values)

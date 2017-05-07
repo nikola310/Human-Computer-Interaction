@@ -31,11 +31,20 @@ namespace HCI_projekat2.Tabels
 
         private void Obrisi_Click(object sender, RoutedEventArgs e)
         {
-            MessageBoxResult result = MessageBox.Show(this, "Jeste li sigurni da želite obrisati selektovanu etiketu?", "Potvrda brisanja", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            MessageBoxResult result = MessageBox.Show(this, "Brisanjem ove etikete će doći do njenog brisanja iz svakog resursa koji ju sadrži. Jeste li sigurni da želite obrisati selektovanu etiketu?", "Potvrda brisanja", MessageBoxButton.YesNo, MessageBoxImage.Question);
 
             if (result == MessageBoxResult.Yes)
             {
                 LabelModel model = (LabelModel)dgrMain.SelectedItem;
+
+                foreach(ResourceModel r in Resursi.Values)
+                {
+                    r.Labels.Remove(model);
+                }
+
+
+
+
                 Etikete.Remove(model.ID);
                 etikete.Clear();
                 foreach (LabelModel t in Etikete.Values)

@@ -44,6 +44,15 @@ namespace HCI_projekat2.Tabels
             if (result == MessageBoxResult.Yes)
             {
                 TypeModel model = (TypeModel)dgrMain.SelectedItem;
+                foreach(ResourceModel r in Resursi.Values)
+                {
+                    if (r.Type.ID.Equals(model.ID))
+                    {
+                        MessageBoxResult mbr = MessageBox.Show("Ne može se obrisati tip kojem pripadaju neke vrste. Molimo Vas, izmenite resurse pre brisanja tipa.", "Nedozvoljena operacija", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                        return;
+                    }
+                }
+
                 Tipovi.Remove(model.ID);
                 tipovi.Clear();
                 foreach(TypeModel t in Tipovi.Values)
