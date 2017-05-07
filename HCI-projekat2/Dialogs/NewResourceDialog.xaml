@@ -65,8 +65,8 @@
                         <Border BorderBrush="Red" BorderThickness="2">
                             <AdornedElementPlaceholder Grid.Column="0" Grid.Row="0" />
                         </Border>
-                        <TextBlock Grid.Column="0" Grid.Row="1" Text="{Binding [0].ErrorContent}" Foreground="#FFA80D0D" 
-                                   FontSize="16"/>
+                        <!--TextBlock Grid.Column="0" Grid.Row="1" Text="{Binding [0].ErrorContent}" Foreground="#FFA80D0D" 
+                                   FontSize="16"/-->
                     </Grid>
                 </ControlTemplate>
             </Validation.ErrorTemplate>
@@ -104,7 +104,21 @@
         <TextBox Grid.Column="4" Grid.Row="5" AcceptsReturn="True" TextWrapping="Wrap" FontSize="16" Grid.RowSpan="4"
                  Margin="0,3,10,3" HorizontalAlignment="Right" Width="407" Text="{Binding Path=Desc, Mode=TwoWay}" Name="Opis"/>
         <TextBlock Text="{Binding Path=Text, ElementName=BindTemp}" Grid.Column="4" Grid.Row="9"/>
-        <Button Grid.Row="9" Grid.Column="2" Margin="10,10,171,10" FontSize="16" Click="Dodaj_Resurs_Click">Dodaj resurs</Button>
+        <Button Grid.Row="9" Grid.Column="2" Margin="10,10,171,10" FontSize="16" Click="Dodaj_Resurs_Click" Content="Dodaj resurs">
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="IsEnabled" Value="false" />
+                    <Style.Triggers>
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding ElementName=price, Path=(Validation.HasError)}" Value="false" />
+                            </MultiDataTrigger.Conditions>
+                            <Setter Property="IsEnabled" Value="true" />
+                        </MultiDataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
         <Button Grid.Row="9" Grid.Column="2" Margin="151,10,37,10" FontSize="16" Content="Odustani" Click="Odustani_Click"/>
         <Button Grid.Column="5" FontSize="16" Content="Izaberi" RenderTransformOrigin="0.492,-2.115" Margin="3" Click="Izaberi_Tip_Click"/>
     </Grid>
