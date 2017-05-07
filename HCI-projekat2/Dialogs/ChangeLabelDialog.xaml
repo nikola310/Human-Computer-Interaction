@@ -22,12 +22,12 @@
         <Label Grid.Column="0" Grid.Row="0" FontSize="16">ID:</Label>
         <Label Grid.Column="0" Grid.Row="1" FontSize="16">Boja:</Label>
         <Label Grid.Column="0" Grid.Row="2" FontSize="16">Opis:</Label>
-        <TextBox Name="IDetikete" Grid.Column="1" Grid.Row="0" FontSize="16" MaxLength="20" Margin="3"></TextBox>
+        <TextBox Name="IDetikete" Grid.Column="1" Grid.Row="0" FontSize="16" MaxLength="20" Margin="3" IsReadOnly="True"></TextBox>
         <TextBox Name="Opis" Grid.Column="1" Grid.Row="2" MaxLength="0" FontSize="16" Margin="3" TextWrapping="Wrap" 
                  AcceptsReturn="True" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto"></TextBox>
         <xctk:ColorCanvas Name="Boja" Grid.Column="1" Grid.Row="1" Margin="3"></xctk:ColorCanvas>
 
-        <Button Grid.Column="1" Grid.Row="3" FontSize="16" Margin="10,2,279,8"  RenderTransformOrigin="0.525,0.68">Izmeni</Button>
+        <Button Grid.Column="1" Grid.Row="3" FontSize="16" Margin="10,2,279,8"  RenderTransformOrigin="0.525,0.68" Click="Izmeni_Click">Izmeni</Button>
         <Button Grid.Column="1" Grid.Row="3" FontSize="16" Margin="95,2,183,8" >Odustani</Button>
     </Grid>
 </Window>

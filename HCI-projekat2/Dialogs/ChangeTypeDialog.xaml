@@ -5,8 +5,42 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HCI_projekat2.Dialogs"
         mc:Ignorable="d"
-        Title="ChangeTypeDialog" Height="300" Width="300">
+        Title="ChangeTypeDialog" Height="265.162" Width="581.315" ResizeMode="CanMinimize">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="32.104" />
+            <RowDefinition Height="31"/>
+            <RowDefinition Height="23*" />
+            <RowDefinition Height="83*"/>
+            <RowDefinition Height="Auto" MinHeight="38"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition/>
+            <ColumnDefinition Width="128.782"/>
+        </Grid.ColumnDefinitions>
+        <Label Grid.Column="0" Grid.Row="0" FontSize="16" Grid.RowSpan="2">Ime:</Label>
+        <TextBox Name="Ime" Grid.Column="1" Grid.Row="0" FontSize="16" Margin="3" MaxLength="20" Text="{Binding Path=Name}"/>
+        <Label Grid.Column="0" Grid.Row="1" FontSize="16" Grid.RowSpan="2">ID:</Label>
+        <TextBox Name="TipID" Grid.Column="1" Grid.Row="1" FontSize="16" Margin="3" MaxLength="20" Text="{Binding Path=ID}" IsReadOnly="True"/>
+        <Label Grid.Column="0" Grid.Row="2" FontSize="16">Opis:</Label>
+        <TextBox Name="Opis" Grid.Column="1" Grid.Row="2" Margin="3,3,3,10" FontSize="16" TextWrapping="Wrap" 
+                 AcceptsReturn="True" MaxLines="30" Grid.RowSpan="3" Text="{Binding Path=Desc}" VerticalScrollBarVisibility="Auto"/>
+
+        <Button Grid.Column="1" Grid.Row="5" FontSize="16" Margin="7,7,307,3" Click="Izmeni_Click">Izmeni</Button>
+        <Button Grid.Column="1" Grid.Row="5" FontSize="16" Margin="96,7,200,3" Click="Odustani_Click">Odustani</Button>
+        <Image Name="Ikona" Grid.Column="2" Grid.Row="0" Source="{Binding Path=IconPath }" Margin="24,25,23,10" 
+               Grid.RowSpan="4" RenderTransformOrigin="1.867,0.498">
+            <Image.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform AngleY="-0.434"/>
+                    <RotateTransform/>
+                    <TranslateTransform Y="-1.685"/>
+                </TransformGroup>
+            </Image.RenderTransform>
+        </Image>
+        <Button Name="BrowseButton" Grid.Row="4" Grid.Column="2" RenderTransformOrigin="0.177,-0.236" Margin="10,10,10,47" Click="Browse_Click">Promeni ikonu</Button>
     </Grid>
 </Window>

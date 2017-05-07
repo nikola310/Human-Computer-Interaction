@@ -1,16 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using HCI_projekat2.Model;
+using Microsoft.Win32;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+using static HCI_projekat2.MainWindow;
 
 namespace HCI_projekat2.Dialogs
 {
@@ -19,9 +10,57 @@ namespace HCI_projekat2.Dialogs
     /// </summary>
     public partial class ChangeTypeDialog : Window
     {
-        public ChangeTypeDialog()
+        TypeModel model;
+
+        public ChangeTypeDialog(TypeModel m)
         {
             InitializeComponent();
+            model = m;
+            DataContext = model;
+        }
+
+        private void Izmeni_Click(object sender, RoutedEventArgs e)
+        {
+            if (model.Name == "" || model.Name == null)
+            {
+                MessageBoxResult message = MessageBox.Show(this, "Morate uneti ime tipa!", "Nedostaje vrednost", MessageBoxButton.OK, MessageBoxImage.Error);
+                Ime.Focus();
+                return;
+            }
+
+            if (model.IconPath == null || model.IconPath == "/Images/qmark2.png" || model.IconPath == "")
+            {
+                MessageBoxResult message = MessageBox.Show(this, "Morate odabrati ikonu!", "Nedostaje vrednost", MessageBoxButton.OK, MessageBoxImage.Error);
+                BrowseButton.Focus();
+                return;
+            }
+
+            if (model.Desc == null)
+            {
+                model.Desc = "";
+            }
+
+            Tipovi[model.ID].Name = model.Name;
+            Tipovi[model.ID].Desc = model.Desc;
+
+            Close();
+        }
+
+        private void Odustani_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
+
+        private void Browse_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog dijalog = new OpenFileDialog();
+            dijalog.Filter = "Slike (*.jpeg, *.jpg, *.png, *.ico)|*.jpeg; *.jpg; *.png; *.ico";
+            bool? retVal = dijalog.ShowDialog();
+            if (retVal == true)
+            {
+                string fajl = dijalog.FileName;
+                model.IconPath = fajl;
+            }
         }
     }
 }

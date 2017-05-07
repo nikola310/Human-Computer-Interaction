@@ -34,8 +34,7 @@
         <Image Grid.Column="0" Grid.Row="0" Grid.RowSpan="3" Source="{Binding IconPath}"></Image>
         <Button Grid.Row="3" Grid.Column="0" Margin="10,10,10,25" FontSize="16">Promeni ikonu</Button>
         <Label Grid.Column="1" Grid.Row="0" FontSize="16">ID:</Label>
-        <TextBox Grid.Column="2" Grid.Row="0" FontSize="16" Margin="3" MaxLength="20" TextChanged="TextBox_TextChanged" 
-                 Text="{Binding Path=ID}"/>
+        <TextBox Grid.Column="2" Grid.Row="0" FontSize="16" Margin="3" MaxLength="20" Text="{Binding Path=ID, UpdateSourceTrigger=PropertyChanged}"/>
 
 
         <Label Grid.Column="1" Grid.Row="1" FontSize="16">Ime:</Label>
@@ -45,12 +44,30 @@
             <TextBox.Text>
                 <Binding Path="Cena" UpdateSourceTrigger="PropertyChanged">
                     <Binding.ValidationRules>
-                        <val:StringToDoubleValidationRule ValidationStep="RawProposedValue"/>
-                        <val:MinValidationRule ValidationStep="ConvertedProposedValue" Min="0"/>
+                        <val:StringToDoubleValidationRule ValidationStep="RawProposedValue" />
+                        <val:MinimumValidationRule ValidationStep="ConvertedProposedValue" Min="0" />
                     </Binding.ValidationRules>
                 </Binding>
             </TextBox.Text>
-
+            <Validation.ErrorTemplate>
+                <ControlTemplate>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <Border BorderBrush="Red" BorderThickness="2">
+                            <AdornedElementPlaceholder Grid.Column="0" Grid.Row="0" />
+                        </Border>
+                        <TextBlock Grid.Column="0" Grid.Row="1" Text="{Binding [0].ErrorContent}" Foreground="#FFA80D0D" 
+                                   FontSize="16"/>
+                    </Grid>
+                </ControlTemplate>
+            </Validation.ErrorTemplate>
         </TextBox>
         <Label Grid.Column="1" Grid.Row="3" FontSize="16">Frekvencija:</Label>
         <ComboBox Grid.Column="2" Grid.Row="3" Margin="10,10,95,25" FontSize="16" Name="frequency" ItemsSource="{Binding Path=frekvencije}" IsEditable="False" />
@@ -71,7 +88,7 @@
 
         <TextBox Grid.Column="4" FontSize="16" Margin="10,3,8,3" Text="{Binding Path=Type}"/>
         <ComboBox Grid.Column="4" Grid.Row="1" FontSize="16" Margin="10,3,8,3" Name="measureUnit" ItemsSource="{Binding Path=mere}" IsEditable="False" />
-     
+
         <TextBox Grid.Column="4" Grid.Row="2" Grid.RowSpan="3" Margin="10,3,8,3" Name="labels"></TextBox>
         <TextBox Grid.Column="4" Grid.Row="5" Grid.RowSpan="3" AcceptsReturn="True" TextWrapping="Wrap" FontSize="16" 
                  Margin="0,3,8,3" HorizontalAlignment="Right" Width="263" Text="{Binding Path=Desc}"/>

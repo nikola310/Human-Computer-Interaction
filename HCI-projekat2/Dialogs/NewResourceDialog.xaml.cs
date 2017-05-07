@@ -10,18 +10,16 @@ namespace HCI_projekat2.Dialogs
     /// </summary>
     public partial class NewResourceDialog : Window, INotifyPropertyChanged 
     {
-        public static bool BooleanTrue = true;
-        public static bool BooleanFalse = false;
-        private ResourceModel model = null;
+        private ResourceModel model;
 
+        public event PropertyChangedEventHandler PropertyChanged;
         protected virtual void OnPropertyChanged(string name)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }
 
-        private decimal _cena;
-
-        public decimal Cena
+        private double _cena;
+        public double Cena
         {
             get
             {
@@ -40,27 +38,10 @@ namespace HCI_projekat2.Dialogs
         
         public NewResourceDialog()
         {
-            model = new ResourceModel();
-            DataContext = model;
-            model.Renewable = true;
             InitializeComponent();
-            
+            DataContext = this;   
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
 
-        private void TextBox_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
-        {
-
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-
-        {
-
-            MessageBox.Show(string.Format("Boolean property: {0}.",
-             this.model.Renewable));
-
-        }
     }
 }

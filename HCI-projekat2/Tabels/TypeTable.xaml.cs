@@ -5,6 +5,7 @@ using static HCI_projekat2.MainWindow;
 using Microsoft.Win32;
 using System.Windows.Media.Imaging;
 using System;
+using HCI_projekat2.Dialogs;
 
 namespace HCI_projekat2.Tabels
 {
@@ -54,22 +55,11 @@ namespace HCI_projekat2.Tabels
             }
         }
 
-        private void BrowseButton_Click(object sender, RoutedEventArgs e)
+        private void Izmeni_Click(object sender, RoutedEventArgs e)
         {
-            OpenFileDialog dijalog = new OpenFileDialog();
             TypeModel model = (TypeModel)dgrMain.SelectedItem;
-            dijalog.Filter = "Slike (*.jpeg, *.jpg, *.png, *.ico)|*.jpeg; *.jpg; *.png; *.ico";
-            bool? retVal = dijalog.ShowDialog();
-            if (retVal == true)
-            {
-                string fajl = dijalog.FileName;
-                BitmapImage img = new BitmapImage();
-                img.BeginInit();
-                img.UriSource = new System.Uri(fajl, UriKind.Absolute);
-                img.EndInit();
-                model.IconPath = fajl;
-                Ikona.Source = img;
-            }
+            ChangeTypeDialog val = new ChangeTypeDialog(model);
+            val.Show();
         }
     }
 }

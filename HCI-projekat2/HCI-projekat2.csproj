@@ -103,6 +103,7 @@
     <Compile Include="Tabels\TypeTable.xaml.cs">
       <DependentUpon>TypeTable.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Validation\MinimumValidationRule.cs" />
     <Compile Include="Validation\RadioButtonCheckedConverter.cs" />
     <Compile Include="Validation\StringToDoubleValidationRule.cs" />
     <Page Include="Dialogs\ChangeLabelDialog.xaml">
