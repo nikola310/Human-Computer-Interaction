@@ -31,16 +31,23 @@ namespace HCI_projekat2.Tabels
             get;
             set;
         }
+        public ObservableCollection<LabelModel> labels
+        {
+            get;
+            set;
+        }
 
 
         public ResourceTable()
         {
             InitializeComponent();
             resursi = new ObservableCollection<ResourceModel>();
-            foreach(ResourceModel tmp in Resursi.Values)
+            labels = new ObservableCollection<LabelModel>();
+            foreach (ResourceModel tmp in Resursi.Values)
             {
                 resursi.Add(tmp);
             }
+            //foreach(LabelModel lab in )
             DataContext = this;
         }
 

@@ -114,7 +114,9 @@ namespace HCI_projekat2.Dialogs
 
             if (frequency.SelectedItem == null || frequency.SelectedItem.ToString() == "")
             {
+                
                 frequency.Focus();
+                frequency.IsDropDownOpen = true;
                 return;
             }
             model.Freq = ((ComboBoxItem)frequency.SelectedItem).Content.ToString();
@@ -122,6 +124,7 @@ namespace HCI_projekat2.Dialogs
             if (measureUnit.SelectedItem == null || measureUnit.SelectedItem.ToString() == "")
             {
                 measureUnit.Focus();
+                measureUnit.IsDropDownOpen = true;
                 return;
             }
             model.Unit = ((ComboBoxItem)measureUnit.SelectedItem).Content.ToString();
