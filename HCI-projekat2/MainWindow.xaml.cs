@@ -57,12 +57,14 @@ namespace HCI_projekat2
 
         public static List<string> frekvencije { get; set; }
 
+        //frekvencije
         public static string Redak = "Redak";
         public static string Cest = "Cest";
         public static string Univerzalan = "Univerzalan";
 
         public static List<string> mere { get; set; }
 
+        //jedinice mere
         public static string Merica = "Merica";
         public static string Barel = "Barel";
         public static string Tona = "Tona";

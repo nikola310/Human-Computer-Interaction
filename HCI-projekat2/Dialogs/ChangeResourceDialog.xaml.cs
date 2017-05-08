@@ -53,6 +53,18 @@ namespace HCI_projekat2.Dialogs
             InitializeComponent();
             this.model = model;
             DataContext = model;
+
+            foreach (LabelModel e in Etikete.Values)
+            {
+                EtiketeCheckList.Items.Add(e.ID);
+            }
+
+
+            frequency.SelectedValue = model.Freq;
+            
+            measureUnit.SelectedValue = model.Unit;
+
+
         }
 
         private void Izmeni_Resurs_Click(object sender, RoutedEventArgs e)

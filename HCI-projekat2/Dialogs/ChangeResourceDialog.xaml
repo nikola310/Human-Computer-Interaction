@@ -70,15 +70,15 @@
             </Validation.ErrorTemplate>
         </TextBox>
         <Label Grid.Column="1" Grid.Row="3" FontSize="16" HorizontalAlignment="Left" Width="135">Frekvencija:</Label>
-        <ComboBox Grid.Column="2" Grid.Row="3" Margin="3,10,102,15" FontSize="16" Name="frequency" IsEditable="False" >
+        <ComboBox Grid.Column="2" Grid.Row="3" Margin="3,10,102,10" FontSize="16" Name="frequency" IsEditable="False" SelectedValuePath="Content">
             <ComboBoxItem FontSize="16">Redak</ComboBoxItem>
             <ComboBoxItem FontSize="16">Čest</ComboBoxItem>
             <ComboBoxItem FontSize="16">Univerzalan</ComboBoxItem>
         </ComboBox>
 
         <CheckBox Grid.Column="2" Grid.Row="5" FontSize="16" Name="renewable" Margin="3" IsChecked="{Binding Path=Renewable}">Obnovljiv resurs</CheckBox>
-        <CheckBox Grid.Column="2" Grid.Row="6" FontSize="16" Name="important" Margin="3">Strateški važan resurs</CheckBox>
-        <CheckBox Grid.Column="2" Grid.Row="7" FontSize="16" Name="exploit" Margin="3">Moguće eksploatisanje</CheckBox>
+        <CheckBox Grid.Column="2" Grid.Row="6" FontSize="16" Name="important" Margin="3" IsChecked="{Binding Path=Important}">Strateški važan resurs</CheckBox>
+        <CheckBox Grid.Column="2" Grid.Row="7" FontSize="16" Name="exploit" Margin="3" IsChecked="{Binding Path=Exploit}">Moguće eksploatisanje</CheckBox>
 
         <Label Grid.Column="1" Grid.Row="8" FontSize="16">Datum otkrivanja:</Label>
         <Label Grid.Column="3" FontSize="16">Tip:</Label>
@@ -96,7 +96,7 @@
             <ComboBoxItem FontSize="16">Kilogram</ComboBoxItem>
         </ComboBox>
 
-        <xctk:CheckListBox Grid.Column="4" Grid.Row="1" Margin="3,3,10,3" Name="EtiketeCheckList" Grid.RowSpan="4" FontSize="16" />
+        <xctk:CheckListBox Grid.Column="4" Grid.Row="1" Margin="5,3,10,3" Name="EtiketeCheckList" Grid.RowSpan="4" FontSize="16" />
         <TextBox Grid.Column="4" Grid.Row="5" AcceptsReturn="True" TextWrapping="Wrap" FontSize="16" Grid.RowSpan="4"
                  Margin="0,3,10,3" HorizontalAlignment="Right" Width="407" Text="{Binding Path=Desc, Mode=TwoWay}" Name="Opis"/>
         <TextBlock Text="{Binding Path=Text, ElementName=BindTemp}" Grid.Column="4" Grid.Row="9"/>
