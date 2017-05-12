@@ -33,7 +33,7 @@
             <ColumnDefinition Width="124" />
         </Grid.ColumnDefinitions>
 
-        <Image Grid.Column="0" Grid.Row="0" Grid.RowSpan="3" Source="{Binding IconPath}" Margin="17,10,10,10"></Image>
+        <Image Grid.Column="0" Grid.Row="0" Grid.RowSpan="3" Source="{Binding IconPath}" Margin="10,10,17,10"></Image>
         <Button Grid.Row="3" Grid.Column="0" Margin="10,10,10,11" FontSize="16" Click="Browse_Click">Promeni ikonu</Button>
         <Label Grid.Column="1" Grid.Row="0" FontSize="16">ID:</Label>
         <TextBox Name="IDResursa" Grid.Column="2" Grid.Row="0" FontSize="16" Margin="3" MaxLength="20" Text="{Binding Path=ID}"/>
@@ -42,10 +42,11 @@
         <Label Grid.Column="1" Grid.Row="1" FontSize="16">Ime:</Label>
         <TextBox Name="ImeResursa" Grid.Column="2" Grid.Row="1" FontSize="16" Margin="3" MaxLength="20" Text="{Binding Path=Name}"></TextBox>
         <Label Grid.Column="1" Grid.Row="2" FontSize="16" >Cena [USD]</Label>
-        <TextBox Grid.Column="2" Grid.Row="2" FontSize="16" Margin="3" Name="price">
+        <TextBox Grid.Column="2" Grid.Row="2" FontSize="16" Margin="3" Name="price" TextChanged="price_TextChanged">
             <TextBox.Text>
                 <Binding Path="Price" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
                     <Binding.ValidationRules>
+                        <val:EmptyStringValidationRule ValidationStep="RawProposedValue" />
                         <val:StringToDoubleValidationRule ValidationStep="RawProposedValue" />
                         <val:MinimumValidationRule ValidationStep="ConvertedProposedValue" Min="0" />
                     </Binding.ValidationRules>
@@ -63,16 +64,19 @@
                             <ColumnDefinition Width="Auto" />
                         </Grid.ColumnDefinitions>
                         <Border BorderBrush="Red" BorderThickness="2">
-                            <AdornedElementPlaceholder Grid.Column="0" Grid.Row="0" />
+                            <AdornedElementPlaceholder Grid.Column="0" Grid.Row="0" x:Name="broj"/>
                         </Border>
-                        <!--TextBlock Grid.Column="0" Grid.Row="1" Text="{Binding [0].ErrorContent}" Foreground="#FFA80D0D" 
-                                   FontSize="16"/-->
+                        <Border BorderBrush="Red" BorderThickness="2" Grid.Column="0" Grid.Row="1">
+                            <TextBlock Text="{Binding [0].ErrorContent}"
+                                   Foreground="Red" FontSize="16" Background="White"/>
+                        </Border>
                     </Grid>
                 </ControlTemplate>
             </Validation.ErrorTemplate>
+
         </TextBox>
-        <Label Grid.Column="1" Grid.Row="3" FontSize="16" HorizontalAlignment="Left" Width="135">Frekvencija:</Label>
-        <ComboBox Grid.Column="2" Grid.Row="3" Margin="3,10,102,11" FontSize="16" Name="frequency" IsEditable="False" >
+        <Label Grid.Column="1" Grid.Row="3" FontSize="16" HorizontalAlignment="Left" Width="135" Margin="0,10,0,0">Frekvencija:</Label>
+        <ComboBox Grid.Column="2" Grid.Row="3" Margin="3,16,102,5" FontSize="16" Name="frequency" IsEditable="False" >
             <ComboBoxItem FontSize="16">Redak</ComboBoxItem>
             <ComboBoxItem FontSize="16">Čest</ComboBoxItem>
             <ComboBoxItem FontSize="16">Univerzalan</ComboBoxItem>
@@ -84,14 +88,14 @@
 
         <Label Grid.Column="1" Grid.Row="8" FontSize="16">Datum otkrivanja:</Label>
         <Label Grid.Column="3" FontSize="16">Tip:</Label>
-        <Label Grid.Column="1" Grid.Row="4" FontSize="16" Height="51" VerticalAlignment="Top" HorizontalAlignment="Left" Width="135" Grid.RowSpan="2">Jedinica mere:</Label>
+        <Label Grid.Column="1" Grid.Row="4" FontSize="16" Height="46" VerticalAlignment="Top" HorizontalAlignment="Left" Width="135" Grid.RowSpan="2" Margin="0,5,0,0">Jedinica mere:</Label>
         <Label Grid.Column="3" Grid.Row="1" FontSize="16">Etikete:</Label>
         <Label Grid.Column="3" Grid.Row="5" FontSize="16">Opis:</Label>
 
         <DatePicker  Grid.Column="2" Grid.Row="8" FontSize="16" Margin="3,3,3,21" Name="Datum"></DatePicker>
 
         <TextBox Name="TipResursa" Grid.Column="4" FontSize="16" Margin="3,3,10,3" Text="{Binding Path=Type.ID}" IsReadOnly="True" />
-        <ComboBox Grid.Column="2" Grid.Row="4" FontSize="16" Name="measureUnit" IsEditable="False" Margin="3,0,102,24">
+        <ComboBox Grid.Column="2" Grid.Row="4" FontSize="16" Name="measureUnit" IsEditable="False" Margin="3,10,102,14">
             <ComboBoxItem FontSize="16">Merica</ComboBoxItem>
             <ComboBoxItem FontSize="16">Barel</ComboBoxItem>
             <ComboBoxItem FontSize="16">Tona</ComboBoxItem>

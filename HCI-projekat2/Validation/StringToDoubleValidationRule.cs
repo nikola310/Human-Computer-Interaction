@@ -16,17 +16,18 @@ namespace HCI_projekat2.Validation
             try
             {
                 string s = (string) value;
-                Regex r = new Regex(@"^[0-9]+([.,][0-9]+)?$");
+                Regex r = new Regex(@"^[0-9]*([.,][0-9]+)?$");
 
                 if (r.IsMatch(s))
                 {
                     return new ValidationResult(true, null);
                 }
-                return new ValidationResult(false, "Please enter a valid double value.");
+                System.Media.SystemSounds.Exclamation.Play();
+                return new ValidationResult(false, "Morate uneti broj.");
             }
             catch
             {
-                return new ValidationResult(false, "Unknown error occured.");
+                return new ValidationResult(false, "Došlo je do greške.");
             }
         }
     }

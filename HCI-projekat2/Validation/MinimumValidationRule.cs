@@ -21,12 +21,12 @@ namespace HCI_projekat2.Validation
              if (value is double)
              {
                  double d = (double)value;
-                 if (d < Min) return new ValidationResult(false, "Premali broj.");
+                 if (d < Min) return new ValidationResult(false, "Broj je premali.");
                  return new ValidationResult(true, null);
              }
              else
              {
-                 return new ValidationResult(false, "Unknown error occured.");
+                 return new ValidationResult(false, "Došlo je do greške.");
              }
             /*double r;
             if (double.TryParse(value as string, out r))

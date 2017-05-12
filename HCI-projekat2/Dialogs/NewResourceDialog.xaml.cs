@@ -152,6 +152,11 @@ namespace HCI_projekat2.Dialogs
             Resursi.Add(model.ID, model);
             Close();
         }
+
+        private void price_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
     }
 }
 
