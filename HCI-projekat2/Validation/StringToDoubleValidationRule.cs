@@ -27,6 +27,7 @@ namespace HCI_projekat2.Validation
             }
             catch
             {
+                System.Media.SystemSounds.Exclamation.Play();
                 return new ValidationResult(false, "Došlo je do greške.");
             }
         }

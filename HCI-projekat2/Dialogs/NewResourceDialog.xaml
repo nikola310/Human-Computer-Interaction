@@ -36,11 +36,71 @@
         <Image Grid.Column="0" Grid.Row="0" Grid.RowSpan="3" Source="{Binding IconPath}" Margin="10,10,17,10"></Image>
         <Button Grid.Row="3" Grid.Column="0" Margin="10,10,10,11" FontSize="16" Click="Browse_Click">Promeni ikonu</Button>
         <Label Grid.Column="1" Grid.Row="0" FontSize="16">ID:</Label>
-        <TextBox Name="IDResursa" Grid.Column="2" Grid.Row="0" FontSize="16" Margin="3" MaxLength="20" Text="{Binding Path=ID}"/>
+        <TextBox Name="IDResursa" Grid.Column="2" Grid.Row="0" FontSize="16" Margin="3" MaxLength="20">
+            <TextBox.Text>
+                <Binding Path="ID" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+                    <Binding.ValidationRules>
+                        <val:EmptyStringValidationRule ValidationStep="RawProposedValue" />
+                        <val:ResourceIDValidationRule ValidationStep="RawProposedValue" />
+                        <val:AsciiValidationRule ValidationStep="RawProposedValue" />
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+            <Validation.ErrorTemplate>
+                <ControlTemplate>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <Border BorderBrush="Red" BorderThickness="2">
+                            <AdornedElementPlaceholder Grid.Column="0" Grid.Row="0" x:Name="broj"/>
+                        </Border>
+                        <Border BorderBrush="Red" BorderThickness="2" Grid.Column="0" Grid.Row="1">
+                            <TextBlock Text="{Binding [0].ErrorContent}"
+                                   Foreground="Red" FontSize="16" Background="White"/>
+                        </Border>
+                    </Grid>
+                </ControlTemplate>
+            </Validation.ErrorTemplate>
+        </TextBox>
 
 
         <Label Grid.Column="1" Grid.Row="1" FontSize="16">Ime:</Label>
-        <TextBox Name="ImeResursa" Grid.Column="2" Grid.Row="1" FontSize="16" Margin="3" MaxLength="20" Text="{Binding Path=Name}"></TextBox>
+        <TextBox Name="ImeResursa" Grid.Column="2" Grid.Row="1" FontSize="16" Margin="3" MaxLength="20">
+            <TextBox.Text>
+                <Binding Path="Name" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+                    <Binding.ValidationRules>
+                        <val:EmptyStringValidationRule ValidationStep="RawProposedValue" />
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+            <Validation.ErrorTemplate>
+                <ControlTemplate>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <Border BorderBrush="Red" BorderThickness="2">
+                            <AdornedElementPlaceholder Grid.Column="0" Grid.Row="0" x:Name="broj"/>
+                        </Border>
+                        <Border BorderBrush="Red" BorderThickness="2" Grid.Column="0" Grid.Row="1">
+                            <TextBlock Text="{Binding [0].ErrorContent}"
+                                   Foreground="Red" FontSize="16" Background="White"/>
+                        </Border>
+                    </Grid>
+                </ControlTemplate>
+            </Validation.ErrorTemplate>
+        </TextBox>
         <Label Grid.Column="1" Grid.Row="2" FontSize="16" >Cena [USD]</Label>
         <TextBox Grid.Column="2" Grid.Row="2" FontSize="16" Margin="3" Name="price" TextChanged="price_TextChanged">
             <TextBox.Text>
@@ -114,6 +174,8 @@
                         <MultiDataTrigger>
                             <MultiDataTrigger.Conditions>
                                 <Condition Binding="{Binding ElementName=price, Path=(Validation.HasError)}" Value="false" />
+                                <Condition Binding="{Binding ElementName=IDResursa, Path=(Validation.HasError)}" Value="false" />
+                                <Condition Binding="{Binding ElementName=ImeResursa, Path=(Validation.HasError)}" Value="false" />
                             </MultiDataTrigger.Conditions>
                             <Setter Property="IsEnabled" Value="true" />
                         </MultiDataTrigger>

@@ -59,21 +59,28 @@ namespace HCI_projekat2.Dialogs
                 EtiketeCheckList.Items.Add(e.ID);
             }
 
-
             frequency.SelectedValue = model.Freq;
-            
-            measureUnit.SelectedValue = model.Unit;
+            int i = 0;
+            foreach (string s in MainWindow.mere)
+            {
+                if (mere.Equals(model.Unit))
+                {
+                    break;
+                }
+                i++;
+            }
+            measureUnit.SelectedValue = MainWindow.mere[i];
 
 
         }
 
         private void Izmeni_Resurs_Click(object sender, RoutedEventArgs e)
         {
-            if (model.Name == "" || model.Name == null)
-            {
-                ImeResursa.Focus();
-                return;
-            }
+            BindingExpression b1 = ImeResursa.GetBindingExpression(TextBox.TextProperty);
+            BindingExpression b2 = price.GetBindingExpression(TextBox.TextProperty);
+
+            b1.UpdateSource();
+            b2.UpdateSource(); 
 
             if (model.Type.ID == "" || model.Type.ID == null)
             {

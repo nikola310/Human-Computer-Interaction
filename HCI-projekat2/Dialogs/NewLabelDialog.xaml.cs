@@ -1,6 +1,8 @@
 ﻿using System.Windows;
 using HCI_projekat2.Model;
 using static HCI_projekat2.MainWindow;
+using System.Windows.Data;
+using System.Windows.Controls;
 
 namespace HCI_projekat2.Dialogs
 {
@@ -19,36 +21,35 @@ namespace HCI_projekat2.Dialogs
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if (IDetikete.Text == "")
+            BindingExpression b = IDetikete.GetBindingExpression(TextBox.TextProperty);
+            b.UpdateSource();
+            if (b.HasError == false)
             {
-                MessageBoxResult message = MessageBox.Show(this, "Morate uneti ID etikete!", "Nedostaje vrednost", MessageBoxButton.OK, MessageBoxImage.Error);
-                IDetikete.Focus();
-                return;
-            }
-            if (Boja.SelectedColor == null)
-            {
-                MessageBoxResult message = MessageBox.Show("Morate izabrati boju!", "Nedostaje vrednost", MessageBoxButton.OK, MessageBoxImage.Error);
-                Boja.Focus();
-                return;
-            }
-            if (Opis.Text == null)
-            {
-                Opis.Text = "";
-            }
-
-            foreach (LabelModel lbl in Etikete.Values)
-            {
-                if (lbl.ID.Equals(IDetikete.Text))
+                if (Boja.SelectedColor == null)
                 {
-                    MessageBoxResult message = MessageBox.Show(this, "Etiketa sa takvom ID oznakom vec postoji! Molimo vas, unesite drugi ID.", "Greška", MessageBoxButton.OK, MessageBoxImage.Error);
-                    IDetikete.Focus();
+                    MessageBoxResult message = MessageBox.Show("Morate izabrati boju!", "Nedostaje vrednost", MessageBoxButton.OK, MessageBoxImage.Error);
+                    Boja.Focus();
                     return;
                 }
-            }
+                if (Opis.Text == null)
+                {
+                    Opis.Text = "";
+                }
 
-            LabelModel novo = new LabelModel(IDetikete.Text, Boja.SelectedColor.ToString(), Opis.Text);
-            Etikete.Add(novo.ID, novo);
-            Close();
+                foreach (LabelModel lbl in Etikete.Values)
+                {
+                    if (lbl.ID.Equals(IDetikete.Text))
+                    {
+                        MessageBoxResult message = MessageBox.Show(this, "Etiketa sa takvom ID oznakom vec postoji! Molimo vas, unesite drugi ID.", "Greška", MessageBoxButton.OK, MessageBoxImage.Error);
+                        IDetikete.Focus();
+                        return;
+                    }
+                }
+
+                LabelModel novo = new LabelModel(IDetikete.Text, Boja.SelectedColor.ToString(), Opis.Text);
+                Etikete.Add(novo.ID, novo);
+                Close();
+            }
         }
 
         private void Close_Click(object sender, RoutedEventArgs e)

@@ -208,6 +208,7 @@ namespace HCI_projekat2.Model
 
         public ResourceModel()
         {
+            Type = new TypeModel();
             Date = DateTime.Now;
             IconPath = "/Images/qmark2.png";
         }
