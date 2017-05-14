@@ -6,5 +6,6 @@
              xmlns:d="clr-namespace:HCI_projekat2.Dialogs"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
+        
     </Application.Resources>
 </Application>

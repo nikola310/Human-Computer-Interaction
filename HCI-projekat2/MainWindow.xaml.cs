@@ -73,17 +73,6 @@ namespace HCI_projekat2
         public MainWindow()
         {
             InitializeComponent();
-            //brisi
-            mere = new List<string>();
-            mere.Add(Merica);
-            mere.Add(Barel);
-            mere.Add(Tona);
-            mere.Add(Kg);
-            frekvencije = new List<string>();
-            frekvencije.Add(Redak);
-            frekvencije.Add(Cest);
-            frekvencije.Add(Univerzalan);
-            //brisi
 
             FileStream stream = null;
             BinaryFormatter bf = new BinaryFormatter();
