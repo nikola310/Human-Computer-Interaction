@@ -3,6 +3,8 @@ using HCI_projekat2.Model;
 using Microsoft.Win32;
 using static HCI_projekat2.MainWindow;
 using System;
+using System.Windows.Data;
+using System.Windows.Controls;
 
 namespace HCI_projekat2.Dialogs
 {
@@ -34,45 +36,43 @@ namespace HCI_projekat2.Dialogs
 
         private void Dodaj_Click(object sender, RoutedEventArgs e)
         {
-            if (model.Name == "" || model.Name == null)
-            {
-                MessageBoxResult message = MessageBox.Show(this, "Morate uneti ime tipa!", "Nedostaje vrednost", MessageBoxButton.OK, MessageBoxImage.Error);
-                Ime.Focus();
-                return;
-            }
-            if (model.ID == "" || model.ID == null)
-            {
-                MessageBoxResult message = MessageBox.Show(this, "Morate uneti ID tipa!", "Nedostaje vrednost", MessageBoxButton.OK, MessageBoxImage.Error);
-                TipID.Focus();
-                return;
-            }
-            if (model.IconPath == null || model.IconPath == "/Images/qmark2.png" || model.IconPath == "")
-            {
-                MessageBoxResult message = MessageBox.Show(this, "Morate odabrati ikonu!", "Nedostaje vrednost", MessageBoxButton.OK, MessageBoxImage.Error);
-                BrowseButton.Focus();
-                return;
-            }
+            BindingExpression b = TipID.GetBindingExpression(TextBox.TextProperty);
+            BindingExpression b1 = Ime.GetBindingExpression(TextBox.TextProperty);
 
+            b.UpdateSource();
+            b1.UpdateSource();
 
-            if (model.Desc == null)
+            
+            if (b.HasError == false && b1.HasError == false)
             {
-                model.Desc = "";
-            }
-
-
-            foreach (TypeModel tip in Tipovi.Values)
-            {
-                if (tip.ID.Equals(TipID.Text))
+                if (model.IconPath == null || model.IconPath == "/Images/qmark2.png" || model.IconPath == "")
                 {
-                    MessageBoxResult message = MessageBox.Show(this, "Tip sa takvom ID oznakom vec postoji! Molimo vas, unesite drugi ID.", "Greška", MessageBoxButton.OK, MessageBoxImage.Error);
-                    TipID.Focus();
+                    MessageBoxResult message = MessageBox.Show(this, "Morate odabrati ikonu!", "Nedostaje vrednost", MessageBoxButton.OK, MessageBoxImage.Error);
+                    BrowseButton.Focus();
                     return;
                 }
+
+
+                if (model.Desc == null)
+                {
+                    model.Desc = "";
+                }
+
+
+                foreach (TypeModel tip in Tipovi.Values)
+                {
+                    if (tip.ID.Equals(TipID.Text))
+                    {
+                        MessageBoxResult message = MessageBox.Show(this, "Tip sa takvom ID oznakom vec postoji! Molimo vas, unesite drugi ID.", "Greška", MessageBoxButton.OK, MessageBoxImage.Error);
+                        TipID.Focus();
+                        return;
+                    }
+                }
+
+
+                Tipovi.Add(model.ID, model);
+                Close();
             }
-
-
-            Tipovi.Add(model.ID, model);
-            Close();
         }
 
         private void Close_Click(object sender, RoutedEventArgs e)

@@ -32,9 +32,10 @@
         </Grid.ColumnDefinitions>
 
         <Image Grid.Column="0" Grid.Row="0" Grid.RowSpan="3" Source="{Binding IconPath}" Margin="17,10,10,10"></Image>
-        <Button Grid.Row="3" Grid.Column="0" Margin="10,10,10,11" FontSize="16" Click="Odustani_Click">Promeni ikonu</Button>
+        <Button Grid.Row="3" Grid.Column="0" Margin="10,10,10,11" FontSize="16" Click="Browse_Click">Promeni ikonu</Button>
         <Label Grid.Column="1" Grid.Row="0" FontSize="16">ID:</Label>
-        <TextBox Name="IDResursa" Grid.Column="2" Grid.Row="0" FontSize="16" Margin="3" MaxLength="20" Text="{Binding Path=ID}" IsReadOnly="True"/>
+        <TextBox Name="IDResursa" Grid.Column="2" Grid.Row="0" FontSize="16" Margin="3" MaxLength="20" 
+                 Text="{Binding Path=ID}" IsReadOnly="True"/>
 
 
         <Label Grid.Column="1" Grid.Row="1" FontSize="16">Ime:</Label>
@@ -73,6 +74,7 @@
             <TextBox.Text>
                 <Binding Path="Price" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
                     <Binding.ValidationRules>
+                        <val:EmptyStringValidationRule ValidationStep="RawProposedValue" />
                         <val:StringToDoubleValidationRule ValidationStep="RawProposedValue" />
                         <val:MinimumValidationRule ValidationStep="ConvertedProposedValue" Min="0" />
                     </Binding.ValidationRules>
@@ -92,8 +94,10 @@
                         <Border BorderBrush="Red" BorderThickness="2">
                             <AdornedElementPlaceholder Grid.Column="0" Grid.Row="0" />
                         </Border>
-                        <!--TextBlock Grid.Column="0" Grid.Row="1" Text="{Binding [0].ErrorContent}" Foreground="#FFA80D0D" 
-                                   FontSize="16"/-->
+                        <Border BorderBrush="Red" BorderThickness="2" Grid.Column="0" Grid.Row="1">
+                            <TextBlock Text="{Binding [0].ErrorContent}"
+                                   Foreground="Red" FontSize="16" Background="White"/>
+                        </Border>
                     </Grid>
                 </ControlTemplate>
             </Validation.ErrorTemplate>
@@ -118,7 +122,7 @@
         <DatePicker  Grid.Column="2" Grid.Row="8" FontSize="16" Margin="3,3,3,21" Name="Datum"></DatePicker>
 
         <TextBox Name="TipResursa" Grid.Column="4" FontSize="16" Margin="5,3,10,3" Text="{Binding Path=Type.ID}" IsReadOnly="True" />
-        <ComboBox Grid.Column="2" Grid.Row="4" FontSize="16" Name="measureUnit" IsEditable="False" Margin="3,0,102,24">
+        <ComboBox Grid.Column="2" Grid.Row="4" FontSize="16" Name="measureUnit" IsEditable="False" Margin="3,0,102,24" SelectedValuePath="Content">
             <ComboBoxItem FontSize="16">Merica</ComboBoxItem>
             <ComboBoxItem FontSize="16">Barel</ComboBoxItem>
             <ComboBoxItem FontSize="16">Tona</ComboBoxItem>

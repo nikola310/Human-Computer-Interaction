@@ -46,9 +46,6 @@ namespace HCI_projekat2.Dialogs
                 Opis.Text = "";
             }
 
-//            model.Clr = Boja.SelectedColor.ToString();
-  //          model.Desc = Opis.Text;
-
             Etikete[model.ID].Clr = Boja.SelectedColor.ToString();
             Etikete[model.ID].Desc = Opis.Text;
 

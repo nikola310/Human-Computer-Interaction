@@ -119,6 +119,13 @@ namespace HCI_projekat2.Dialogs
                 }
                 model.Unit = ((ComboBoxItem)measureUnit.SelectedItem).Content.ToString();
 
+                if(model.IconPath == "/Images/qmark2.png" || model.IconPath == null || model.IconPath == "")
+                {
+                    MessageBoxResult result = MessageBox.Show("Morate odabrati ikonu resursa!", "Nedostaje vrednost", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+                }
+
+
                 if (Opis.Text == null || Opis.Text == "")
                 {
                     model.Desc = "";

@@ -2,6 +2,7 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:val="clr-namespace:HCI_projekat2.Validation"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HCI_projekat2.Dialogs"
         mc:Ignorable="d"
@@ -21,15 +22,58 @@
             <ColumnDefinition Width="128.782"/>
         </Grid.ColumnDefinitions>
         <Label Grid.Column="0" Grid.Row="0" FontSize="16" Grid.RowSpan="2">Ime:</Label>
-        <TextBox Name="Ime" Grid.Column="1" Grid.Row="0" FontSize="16" Margin="3" MaxLength="20" Text="{Binding Path=Name}"/>
+        <TextBox Name="Ime" Grid.Column="1" Grid.Row="0" FontSize="16" Margin="3" MaxLength="20">
+            <TextBox.Text>
+                <Binding Path="Name" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+                    <Binding.ValidationRules>
+                        <val:EmptyStringValidationRule ValidationStep="RawProposedValue" />
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+            <Validation.ErrorTemplate>
+                <ControlTemplate>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <Border BorderBrush="Red" BorderThickness="2">
+                            <AdornedElementPlaceholder Grid.Column="0" Grid.Row="0" x:Name="broj"/>
+                        </Border>
+                        <Border BorderBrush="Red" BorderThickness="2" Grid.Column="0" Grid.Row="1">
+                            <TextBlock Text="{Binding [0].ErrorContent}"
+                                   Foreground="Red" FontSize="16" Background="White"/>
+                        </Border>
+                    </Grid>
+                </ControlTemplate>
+            </Validation.ErrorTemplate>
+        </TextBox>
         <Label Grid.Column="0" Grid.Row="1" FontSize="16" Grid.RowSpan="2">ID:</Label>
         <TextBox Name="TipID" Grid.Column="1" Grid.Row="1" FontSize="16" Margin="3" MaxLength="20" Text="{Binding Path=ID}" IsReadOnly="True"/>
         <Label Grid.Column="0" Grid.Row="2" FontSize="16">Opis:</Label>
         <TextBox Name="Opis" Grid.Column="1" Grid.Row="2" Margin="3,3,3,10" FontSize="16" TextWrapping="Wrap" 
                  AcceptsReturn="True" MaxLines="30" Grid.RowSpan="3" Text="{Binding Path=Desc}" VerticalScrollBarVisibility="Auto"/>
 
-        <Button Grid.Column="1" Grid.Row="5" FontSize="16" Margin="7,7,307,3" Click="Izmeni_Click">Izmeni</Button>
-        <Button Grid.Column="1" Grid.Row="5" FontSize="16" Margin="96,7,200,3" Click="Odustani_Click">Odustani</Button>
+        <Button Grid.Column="1" Grid.Row="5" FontSize="16" Margin="7,7,315,3" Click="Izmeni_Click" Content="Izmeni">
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="IsEnabled" Value="false" />
+                    <Style.Triggers>
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding ElementName=Ime, Path=(Validation.HasError)}" Value="false" />
+                            </MultiDataTrigger.Conditions>
+                            <Setter Property="IsEnabled" Value="true" />
+                        </MultiDataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+        <Button Grid.Column="1" Grid.Row="5" FontSize="16" Margin="106,7,200,3" Click="Odustani_Click">Odustani</Button>
         <Image Name="Ikona" Grid.Column="2" Grid.Row="0" Source="{Binding Path=IconPath }" Margin="24,25,23,10" 
                Grid.RowSpan="4" RenderTransformOrigin="1.867,0.498">
             <Image.RenderTransform>

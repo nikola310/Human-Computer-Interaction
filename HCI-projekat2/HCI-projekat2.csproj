@@ -113,6 +113,7 @@
     <Compile Include="Validation\MinimumValidationRule.cs" />
     <Compile Include="Validation\RadioButtonCheckedConverter.cs" />
     <Compile Include="Validation\StringToDoubleValidationRule.cs" />
+    <Compile Include="Validation\TypeIDValidationRule.cs" />
     <Page Include="Dialogs\ChangeLabelDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

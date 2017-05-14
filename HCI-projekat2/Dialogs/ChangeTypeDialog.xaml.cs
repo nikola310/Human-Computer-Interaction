@@ -1,6 +1,8 @@
 ﻿using HCI_projekat2.Model;
 using Microsoft.Win32;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
 using static HCI_projekat2.MainWindow;
 
 namespace HCI_projekat2.Dialogs
@@ -21,29 +23,30 @@ namespace HCI_projekat2.Dialogs
 
         private void Izmeni_Click(object sender, RoutedEventArgs e)
         {
-            if (model.Name == "" || model.Name == null)
+            BindingExpression b = Ime.GetBindingExpression(TextBox.TextProperty);
+
+            b.UpdateSource();
+
+            if (b.HasError == false)
             {
-                MessageBoxResult message = MessageBox.Show(this, "Morate uneti ime tipa!", "Nedostaje vrednost", MessageBoxButton.OK, MessageBoxImage.Error);
-                Ime.Focus();
-                return;
+
+                if (model.IconPath == null || model.IconPath == "/Images/qmark2.png" || model.IconPath == "")
+                {
+                    MessageBoxResult message = MessageBox.Show(this, "Morate odabrati ikonu!", "Nedostaje vrednost", MessageBoxButton.OK, MessageBoxImage.Error);
+                    BrowseButton.Focus();
+                    return;
+                }
+
+                if (model.Desc == null)
+                {
+                    model.Desc = "";
+                }
+
+                Tipovi[model.ID].Name = model.Name;
+                Tipovi[model.ID].Desc = model.Desc;
+
+                Close();
             }
-
-            if (model.IconPath == null || model.IconPath == "/Images/qmark2.png" || model.IconPath == "")
-            {
-                MessageBoxResult message = MessageBox.Show(this, "Morate odabrati ikonu!", "Nedostaje vrednost", MessageBoxButton.OK, MessageBoxImage.Error);
-                BrowseButton.Focus();
-                return;
-            }
-
-            if (model.Desc == null)
-            {
-                model.Desc = "";
-            }
-
-            Tipovi[model.ID].Name = model.Name;
-            Tipovi[model.ID].Desc = model.Desc;
-
-            Close();
         }
 
         private void Odustani_Click(object sender, RoutedEventArgs e)

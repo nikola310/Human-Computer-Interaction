@@ -51,6 +51,8 @@ namespace HCI_projekat2.Dialogs
         public ChangeResourceDialog(ResourceModel model)
         {
             InitializeComponent();
+            measureUnit.SelectedValue = model.Unit;
+            frequency.SelectedValue = model.Freq;
             this.model = model;
             DataContext = model;
 
@@ -58,19 +60,6 @@ namespace HCI_projekat2.Dialogs
             {
                 EtiketeCheckList.Items.Add(e.ID);
             }
-
-            frequency.SelectedValue = model.Freq;
-            int i = 0;
-            foreach (string s in MainWindow.mere)
-            {
-                if (mere.Equals(model.Unit))
-                {
-                    break;
-                }
-                i++;
-            }
-            measureUnit.SelectedValue = MainWindow.mere[i];
-
 
         }
 
@@ -80,62 +69,70 @@ namespace HCI_projekat2.Dialogs
             BindingExpression b2 = price.GetBindingExpression(TextBox.TextProperty);
 
             b1.UpdateSource();
-            b2.UpdateSource(); 
-
-            if (model.Type.ID == "" || model.Type.ID == null)
+            b2.UpdateSource();
+            if (b1.HasError == false && b2.HasError == false)
             {
-                MessageBoxResult result = MessageBox.Show("Morate odabrati tip resursa!", "Nedostaje vrednost", MessageBoxButton.OK, MessageBoxImage.Error);
-                TipResursa.Focus();
-                return;
-            }
-
-            if (Datum.Text == "" || Datum.Text == null)
-            {
-                Datum.Focus();
-                return;
-            }
-            model.Date = (DateTime)Datum.SelectedDate;
-
-            model.Renewable = renewable.IsChecked.Value;
-            model.Important = important.IsChecked.Value;
-            model.Exploit = exploit.IsChecked.Value;
-
-            if (frequency.SelectedItem == null || frequency.SelectedItem.ToString() == "")
-            {
-                frequency.Focus();
-                return;
-            }
-            model.Freq = ((ComboBoxItem)frequency.SelectedItem).Content.ToString();
-
-            if (measureUnit.SelectedItem == null || measureUnit.SelectedItem.ToString() == "")
-            {
-                measureUnit.Focus();
-                return;
-            }
-            model.Unit = ((ComboBoxItem)measureUnit.SelectedItem).Content.ToString();
-
-            if (Opis.Text == null || Opis.Text == "")
-            {
-                model.Desc = "";
-            }
-
-            List<LabelModel> tmp = new List<LabelModel>();
-            foreach (string et in EtiketeCheckList.SelectedItems)
-            {
-                foreach (LabelModel t in Etikete.Values)
+                if (model.Type.ID == "" || model.Type.ID == null)
                 {
-                    if (t.ID.Equals(et))
+                    MessageBoxResult result = MessageBox.Show("Morate odabrati tip resursa!", "Nedostaje vrednost", MessageBoxButton.OK, MessageBoxImage.Error);
+                    TipResursa.Focus();
+                    return;
+                }
+
+                if (model.IconPath == "/Images/qmark2.png" || model.IconPath == null || model.IconPath == "")
+                {
+                    MessageBoxResult result = MessageBox.Show("Morate odabrati ikonu resursa!", "Nedostaje vrednost", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+                }
+
+                if (Datum.Text == "" || Datum.Text == null)
+                {
+                    Datum.Focus();
+                    return;
+                }
+                model.Date = (DateTime)Datum.SelectedDate;
+
+                model.Renewable = renewable.IsChecked.Value;
+                model.Important = important.IsChecked.Value;
+                model.Exploit = exploit.IsChecked.Value;
+
+                if (frequency.SelectedItem == null || frequency.SelectedItem.ToString() == "")
+                {
+                    frequency.Focus();
+                    return;
+                }
+                model.Freq = ((ComboBoxItem)frequency.SelectedItem).Content.ToString();
+
+                if (measureUnit.SelectedItem == null || measureUnit.SelectedItem.ToString() == "")
+                {
+                    measureUnit.Focus();
+                    return;
+                }
+                model.Unit = ((ComboBoxItem)measureUnit.SelectedItem).Content.ToString();
+
+                if (Opis.Text == null || Opis.Text == "")
+                {
+                    model.Desc = "";
+                }
+
+                List<LabelModel> tmp = new List<LabelModel>();
+                foreach (string et in EtiketeCheckList.SelectedItems)
+                {
+                    foreach (LabelModel t in Etikete.Values)
                     {
-                        tmp.Add(t);
+                        if (t.ID.Equals(et))
+                        {
+                            tmp.Add(t);
+                        }
                     }
                 }
+
+                model.Labels = tmp;
+
+                Resursi[model.ID] = model;
+
+                Close();
             }
-
-            model.Labels = tmp;
-
-            Resursi[model.ID] = model;
-
-            Close();
         }
 
         private void Browse_Click(object sender, RoutedEventArgs e)
