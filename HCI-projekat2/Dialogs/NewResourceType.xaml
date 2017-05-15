@@ -53,7 +53,7 @@
             </Validation.ErrorTemplate>
         </TextBox>
         <Label Grid.Column="0" Grid.Row="1" FontSize="16" Grid.RowSpan="2">ID:</Label>
-        <TextBox Name="TipID" Grid.Column="1" Grid.Row="1" FontSize="16" Margin="3" MaxLength="20" >
+        <TextBox Name="TipID" Grid.Column="1" Grid.Row="1" FontSize="16" Margin="3" MaxLength="20">
             <TextBox.Text>
                 <Binding Path="ID" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
                     <Binding.ValidationRules>

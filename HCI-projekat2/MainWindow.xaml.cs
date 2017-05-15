@@ -77,7 +77,7 @@ namespace HCI_projekat2
             FileStream stream = null;
             BinaryFormatter bf = new BinaryFormatter();
 
-            TipoviFajl = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "tipovi.nkvd");
+            TipoviFajl = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "tipovi.dat");
             if (File.Exists(TipoviFajl))
             {
                 try
@@ -100,7 +100,7 @@ namespace HCI_projekat2
                 Tipovi = new Dictionary<string, TypeModel>();
             }
             stream = null;
-            EtiketeFajl = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "etikete.nkvd");
+            EtiketeFajl = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "etikete.dat");
             if (File.Exists(EtiketeFajl))
             {
                 try
@@ -124,7 +124,7 @@ namespace HCI_projekat2
                 Etikete = new Dictionary<string, LabelModel>();
             }
             stream = null;
-            ResursiFajl = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "resursi.nkvd");
+            ResursiFajl = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "resursi.dat");
             if (File.Exists(ResursiFajl))
             {
                 try
@@ -193,7 +193,7 @@ namespace HCI_projekat2
             bool retVal = false;
             try
             {
-                stream = File.Open("tipovi.nkvd", FileMode.OpenOrCreate);
+                stream = File.Open("tipovi.dat", FileMode.OpenOrCreate);
                 bf.Serialize(stream, _tipovi);
             }
             catch
@@ -219,7 +219,7 @@ namespace HCI_projekat2
             bool retVal = false;
             try
             {
-                stream = File.Open("etikete.nkvd", FileMode.OpenOrCreate);
+                stream = File.Open("etikete.dat", FileMode.OpenOrCreate);
                 bf.Serialize(stream, _etikete);
             }
             catch
@@ -245,7 +245,7 @@ namespace HCI_projekat2
             bool retVal = false;
             try
             {
-                stream = File.Open("resursi.nkvd", FileMode.OpenOrCreate);
+                stream = File.Open("resursi.dat", FileMode.OpenOrCreate);
                 bf.Serialize(stream, _resursi);
             }
             catch

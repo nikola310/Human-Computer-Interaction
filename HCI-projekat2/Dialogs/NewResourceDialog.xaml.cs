@@ -13,6 +13,7 @@ namespace HCI_projekat2.Dialogs
     /// <summary>
     /// Interaction logic for NewResourceDialog.xaml
     /// </summary>
+    /// to add a font: FontFamily="/HCI-projekat2;component/Resources/#Pragmata Pro"
     public partial class NewResourceDialog : Window, INotifyPropertyChanged
     {
         private ResourceModel model;

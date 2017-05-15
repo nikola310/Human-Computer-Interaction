@@ -33,7 +33,7 @@
         </DataGrid>
 
         <Button Grid.Row="1" FontSize="16"  Margin="113,5,718,5" Click="Obrisi_Click">Obriši</Button>
-        <Button Grid.Row="1" FontSize="16"   Content="Izmeni" Margin="10,5,824,5" Click="Izmeni_Click" FontFamily="Pragmata Pro Regular"/>
+        <Button Grid.Row="1" FontSize="16"   Content="Izmeni" Margin="10,5,824,5" Click="Izmeni_Click"/>
         <Button Grid.Row="1" FontSize="16"  Content="Izađi" Margin="217,5,619,5" Click="Izadji_Click"/>
     </Grid>
 </Window>
