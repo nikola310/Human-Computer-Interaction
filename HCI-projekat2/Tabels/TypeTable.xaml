@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HCI_projekat2.Tabels"
         mc:Ignorable="d"
-        Title="TypeTable" Height="425" Width="421" ResizeMode="CanMinimize" >
+        Title="TypeTable" Height="425" Width="421" ResizeMode="CanMinimize" FontFamily="/HCI-projekat2;component/#Pragmata Pro">
     <Grid Margin="0,0,0,5">
         <Grid.RowDefinitions>
             <RowDefinition Height="354*" />

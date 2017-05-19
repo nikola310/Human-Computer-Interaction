@@ -6,7 +6,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HCI_projekat2.Dialogs"
         mc:Ignorable="d"
-        Title="Dodaj Novi Tip Resursa" Height="265.162" Width="581.315" ResizeMode="CanMinimize">
+        Title="Dodaj Novi Tip Resursa" Height="265.162" Width="581.315" ResizeMode="CanMinimize" FontFamily="/HCI-projekat2;component/#Pragmata Pro">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HCI_projekat2.Tabels"
         mc:Ignorable="d"
-        Title="LabelTable" Height="342" Width="374" ResizeMode="CanMinimize">
+        Title="LabelTable" Height="342" Width="374" ResizeMode="CanMinimize" FontFamily="/HCI-projekat2;component/#Pragmata Pro">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition />

@@ -6,7 +6,7 @@
         xmlns:f="clr-namespace:HCI_projekat2"
         xmlns:local="clr-namespace:HCI_projekat2.Tabels"
         mc:Ignorable="d"
-        Title="ResourceTable" Height="389.593" Width="927.15" ResizeMode="CanMinimize">
+        Title="ResourceTable" Height="389.593" Width="927.15" ResizeMode="CanMinimize" FontFamily="/HCI-projekat2;component/#Pragmata Pro">
     <Grid Margin="0,0,0,5">
         <Grid.RowDefinitions>
             <RowDefinition Height="354*" />

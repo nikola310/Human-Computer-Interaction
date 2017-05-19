@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HCI_projekat2"
         mc:Ignorable="d"
-        Title="Mapa Resursa" Height="616.705" Width="1031.098">
+        Title="Mapa Resursa" Height="616.705" Width="1031.098" FontFamily="/HCI-projekat2;component/#Pragmata Pro">
     <DockPanel>
         <Menu DockPanel.Dock="Top">
             <Menu.ItemsPanel>
