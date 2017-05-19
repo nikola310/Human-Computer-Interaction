@@ -36,7 +36,7 @@
 
         <Image Grid.Column="0" Grid.Row="0" Grid.RowSpan="3" Source="{Binding IconPath}" Margin="10,10,17,10"></Image>
         <Button Grid.Row="3" Grid.Column="0" Margin="10,10,10,11" FontSize="16" Click="Browse_Click">Promeni ikonu</Button>
-        <Label Grid.Column="1" Grid.Row="0" FontSize="16">ID:</Label>
+        <Label Grid.Column="1" Grid.Row="0" FontSize="16" FontFamily="/HCI-projekat2;component/#Pragmata Pro">ID:</Label>
         <TextBox Name="IDResursa" Grid.Column="2" Grid.Row="0" FontSize="16" Margin="3" MaxLength="20">
             <TextBox.Text>
                 <Binding Path="ID" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
