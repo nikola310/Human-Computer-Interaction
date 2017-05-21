@@ -17,14 +17,19 @@ namespace HCI_projekat2.Tabels
             set;
         }
 
+        public ObservableCollection<LabelModel> etiketeFilter
+        {
+            get;
+            set;
+        }
 
-        public LabelTable()
+        public LabelTable(ObservableCollection<LabelModel> e)
         {
             InitializeComponent();
-            etikete = new ObservableCollection<LabelModel>();
+            etikete = e;
             foreach (LabelModel s in Etikete.Values)
             {
-                etikete.Add(s);
+                etiketeFilter.Add(s);
             }
             DataContext = this;
         }
@@ -37,7 +42,7 @@ namespace HCI_projekat2.Tabels
             {
                 LabelModel model = (LabelModel)dgrMain.SelectedItem;
 
-                foreach(ResourceModel r in Resursi.Values)
+                foreach (ResourceModel r in Resursi.Values)
                 {
                     r.Labels.Remove(model);
                 }
@@ -66,5 +71,22 @@ namespace HCI_projekat2.Tabels
             ChangeLabelDialog val = new ChangeLabelDialog(model);
             val.Show();
         }
+
+        private void filterButton_Click(object sender, RoutedEventArgs e)
+        {
+            FilterLabel filter = new FilterLabel(this);
+            filter.Show();
+        }
+
+        public void resetFilter_Click(object sender, RoutedEventArgs e)
+        {
+            etiketeFilter.Clear();
+            foreach(LabelModel model in etikete)
+            {
+                etiketeFilter.Add(model);
+            }
+        }
+
+
     }
 }

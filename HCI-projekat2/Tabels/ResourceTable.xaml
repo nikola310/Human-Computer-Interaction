@@ -15,7 +15,7 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
-        <DataGrid x:Name="dgrMain" ItemsSource="{Binding Path=resursi}" IsReadOnly="True" AutoGenerateColumns="False" IsSynchronizedWithCurrentItem="True" >
+        <DataGrid x:Name="dgrMain" ItemsSource="{Binding Path=resursi}" IsReadOnly="True" AutoGenerateColumns="False" IsSynchronizedWithCurrentItem="True">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ID" MinWidth="60" Width="SizeToCells" Binding="{Binding ID}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Naziv" MinWidth="60" Width="SizeToCells" Binding="{Binding Name}"></DataGridTextColumn>
@@ -28,12 +28,13 @@
                 <DataGridTextColumn Header="Cena" MinWidth="70" Width="*" Binding="{Binding Price}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Frekvencija" MinWidth="70" Width="*" Binding="{Binding Freq}"></DataGridTextColumn>
                 <!--DataGridTextColumn Header="Datum otkrivanja" MinWidth="70" Width="*" Binding="{Binding Date}"></-->
-                <!--DataGridTextColumn Header="Etikete" MinWidth="80" Width="*" Binding="{Binding Labels.ID}" ></-->
+                <DataGridTextColumn Header="Etikete" MinWidth="80" Width="*" Binding="{Binding resursi.Labels.ID}" />
             </DataGrid.Columns>
+            
         </DataGrid>
 
         <Button Grid.Row="1" FontSize="16"  Margin="113,5,718,5" Click="Obrisi_Click">Obriši</Button>
-        <Button Grid.Row="1" FontSize="16"   Content="Izmeni" Margin="10,5,824,5" Click="Izmeni_Click"/>
+        <Button Grid.Row="1" FontSize="16"   Content="Izmeni" Margin="10,5,824,5" Click="Izmeni_Click" ToolTip="Izmenite izabrani resurs"/>
         <Button Grid.Row="1" FontSize="16"  Content="Izađi" Margin="217,5,619,5" Click="Izadji_Click"/>
     </Grid>
 </Window>

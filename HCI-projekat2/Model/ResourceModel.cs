@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel;
 using System.Collections.ObjectModel;
+using System.Windows;
 
 namespace HCI_projekat2.Model
 {
@@ -196,6 +197,20 @@ namespace HCI_projekat2.Model
             {
                 _freq = value;
                 OnPropertyChanged("Freq");
+            }
+        }
+
+        public Point _point;
+        public Point Point
+        {
+            get { return _point; }
+            set
+            {
+                if (value != _point)
+                {
+                    _point = value;
+                    OnPropertyChanged("Point");
+                }
             }
         }
 

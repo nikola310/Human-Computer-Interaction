@@ -148,6 +148,7 @@ namespace HCI_projekat2.Dialogs
 
 
                 Resursi.Add(model.ID, model);
+                ikoniceResursa.Add(model);
                 Close();
             }
         }

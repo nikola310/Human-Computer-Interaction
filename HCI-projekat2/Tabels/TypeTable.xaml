@@ -22,8 +22,8 @@
             </DataGrid.Columns>
         </DataGrid>
 
-        <Button Grid.Row="1" FontSize="16"  Click="Obrisi_Click" Margin="92,5,254,5">Obriši</Button>
-        <Button Grid.Row="1" FontSize="16"   Content="Izmeni" Click="Izmeni_Click" Margin="10,5,337,5"/>
+        <Button Grid.Row="1" FontSize="16"  Click="Obrisi_Click" Margin="92,5,254,5" ToolTip="Obrišite određeni tip">Obriši</Button>
+        <Button Grid.Row="1" FontSize="16"   Content="Izmeni" Click="Izmeni_Click" Margin="10,5,337,5" ToolTip="Izmenite određeni tip"/>
         <Button Grid.Row="1" FontSize="16"  Content="Izađi" Click="Odustani_Click" Margin="179,5,171,5"/>
     </Grid>
 </Window>

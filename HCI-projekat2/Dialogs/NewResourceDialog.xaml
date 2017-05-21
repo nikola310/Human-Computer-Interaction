@@ -37,7 +37,7 @@
         <Image Grid.Column="0" Grid.Row="0" Grid.RowSpan="3" Source="{Binding IconPath}" Margin="10,10,17,10"></Image>
         <Button Grid.Row="3" Grid.Column="0" Margin="10,10,10,11" FontSize="16" Click="Browse_Click" FontFamily="/HCI-projekat2;component/#Pragmata Pro">Promeni ikonu</Button>
         <Label Grid.Column="1" Grid.Row="0" FontSize="16" FontFamily="/HCI-projekat2;component/#Pragmata Pro">ID:</Label>
-        <TextBox Name="IDResursa" Grid.Column="2" Grid.Row="0" FontSize="16" Margin="3" MaxLength="20" FontFamily="/HCI-projekat2;component/#Pragmata Pro">
+        <TextBox Name="IDResursa" Grid.Column="2" Grid.Row="0" FontSize="16" Margin="3" MaxLength="20" FontFamily="/HCI-projekat2;component/#Pragmata Pro" ToolTip="Unesite ID resursa">
             <TextBox.Text>
                 <Binding Path="ID" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
                     <Binding.ValidationRules>
@@ -70,7 +70,7 @@
             </Validation.ErrorTemplate>
         </TextBox>
         <Label Grid.Column="1" Grid.Row="1" FontSize="16" FontFamily="/HCI-projekat2;component/#Pragmata Pro">Ime:</Label>
-        <TextBox Name="ImeResursa" Grid.Column="2" Grid.Row="1" FontSize="16" Margin="3" MaxLength="20" FontFamily="/HCI-projekat2;component/#Pragmata Pro">
+        <TextBox Name="ImeResursa" Grid.Column="2" Grid.Row="1" FontSize="16" Margin="3" MaxLength="20" FontFamily="/HCI-projekat2;component/#Pragmata Pro" ToolTip="Unesite ime resursa">
             <TextBox.Text>
                 <Binding Path="Name" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
                     <Binding.ValidationRules>
@@ -101,7 +101,7 @@
             </Validation.ErrorTemplate>
         </TextBox>
         <Label Grid.Column="1" Grid.Row="2" FontSize="16" FontFamily="/HCI-projekat2;component/#Pragmata Pro">Cena [USD]</Label>
-        <TextBox Grid.Column="2" Grid.Row="2" FontSize="16" Margin="3" Name="price" TextChanged="price_TextChanged" FontFamily="/HCI-projekat2;component/#Pragmata Pro">
+        <TextBox Grid.Column="2" Grid.Row="2" FontSize="16" Margin="3" Name="price" TextChanged="price_TextChanged" FontFamily="/HCI-projekat2;component/#Pragmata Pro" ToolTip="Unesite cenu u dolarima">
             <TextBox.Text>
                 <Binding Path="Price" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
                     <Binding.ValidationRules>
@@ -151,7 +151,7 @@
         <Label Grid.Column="3" Grid.Row="1" FontSize="16" FontFamily="/HCI-projekat2;component/#Pragmata Pro">Etikete:</Label>
         <Label Grid.Column="3" Grid.Row="5" FontSize="16" FontFamily="/HCI-projekat2;component/#Pragmata Pro">Opis:</Label>
 
-        <DatePicker  Grid.Column="2" Grid.Row="8" FontSize="16" Margin="3,3,3,21" Name="Datum"  FontFamily="/HCI-projekat2;component/#Pragmata Pro" DisplayDateEnd="{x:Static system:DateTime.Now}" >
+        <DatePicker  Grid.Column="2" Grid.Row="8" FontSize="16" Margin="3,3,3,21" Name="Datum"  FontFamily="/HCI-projekat2;component/#Pragmata Pro" DisplayDateEnd="{x:Static system:DateTime.Now}" ToolTip="Kada je otkriven resurs?">
             <DatePicker.Resources>
                 <Style TargetType="DatePickerTextBox">
                     <Setter Property="IsReadOnly" Value="True"></Setter>
@@ -159,7 +159,7 @@
             </DatePicker.Resources>
         </DatePicker>
 
-        <TextBox Name="TipResursa" Grid.Column="4" FontSize="16" Margin="3,3,10,3" Text="{Binding Path=Type.ID}" IsReadOnly="True" FontFamily="/HCI-projekat2;component/#Pragmata Pro"/>
+        <TextBox Name="TipResursa" Grid.Column="4" FontSize="16" Margin="3,3,10,3" Text="{Binding Path=Type.ID}" IsReadOnly="True" FontFamily="/HCI-projekat2;component/#Pragmata Pro" ToolTip="Odaberite jedan tip resursa"/>
         <ComboBox Grid.Column="2" Grid.Row="4" FontSize="16" Name="measureUnit" IsEditable="False" Margin="3,10,102,14" FontFamily="/HCI-projekat2;component/#Pragmata Pro">
             <ComboBoxItem FontSize="16">Merica</ComboBoxItem>
             <ComboBoxItem FontSize="16">Barel</ComboBoxItem>
@@ -167,11 +167,11 @@
             <ComboBoxItem FontSize="16">Kilogram</ComboBoxItem>
         </ComboBox>
 
-        <xctk:CheckListBox Grid.Column="4" Grid.Row="1" Margin="3,3,10,3" Name="EtiketeCheckList" Grid.RowSpan="4" FontSize="16" FontFamily="/HCI-projekat2;component/#Pragmata Pro"/>
+        <xctk:CheckListBox Grid.Column="4" Grid.Row="1" Margin="3,3,10,3" Name="EtiketeCheckList" Grid.RowSpan="4" FontSize="16" FontFamily="/HCI-projekat2;component/#Pragmata Pro" ToolTip="Odaberite jednu (ili nijednu etiketu)"/>
         <TextBox Grid.Column="4" Grid.Row="5" AcceptsReturn="True" TextWrapping="Wrap" FontSize="16" Grid.RowSpan="4" FontFamily="/HCI-projekat2;component/#Pragmata Pro"
                  Margin="0,3,10,3" HorizontalAlignment="Right" Width="407" Text="{Binding Path=Desc, Mode=TwoWay}" Name="Opis"/>
         <TextBlock Text="{Binding Path=Text, ElementName=BindTemp}" Grid.Column="4" Grid.Row="9"/>
-        <Button Grid.Row="9" Grid.Column="2" Margin="10,10,171,10" FontSize="16" Click="Dodaj_Resurs_Click" Content="Dodaj" FontFamily="/HCI-projekat2;component/#Pragmata Pro">
+        <Button Grid.Row="9" Grid.Column="2" Margin="10,10,171,10" FontSize="16" Click="Dodaj_Resurs_Click" Content="Dodaj" FontFamily="/HCI-projekat2;component/#Pragmata Pro" ToolTip="Dodajte resurs">
             <Button.Style>
                 <Style TargetType="{x:Type Button}">
                     <Setter Property="IsEnabled" Value="false" />

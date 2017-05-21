@@ -23,7 +23,7 @@
         <Label Grid.Column="0" Grid.Row="0" FontSize="16">ID:</Label>
         <Label Grid.Column="0" Grid.Row="1" FontSize="16">Boja:</Label>
         <Label Grid.Column="0" Grid.Row="2" FontSize="16">Opis:</Label>
-        <TextBox Name="IDetikete" Grid.Column="1" Grid.Row="0" FontSize="16" MaxLength="20" Margin="3">
+        <TextBox Name="IDetikete" Grid.Column="1" Grid.Row="0" FontSize="16" MaxLength="20" Margin="3" ToolTip="Unesite ID boje">
             <TextBox.Text>
                 <Binding Path="ID" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
                     <Binding.ValidationRules>
@@ -55,9 +55,9 @@
                 </ControlTemplate>
             </Validation.ErrorTemplate>
         </TextBox>
-        <TextBox Name="Opis" Grid.Column="1" Grid.Row="2" MaxLength="0" FontSize="16" Margin="3" TextWrapping="Wrap" 
+        <TextBox Name="Opis" Grid.Column="1" Grid.Row="2" MaxLength="0" FontSize="16" Margin="3" TextWrapping="Wrap" ToolTip="Unesite opis boje"
                  AcceptsReturn="True" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto"></TextBox>
-        <xctk:ColorCanvas Name="Boja" Grid.Column="1" Grid.Row="1" Margin="3"></xctk:ColorCanvas>
+        <xctk:ColorCanvas Name="Boja" Grid.Column="1" Grid.Row="1" Margin="3" ToolTip="Odaberite boju"></xctk:ColorCanvas>
 
         <Button Grid.Column="1" Grid.Row="3" FontSize="16" Margin="10,2,279,8" Click="Button_Click" RenderTransformOrigin="0.525,0.68" Content="Dodaj">
             <Button.Style>

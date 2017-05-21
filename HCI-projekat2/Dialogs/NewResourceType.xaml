@@ -22,7 +22,7 @@
             <ColumnDefinition Width="128.782"/>
         </Grid.ColumnDefinitions>
         <Label Grid.Column="0" Grid.Row="0" FontSize="16" Grid.RowSpan="2">Ime:</Label>
-        <TextBox Name="Ime" Grid.Column="1" Grid.Row="0" FontSize="16" Margin="3" MaxLength="20" >
+        <TextBox Name="Ime" Grid.Column="1" Grid.Row="0" FontSize="16" Margin="3" MaxLength="20" ToolTip="Unesite ime tipa">
             <TextBox.Text>
                 <Binding Path="Name" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
                     <Binding.ValidationRules>
@@ -53,7 +53,7 @@
             </Validation.ErrorTemplate>
         </TextBox>
         <Label Grid.Column="0" Grid.Row="1" FontSize="16" Grid.RowSpan="2">ID:</Label>
-        <TextBox Name="TipID" Grid.Column="1" Grid.Row="1" FontSize="16" Margin="3" MaxLength="20">
+        <TextBox Name="TipID" Grid.Column="1" Grid.Row="1" FontSize="16" Margin="3" MaxLength="20" ToolTip="Unesite ID tipa">
             <TextBox.Text>
                 <Binding Path="ID" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
                     <Binding.ValidationRules>
@@ -86,7 +86,7 @@
             </Validation.ErrorTemplate>
         </TextBox>
         <Label Grid.Column="0" Grid.Row="2" FontSize="16">Opis:</Label>
-        <TextBox Name="Opis" Grid.Column="1" Grid.Row="2" Margin="3,3,3,10" FontSize="16" TextWrapping="Wrap" 
+        <TextBox Name="Opis" Grid.Column="1" Grid.Row="2" Margin="3,3,3,10" FontSize="16" TextWrapping="Wrap" ToolTip="Unesite opis tipa"
                  AcceptsReturn="True" MaxLines="30" Grid.RowSpan="3" Text="{Binding Path=Desc}" VerticalScrollBarVisibility="Auto"/>
 
         <Button Grid.Column="1" Grid.Row="5" FontSize="16" Margin="7,7,307,3" Click="Dodaj_Click" Content="Dodaj">

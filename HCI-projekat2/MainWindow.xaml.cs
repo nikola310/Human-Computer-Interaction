@@ -6,6 +6,9 @@ using System.Windows;
 using HCI_projekat2.Tabels;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Collections.ObjectModel;
+using System.Windows.Media.Imaging;
+using System.Windows.Media;
 
 namespace HCI_projekat2
 {
@@ -51,9 +54,39 @@ namespace HCI_projekat2
             }
 
         }
+
         public string ResursiFajl;
         public string TipoviFajl;
         public string EtiketeFajl;
+
+        public static ObservableCollection<LabelModel> obsEtikete
+        {
+            get;
+            set;
+        }
+        public static ObservableCollection<TypeModel> obsTipovi
+        {
+            get;
+            set;
+        }
+        public static ObservableCollection<ResourceModel> obsResursi
+        {
+            get;
+            set;
+        }
+
+        public static ObservableCollection<ResourceModel> ikoniceResursa
+        {
+            get;
+            set;
+        }
+
+
+
+
+
+
+
 
         public static List<string> frekvencije { get; set; }
 
@@ -145,7 +178,25 @@ namespace HCI_projekat2
             else
             {
                 Resursi = new Dictionary<string, ResourceModel>();
+                
             }
+            ikoniceResursa = new ObservableCollection<ResourceModel>();
+            ucitajIkonice();
+
+            obsEtikete = new ObservableCollection<LabelModel>(Etikete.Values);
+            obsTipovi = new ObservableCollection<TypeModel>(Tipovi.Values);
+            obsResursi = new ObservableCollection<ResourceModel>(Resursi.Values);
+
+            DataContext = this;
+         /*   Uri myUri = new Uri("/Images/world.jpg", UriKind.RelativeOrAbsolute);
+            JpegBitmapDecoder decoder2 = new JpegBitmapDecoder(myUri, BitmapCreateOptions.PreservePixelFormat, BitmapCacheOption.Default);
+            BitmapSource bitmapSource2 = decoder2.Frames[0];
+
+            // Draw the Image
+            mapa.Source = bitmapSource2;
+            mapa.Stretch = Stretch.Uniform;
+            mapa.Margin = new Thickness(0);
+            */
         }
 
         private void AddNewRes_Click(object sender, RoutedEventArgs e)
@@ -168,7 +219,7 @@ namespace HCI_projekat2
 
         private void ShowLabels_Click(object sender, RoutedEventArgs e)
         {
-            var l = new LabelTable();
+            var l = new LabelTable(obsEtikete);
             l.Show();
         }
 
@@ -329,6 +380,25 @@ namespace HCI_projekat2
                 ResurseS();
             }
             base.OnClosing(e);
+        }
+
+        public void ucitajIkonice()
+        {
+            foreach(ResourceModel model in Resursi.Values)
+            {
+                /*if(model.Point.X != 0 && model.Point.Y != 0)
+                {
+
+                }else
+                {*/
+                    ikoniceResursa.Add(model);
+                
+            }
+        }
+
+        public  void iscrtajOpet()
+        {
+            listaIkonica.UpdateLayout();
         }
     }
 }

@@ -109,6 +109,9 @@
     <Compile Include="Dialogs\ChooseTypeDialog.xaml.cs">
       <DependentUpon>ChooseTypeDialog.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Dialogs\FilterLabel.xaml.cs">
+      <DependentUpon>FilterLabel.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Model\LabelModel.cs" />
     <Compile Include="Model\ResourceModel.cs" />
     <Compile Include="Model\TypeModel.cs" />
@@ -142,6 +145,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Dialogs\ChooseTypeDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dialogs\FilterLabel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

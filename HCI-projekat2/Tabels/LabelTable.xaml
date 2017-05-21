@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HCI_projekat2.Tabels"
         mc:Ignorable="d"
-        Title="LabelTable" Height="342" Width="374" ResizeMode="CanMinimize" FontFamily="/HCI-projekat2;component/#Pragmata Pro">
+        Title="LabelTable" Height="342" Width="468" ResizeMode="CanMinimize" FontFamily="/HCI-projekat2;component/#Pragmata Pro">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition />
@@ -14,7 +14,7 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
-        <DataGrid x:Name="dgrMain" ItemsSource="{Binding Path=etikete}" IsReadOnly="True"  AutoGenerateColumns="False" IsSynchronizedWithCurrentItem="True" Margin="0,0,0,38" Grid.RowSpan="2">
+        <DataGrid x:Name="dgrMain" ItemsSource="{Binding Path=etiketeFilter}" IsReadOnly="True"  AutoGenerateColumns="False" IsSynchronizedWithCurrentItem="True" Margin="0,0,0,38" Grid.RowSpan="2">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ID" MinWidth="60" Width="SizeToCells" Binding="{Binding ID}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Boja" MinWidth="60" Width="SizeToCells" Binding="{Binding Clr}"></DataGridTextColumn>
@@ -22,9 +22,11 @@
             </DataGrid.Columns>
         </DataGrid>
 
-        <Button Grid.Row="1" FontSize="16" Margin="101,122,182,4" Click="Obrisi_Click">Obriši</Button>
-        <Button Grid.Row="1" FontSize="16" Margin="199,122,105,4" Content="Izađi" Click="Izadji_Click"/>
-        <Button Grid.Row="1" FontSize="16" Margin="10,122,283,4" Content="Izmeni" Click="Izmeni_Click"/>
+        <Button Grid.Row="1" FontSize="16" Margin="252,124,133,4" Click="Obrisi_Click">Obriši</Button>
+        <Button Grid.Row="1" FontSize="16" Margin="334,124,63,4" Content="Izađi" Click="Izadji_Click"/>
+        <Button Grid.Row="1" FontSize="16" Margin="170,124,215,4" Content="Izmeni" Click="Izmeni_Click"/>
+        <Button x:Name="filterButton" Content="Filter" Click="filterButton_Click" HorizontalAlignment="Left" Margin="10,124,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75" FontSize="16" Height="29"/>
+        <Button x:Name="resetFilter" FontSize="16" Content="Reset" HorizontalAlignment="Left" Margin="90,124,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75" Height="29" Click="resetFilter_Click"/>
     </Grid>
 
 </Window>
