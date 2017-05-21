@@ -48,10 +48,15 @@
             </Canvas>
             <ListView Name="listaIkonica" Grid.Row="1" MinWidth="65"
                       ItemsSource="{Binding ikoniceResursa}">
+                <ListView.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Horizontal" />
+                    </ItemsPanelTemplate>
+                </ListView.ItemsPanel>
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal">
-                            <Image Source="{Binding IconPath}" Tag="{Binding}" 
+                            <Image Source="{Binding IconPath}" Tag="{Binding}" MaxWidth="65" MaxHeight="65" MinHeight="50" MinWidth="50"
                                    ToolTip="{Binding Name}" Width="50" Height="50" 
                                    HorizontalAlignment="Center" VerticalAlignment="Center" />
                             <!--TextBlock Text="{Binding Name}" TextWrapping="Wrap" HorizontalAlignment="Center" /-->
