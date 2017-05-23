@@ -9,6 +9,10 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.Collections.ObjectModel;
 using System.Windows.Media.Imaging;
 using System.Windows.Media;
+using System.Windows.Controls;
+using System.Windows.Shapes;
+using System.Windows.Input;
+using System.Diagnostics;
 
 namespace HCI_projekat2
 {
@@ -54,6 +58,11 @@ namespace HCI_projekat2
             }
 
         }
+        public static Dictionary<Rect, ResourceModel> resursiNaMapi
+        {
+            get;
+            set;
+        }
 
         public string ResursiFajl;
         public string TipoviFajl;
@@ -81,7 +90,13 @@ namespace HCI_projekat2
             set;
         }
 
+        public static ObservableCollection<ResourceModel> ikoniceCanvas
+        {
+            get;
+            set;
+        }
 
+        Point startPoint = new Point();
 
 
 
@@ -96,12 +111,17 @@ namespace HCI_projekat2
         public static string Univerzalan = "Univerzalan";
 
         public static List<string> mere { get; set; }
+        public bool Collision { get; private set; }
 
         //jedinice mere
         public static string Merica = "Merica";
         public static string Barel = "Barel";
         public static string Tona = "Tona";
         public static string Kg = "Kilogram";
+
+        public static int imgWidth = 45;
+        public static int imgHeight = 45;
+
 
         public MainWindow()
         {
@@ -110,7 +130,7 @@ namespace HCI_projekat2
             FileStream stream = null;
             BinaryFormatter bf = new BinaryFormatter();
 
-            TipoviFajl = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "tipovi.dat");
+            TipoviFajl = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "tipovi.dat");
             if (File.Exists(TipoviFajl))
             {
                 try
@@ -133,7 +153,7 @@ namespace HCI_projekat2
                 Tipovi = new Dictionary<string, TypeModel>();
             }
             stream = null;
-            EtiketeFajl = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "etikete.dat");
+            EtiketeFajl = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "etikete.dat");
             if (File.Exists(EtiketeFajl))
             {
                 try
@@ -157,7 +177,7 @@ namespace HCI_projekat2
                 Etikete = new Dictionary<string, LabelModel>();
             }
             stream = null;
-            ResursiFajl = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "resursi.dat");
+            ResursiFajl = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "resursi.dat");
             if (File.Exists(ResursiFajl))
             {
                 try
@@ -178,7 +198,7 @@ namespace HCI_projekat2
             else
             {
                 Resursi = new Dictionary<string, ResourceModel>();
-                
+
             }
             ikoniceResursa = new ObservableCollection<ResourceModel>();
             ucitajIkonice();
@@ -187,16 +207,19 @@ namespace HCI_projekat2
             obsTipovi = new ObservableCollection<TypeModel>(Tipovi.Values);
             obsResursi = new ObservableCollection<ResourceModel>(Resursi.Values);
 
-            DataContext = this;
-         /*   Uri myUri = new Uri("/Images/world.jpg", UriKind.RelativeOrAbsolute);
-            JpegBitmapDecoder decoder2 = new JpegBitmapDecoder(myUri, BitmapCreateOptions.PreservePixelFormat, BitmapCacheOption.Default);
-            BitmapSource bitmapSource2 = decoder2.Frames[0];
+            ikoniceCanvas = new ObservableCollection<ResourceModel>();
+            resursiNaMapi = new Dictionary<Rect, ResourceModel>();
 
-            // Draw the Image
-            mapa.Source = bitmapSource2;
-            mapa.Stretch = Stretch.Uniform;
-            mapa.Margin = new Thickness(0);
-            */
+            DataContext = this;
+            /*   Uri myUri = new Uri("/Images/world.jpg", UriKind.RelativeOrAbsolute);
+               JpegBitmapDecoder decoder2 = new JpegBitmapDecoder(myUri, BitmapCreateOptions.PreservePixelFormat, BitmapCacheOption.Default);
+               BitmapSource bitmapSource2 = decoder2.Frames[0];
+
+               // Draw the Image
+               mapa.Source = bitmapSource2;
+               mapa.Stretch = Stretch.Uniform;
+               mapa.Margin = new Thickness(0);
+               */
         }
 
         private void AddNewRes_Click(object sender, RoutedEventArgs e)
@@ -384,21 +407,132 @@ namespace HCI_projekat2
 
         public void ucitajIkonice()
         {
-            foreach(ResourceModel model in Resursi.Values)
+            foreach (ResourceModel model in Resursi.Values)
             {
-                /*if(model.Point.X != 0 && model.Point.Y != 0)
-                {
-
-                }else
-                {*/
+                
                     ikoniceResursa.Add(model);
                 
             }
         }
 
-        public  void iscrtajOpet()
+        private void Image_PreviewMouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-            listaIkonica.UpdateLayout();
+            startPoint = e.GetPosition(null);
+        }
+
+        private void Image_MouseMove(object sender, MouseEventArgs e)
+        {
+            Point mousePos = e.GetPosition(null);
+            Vector diff = startPoint - mousePos;
+            if (e.LeftButton == MouseButtonState.Pressed &&
+                (Math.Abs(diff.X) > SystemParameters.MinimumHorizontalDragDistance ||
+                Math.Abs(diff.Y) > SystemParameters.MinimumVerticalDragDistance))
+            {
+                Image image = e.Source as Image;
+                DataObject data = new DataObject("ikonica", image);
+                DragDrop.DoDragDrop(image, data, DragDropEffects.Move);
+            }
+        }
+
+        private void Canvas_Drop(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent("ikonica"))
+            {
+                Point p = e.GetPosition(Canvas);
+                Image img = e.Data.GetData("ikonica") as Image;
+                RemovePreview();
+                if (preklapanje(p, img))
+                {
+                    return;
+                }
+
+                ikoniceResursa.Remove((ResourceModel)img.Tag);
+
+                listaIkonica.SelectedIndex = -1;
+                listaIkonica.UpdateLayout();
+
+                Canvas.Children.Remove(img);
+
+                Image cpy = new Image();
+                cpy.Width = imgWidth;
+                cpy.Height = imgHeight;
+                cpy.Source = img.Source;
+                cpy.Cursor = Cursors.Hand;
+                cpy.PreviewMouseLeftButtonDown += new MouseButtonEventHandler(Image_PreviewMouseLeftButtonDown);
+                cpy.MouseMove += new MouseEventHandler(Image_MouseMove);
+
+                cpy.Tag = img.Tag;
+
+                //TO DO: DODATI JOS NECEGA U TOOLTIP
+                cpy.ToolTip = ((ResourceModel)img.Tag).Name;
+                //cpy.ToolTip = ((ResourceModel)img.Tag).Price;
+
+                double x = p.X - cpy.Width / 2;
+                double y = p.Y - cpy.Height / 2;
+                Canvas.SetLeft(cpy, x);
+                Canvas.SetTop(cpy, y);
+                Canvas.Children.Add(cpy);
+
+                resursiNaMapi.Add(new Rect(x, y, imgWidth, imgHeight), (ResourceModel)img.Tag);
+            }
+        }
+
+        private Rectangle preview = null;
+
+        private void RemovePreview()
+        {
+            Canvas.Children.Remove(preview);
+            preview = null;
+        }
+
+        private void Canvas_DragOver(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent("ikonica"))
+            {
+                if (preview == null)
+                {
+                    preview = new Rectangle();
+                    preview.Height = imgHeight;
+                    preview.Width = imgWidth;
+
+                    Canvas.Children.Add(preview);
+                }
+
+                Point p = e.GetPosition(Canvas);
+                preview.StrokeThickness = 2;
+                preview.Stroke = new SolidColorBrush(Colors.Black);
+
+                //preklapanje sa vec postojecom ikonicom
+                if (preklapanje(p, e.Data.GetData("ikonica") as Image))
+                    preview.Fill = new SolidColorBrush(Colors.Red);
+                else
+                    preview.Fill = new SolidColorBrush(Colors.CadetBlue);
+
+                Canvas.SetLeft(preview, p.X - imgWidth / 2);
+                Canvas.SetTop(preview, p.Y - imgHeight / 2);
+            }
+        }
+
+        private void Canvas_DragEnter(object sender, DragEventArgs e)
+        {
+            if (!e.Data.GetDataPresent("ikonica") || sender == e.Source)
+            {
+                e.Effects = DragDropEffects.None;
+            }
+        }
+
+        private bool preklapanje(Point p, Image img)
+        {
+            foreach (Rect r in resursiNaMapi.Keys)
+            {
+                if (!resursiNaMapi[r].ID.Equals(((ResourceModel)img.Tag).ID) && r.IntersectsWith(new Rect(p.X - imgWidth / 2, p.Y - imgHeight / 2, imgWidth, imgHeight)))
+                {
+                    System.Media.SystemSounds.Exclamation.Play();
+                    return true;
+                }
+            }
+
+            return false;
         }
     }
 }

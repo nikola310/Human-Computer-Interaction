@@ -34,10 +34,11 @@
         </Menu>
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="507*" />
-                <RowDefinition Height="61*" />
+                <RowDefinition Height="517*" />
+                <RowDefinition Height="51*" />
             </Grid.RowDefinitions>
-            <Canvas x:Name="Canvas" AllowDrop="True"  Grid.Row="0">
+            <Canvas x:Name="Canvas" AllowDrop="True"  Grid.Row="0" Drop="Canvas_Drop" 
+                    DragOver="Canvas_DragOver" DragEnter="Canvas_DragEnter">
                 <Canvas.Background>
                     <VisualBrush>
                         <VisualBrush.Visual>
@@ -46,8 +47,7 @@
                     </VisualBrush>
                 </Canvas.Background>
             </Canvas>
-            <ListView Name="listaIkonica" Grid.Row="1" MinWidth="65"
-                      ItemsSource="{Binding ikoniceResursa}">
+            <ListView Name="listaIkonica" Grid.Row="1" MinWidth="65"  ItemsSource="{Binding ikoniceResursa}">
                 <ListView.ItemsPanel>
                     <ItemsPanelTemplate>
                         <StackPanel Orientation="Horizontal" />
@@ -56,8 +56,9 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal">
-                            <Image Source="{Binding IconPath}" Tag="{Binding}" MaxWidth="65" MaxHeight="65" MinHeight="50" MinWidth="50"
-                                   ToolTip="{Binding Name}" Width="50" Height="50" 
+                            <Image Source="{Binding IconPath}" Tag="{Binding}" MaxWidth="45" MaxHeight="45" MinHeight="45" MinWidth="45"
+                                   ToolTip="{Binding Name}" Width="45" Height="45" PreviewMouseLeftButtonDown="Image_PreviewMouseLeftButtonDown"
+                                   MouseMove="Image_MouseMove"
                                    HorizontalAlignment="Center" VerticalAlignment="Center" />
                             <!--TextBlock Text="{Binding Name}" TextWrapping="Wrap" HorizontalAlignment="Center" /-->
                         </StackPanel>
