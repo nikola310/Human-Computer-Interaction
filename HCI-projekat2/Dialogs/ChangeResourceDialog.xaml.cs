@@ -90,8 +90,8 @@ namespace HCI_projekat2.Dialogs
                     Datum.Focus();
                     return;
                 }
+                
                 model.Date = (DateTime)Datum.SelectedDate;
-
                 model.Renewable = renewable.IsChecked.Value;
                 model.Important = important.IsChecked.Value;
                 model.Exploit = exploit.IsChecked.Value;

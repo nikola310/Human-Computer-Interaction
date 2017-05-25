@@ -98,6 +98,7 @@ namespace HCI_projekat2.Dialogs
                     return;
                 }
 
+
                 model.Date = (DateTime)Datum.SelectedDate;
                 model.Renewable = renewable.IsChecked.Value;
                 model.Important = important.IsChecked.Value;
@@ -120,7 +121,7 @@ namespace HCI_projekat2.Dialogs
                 }
                 model.Unit = ((ComboBoxItem)measureUnit.SelectedItem).Content.ToString();
 
-                if(model.IconPath == "/Images/qmark2.png" || model.IconPath == null || model.IconPath == "")
+                if (model.IconPath == "/Images/qmark2.png" || model.IconPath == null || model.IconPath == "")
                 {
                     MessageBoxResult result = MessageBox.Show("Morate odabrati ikonu resursa!", "Nedostaje vrednost", MessageBoxButton.OK, MessageBoxImage.Error);
                     return;

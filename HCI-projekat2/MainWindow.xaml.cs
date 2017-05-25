@@ -98,11 +98,6 @@ namespace HCI_projekat2
 
         Point startPoint = new Point();
 
-
-
-
-
-
         public static List<string> frekvencije { get; set; }
 
         //frekvencije
@@ -126,7 +121,7 @@ namespace HCI_projekat2
         public MainWindow()
         {
             InitializeComponent();
-
+            Style = (Style)FindResource(typeof(Window));
             FileStream stream = null;
             BinaryFormatter bf = new BinaryFormatter();
 
@@ -255,7 +250,7 @@ namespace HCI_projekat2
 
         private void ShowRes_Click(object sender, RoutedEventArgs e)
         {
-            var l = new ResourceTable();
+            var l = new ResourceTable(this);
             l.Show();
         }
 
@@ -337,48 +332,6 @@ namespace HCI_projekat2
             return retVal;
         }
 
-        private void ResurseS_Click(object sender, RoutedEventArgs e)
-        {
-            if (ResurseS())
-            {
-                MessageBoxResult msg;
-                msg = MessageBox.Show(this, "Resursi su uspešno sačuvani.", "Operacija uspešna", MessageBoxButton.OK, MessageBoxImage.None);
-            }
-            else
-            {
-                MessageBoxResult msg;
-                msg = MessageBox.Show(this, "Došlo je do greške prilikom čuvanja!", "Operacija neuspešna", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-        }
-
-        private void TipoveS_Click(object sender, RoutedEventArgs e)
-        {
-            if (TipoveS())
-            {
-                MessageBoxResult msg;
-                msg = MessageBox.Show(this, "Tipovi su uspešno sačuvani.", "Operacija uspešna", MessageBoxButton.OK, MessageBoxImage.None);
-            }
-            else
-            {
-                MessageBoxResult msg;
-                msg = MessageBox.Show(this, "Došlo je do greške prilikom čuvanja!", "Operacija neuspešna", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-        }
-
-        private void EtiketeS_Click(object sender, RoutedEventArgs e)
-        {
-            if (EtiketeS())
-            {
-                MessageBoxResult msg;
-                msg = MessageBox.Show(this, "Etikete su uspešno sačuvane.", "Operacija uspešna", MessageBoxButton.OK, MessageBoxImage.None);
-            }
-            else
-            {
-                MessageBoxResult msg;
-                msg = MessageBox.Show(this, "Došlo je do greške prilikom čuvanja!", "Operacija neuspešna", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-        }
-
         private void Sacuvaj_Sve_Click(object sender, RoutedEventArgs e)
         {
             if (EtiketeS() && ResurseS() && TipoveS())
@@ -405,17 +358,42 @@ namespace HCI_projekat2
             base.OnClosing(e);
         }
 
+
         public void ucitajIkonice()
         {
             foreach (ResourceModel model in Resursi.Values)
             {
-                
+                //                    &&
+                if (model.Point.X != 0 || model.Point.Y != 0)
+                {
+                    Image cpy = new Image();
+                    cpy.Width = imgWidth;
+                    cpy.Height = imgHeight;
+                    cpy.Source = new BitmapImage(new Uri(model.IconPath, UriKind.RelativeOrAbsolute));
+                    cpy.Cursor = Cursors.Hand;
+                    cpy.PreviewMouseLeftButtonDown += new MouseButtonEventHandler(Image_PreviewMouseLeftButtonDown);
+                    cpy.MouseMove += new MouseEventHandler(Image_MouseMove);
+
+                    cpy.Tag = model;
+
+                    //DODATI JOS NECEGA U TOOLTIP
+                    cpy.ToolTip = model.Name + Environment.NewLine + model.Date.ToShortDateString()
+                        + Environment.NewLine + model.Price + Environment.NewLine + model.Type.Name;
+
+                    Canvas.SetLeft(cpy, model.Point.X - cpy.Width / 2);
+                    Canvas.SetTop(cpy, model.Point.Y - cpy.Height / 2);
+                    Canvas.Children.Add(cpy);
+
+                    resursiNaMapi.Add(new Rect(model.Point.X - cpy.Width / 2, model.Point.Y - cpy.Height / 2, imgWidth, imgHeight), model);
+                }
+                else
+                {
                     ikoniceResursa.Add(model);
-                
+                }
             }
         }
 
-        private void Image_PreviewMouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        private void Image_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             startPoint = e.GetPosition(null);
         }
@@ -433,6 +411,7 @@ namespace HCI_projekat2
                 DragDrop.DoDragDrop(image, data, DragDropEffects.Move);
             }
         }
+
 
         private void Canvas_Drop(object sender, DragEventArgs e)
         {
@@ -462,11 +441,13 @@ namespace HCI_projekat2
                 cpy.MouseMove += new MouseEventHandler(Image_MouseMove);
 
                 cpy.Tag = img.Tag;
+                
+                //DODATI JOS NECEGA U TOOLTIP
+                cpy.ToolTip = ((ResourceModel)img.Tag).Name + Environment.NewLine + ((ResourceModel)img.Tag).Date.ToShortDateString()
+                    + Environment.NewLine + ((ResourceModel)img.Tag).Price + Environment.NewLine + ((ResourceModel)img.Tag).Type.Name;
 
-                //TO DO: DODATI JOS NECEGA U TOOLTIP
-                cpy.ToolTip = ((ResourceModel)img.Tag).Name;
-                //cpy.ToolTip = ((ResourceModel)img.Tag).Price;
-
+                //context menu
+                
                 double x = p.X - cpy.Width / 2;
                 double y = p.Y - cpy.Height / 2;
                 Canvas.SetLeft(cpy, x);
@@ -504,7 +485,9 @@ namespace HCI_projekat2
 
                 //preklapanje sa vec postojecom ikonicom
                 if (preklapanje(p, e.Data.GetData("ikonica") as Image))
+                {
                     preview.Fill = new SolidColorBrush(Colors.Red);
+                }
                 else
                     preview.Fill = new SolidColorBrush(Colors.CadetBlue);
 
@@ -534,6 +517,34 @@ namespace HCI_projekat2
 
             return false;
         }
+
+        public void iscrtajOpet()
+        {
+            listaIkonica.SelectedItem = -1;
+            listaIkonica.UpdateLayout();
+        }
+
+        public void removeResourceFromMap(ResourceModel model)
+        {
+            foreach (Rect r in resursiNaMapi.Keys)
+            {
+                if (resursiNaMapi[r].Equals(model))
+                {
+                    resursiNaMapi.Remove(r);
+                    break;
+                }
+            }
+        }
+
+        private System.Windows.Forms.ContextMenu createIconContextMenu()
+        {
+            System.Windows.Forms.ContextMenu cm = new System.Windows.Forms.ContextMenu();
+
+            return cm;
+        }
+
+
+
     }
 }
 

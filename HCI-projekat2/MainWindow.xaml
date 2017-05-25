@@ -18,12 +18,7 @@
                 <MenuItem Header="Novi _Tip Resursa" InputGestureText="Ctrl+Shift+T"  Click="NewResType_Click"></MenuItem>
                 <MenuItem Header="Novu _Etiketu Resursa" InputGestureText="Ctrl+Shift+E" Click="NewResLabel_Click"></MenuItem>
                 <Separator />
-                <MenuItem Header="_Sačuvaj">
-                    <MenuItem Header="Sa_čuvaj resurse" Click="ResurseS_Click"></MenuItem>
-                    <MenuItem Header="Sačuvaj ti_pove" Click="TipoveS_Click"></MenuItem>
-                    <MenuItem Header="Sačuvaj et_ikete" Click="EtiketeS_Click"></MenuItem>
-                </MenuItem>
-                <MenuItem Header="Sačuvaj s_ve" InputGestureText="Ctrl+Shift+S" Click="Sacuvaj_Sve_Click"></MenuItem>
+                <MenuItem Header="Sačuvaj _projekat" InputGestureText="Ctrl+S" Click="Sacuvaj_Sve_Click"></MenuItem>
             </MenuItem>
             <MenuItem Header="P_regled">
                 <MenuItem Header="Evidentiranih _Resursa" Click="ShowRes_Click"/>
@@ -46,6 +41,12 @@
                         </VisualBrush.Visual>
                     </VisualBrush>
                 </Canvas.Background>
+                <Canvas.Resources>
+                    <Style x:Key="{x:Type ToolTip}" TargetType="{x:Type ToolTip}">
+                        <Setter Property="FontSize" Value="16"/>
+                        <Setter Property="FontFamily" Value="/HCI-projekat2;component/#Pragmata Pro" />
+                    </Style>
+                </Canvas.Resources>
             </Canvas>
             <ListView Name="listaIkonica" Grid.Row="1" MinWidth="65"  ItemsSource="{Binding ikoniceResursa}">
                 <ListView.ItemsPanel>

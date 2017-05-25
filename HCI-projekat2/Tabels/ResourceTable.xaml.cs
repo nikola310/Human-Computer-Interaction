@@ -25,6 +25,7 @@ namespace HCI_projekat2.Tabels
     {
         public ResourceModel mod = new ResourceModel();
 
+        public MainWindow mW = null;
 
         public ObservableCollection<ResourceModel> resursi
         {
@@ -38,7 +39,7 @@ namespace HCI_projekat2.Tabels
         }
 
 
-        public ResourceTable()
+        public ResourceTable(MainWindow parent)
         {
             InitializeComponent();
             resursi = new ObservableCollection<ResourceModel>();
@@ -48,6 +49,7 @@ namespace HCI_projekat2.Tabels
                 resursi.Add(tmp);
             }
             //foreach(LabelModel lab in )
+            mW = parent;
             DataContext = this;
         }
 
@@ -64,12 +66,28 @@ namespace HCI_projekat2.Tabels
             {
                 ResourceModel model = (ResourceModel)dgrMain.SelectedItem;
 
+                foreach(Image img in mW.Canvas.Children)
+                {
+                    if (img.Tag.Equals(model))
+                    {
+                        mW.Canvas.Children.Remove(img);
+                        break;
+                    }
+                }
+
                 Resursi.Remove(model.ID);
+                ikoniceResursa.Remove(model);
                 resursi.Clear();
+
                 foreach (ResourceModel t in Resursi.Values)
                 {
                     resursi.Add(t);
                 }
+
+                mW.iscrtajOpet();
+
+                mW.removeResourceFromMap(model);                
+
                 MessageBox.Show(this, "Resurs je obrisan.", "Operacija uspešna", MessageBoxButton.OK, MessageBoxImage.Information);
             }
         }

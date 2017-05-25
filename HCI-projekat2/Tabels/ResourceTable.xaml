@@ -27,7 +27,7 @@
                 <DataGridTextColumn Header="Jedinica mere" MinWidth="70" Width="*" Binding="{Binding Unit}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Cena" MinWidth="70" Width="*" Binding="{Binding Price}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Frekvencija" MinWidth="70" Width="*" Binding="{Binding Freq}"></DataGridTextColumn>
-                <!--DataGridTextColumn Header="Datum otkrivanja" MinWidth="70" Width="*" Binding="{Binding Date}"></-->
+                <DataGridTextColumn Header="Datum otkrivanja" MinWidth="70" Width="*" Binding="{Binding Date}" />
                 <DataGridTextColumn Header="Etikete" MinWidth="80" Width="*" Binding="{Binding resursi.Labels.ID}" />
             </DataGrid.Columns>
             

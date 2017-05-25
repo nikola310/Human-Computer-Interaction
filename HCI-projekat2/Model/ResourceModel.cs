@@ -226,6 +226,7 @@ namespace HCI_projekat2.Model
             Type = new TypeModel();
             Date = DateTime.Now;
             IconPath = "/Images/qmark2.png";
+            Point = new Point();
         }
     }
 }
