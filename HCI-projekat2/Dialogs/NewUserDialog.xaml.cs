@@ -20,12 +20,12 @@ namespace HCI_projekat2.Dialogs
     /// </summary>
     public partial class NewUserDialog : Window
     {
-        //MainWindow mW;
+        MainWindow mW;
         UserModel model;
 
         public NewUserDialog(MainWindow mW)
         {
-            //this.mW = mW;
+            this.mW = mW;
             model = new UserModel("", "");
             DataContext = model;
             InitializeComponent();
@@ -73,7 +73,7 @@ namespace HCI_projekat2.Dialogs
                     regButton.IsEnabled = false;
                     return;
                 }
-                if(c == ' ')
+                if (c == ' ')
                 {
                     System.Media.SystemSounds.Exclamation.Play();
                     pswLabel.Content = "Šifra ne smije imati razmake.";

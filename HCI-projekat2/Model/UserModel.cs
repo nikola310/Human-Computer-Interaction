@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace HCI_projekat2.Model
 {
+    [Serializable]
     public class UserModel : INotifyPropertyChanged
     {
         private string _name;
@@ -36,13 +37,13 @@ namespace HCI_projekat2.Model
                 OnPropertyChanged("Pass");
             }
         }
+
+        [field: NonSerialized]
         public event PropertyChangedEventHandler PropertyChanged;
         protected virtual void OnPropertyChanged(string name)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }
-
-
 
         public UserModel(string name, string pass)
         {

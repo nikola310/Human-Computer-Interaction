@@ -13,7 +13,6 @@ namespace HCI_projekat2.Model
     public class ResourceModel : INotifyPropertyChanged
     {
 
-
         public string ValueString { get; set; }
 
         private string _id;

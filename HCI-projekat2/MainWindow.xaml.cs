@@ -75,8 +75,8 @@ namespace HCI_projekat2
                 _korisnici = value;
             }
         }
-        private  UserModel _currUser;
-        public  UserModel CurrUser
+        private UserModel _currUser;
+        public UserModel CurrUser
         {
             get
             {
@@ -91,6 +91,7 @@ namespace HCI_projekat2
         public string ResursiFajl;
         public string TipoviFajl;
         public string EtiketeFajl;
+        public string KorisniciFajl;
 
         public static ObservableCollection<LabelModel> obsEtikete
         {
@@ -154,106 +155,51 @@ namespace HCI_projekat2
             }
         }
 
+        private bool _usersFlag;
+        public bool UsersFlag
+        {
+            get
+            {
+                return _usersFlag;
+            }
+            set
+            {
+                _usersFlag = value;
+            }
+        }
 
         public MainWindow()
         {
-            Korisnici = new List<UserModel>();
-            Korisnici.Add(new UserModel("pera", "peric"));
-            Korisnici.Add(new UserModel("mika", "mikic"));
+
+            if (!ucitajKorisnike())
+            {
+                var t = new NewUserDialog(this);
+                t.ShowDialog();
+            }
 
             var l = new LoginDialog(this);
             l.ShowDialog();
 
             if (_cntFlag)
             {
-
                 InitializeComponent();
                 Style = (Style)FindResource(typeof(Window));
-                FileStream stream = null;
-                BinaryFormatter bf = new BinaryFormatter();
 
-                TipoviFajl = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, CurrUser.Name + "tipovi.dat");
-                if (File.Exists(TipoviFajl))
-                {
-                    try
-                    {
-                        stream = File.Open(TipoviFajl, FileMode.Open);
-                        Tipovi = (Dictionary<string, TypeModel>)bf.Deserialize(stream);
-                    }
-                    catch
-                    {
-                        //nista
-                    }
-                    finally
-                    {
-                        if (stream != null)
-                            stream.Dispose();
-                    }
-                }
-                else
-                {
-                    Tipovi = new Dictionary<string, TypeModel>();
-                }
-                stream = null;
-                EtiketeFajl = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, CurrUser.Name + "etikete.dat");
-                if (File.Exists(EtiketeFajl))
-                {
-                    try
-                    {
-                        stream = File.Open(EtiketeFajl, FileMode.Open);
-                        Etikete = (Dictionary<string, LabelModel>)bf.Deserialize(stream);
-                    }
-                    catch
-                    {
+                ikoniceCanvas = new ObservableCollection<ResourceModel>();
+                resursiNaMapi = new Dictionary<Rect, ResourceModel>();
 
-                    }
-                    finally
-                    {
-                        if (stream != null)
-                            stream.Dispose();
-                    }
-                }
-                else
-                {
+                ucitajPodatke();
 
-                    Etikete = new Dictionary<string, LabelModel>();
-                }
-                stream = null;
-                ResursiFajl = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, CurrUser.Name + "resursi.dat");
-                if (File.Exists(ResursiFajl))
-                {
-                    try
-                    {
-                        stream = File.Open(ResursiFajl, FileMode.Open);
-                        Resursi = (Dictionary<string, ResourceModel>)bf.Deserialize(stream);
-                    }
-                    catch
-                    {
-
-                    }
-                    finally
-                    {
-                        if (stream != null)
-                            stream.Dispose();
-                    }
-                }
-                else
-                {
-                    Resursi = new Dictionary<string, ResourceModel>();
-
-                }
-                ikoniceResursa = new ObservableCollection<ResourceModel>();
                 ucitajIkonice();
 
                 obsEtikete = new ObservableCollection<LabelModel>(Etikete.Values);
                 obsTipovi = new ObservableCollection<TypeModel>(Tipovi.Values);
                 obsResursi = new ObservableCollection<ResourceModel>(Resursi.Values);
 
-                ikoniceCanvas = new ObservableCollection<ResourceModel>();
-                resursiNaMapi = new Dictionary<Rect, ResourceModel>();
+                
 
                 DataContext = this;
-                /*   Uri myUri = new Uri("/Images/world.jpg", UriKind.RelativeOrAbsolute);
+                /* Uri myUri = new Uri("/Images/world.jpg", UriKind.RelativeOrAbsolute);
                    JpegBitmapDecoder decoder2 = new JpegBitmapDecoder(myUri, BitmapCreateOptions.PreservePixelFormat, BitmapCacheOption.Default);
                    BitmapSource bitmapSource2 = decoder2.Frames[0];
 
@@ -262,7 +208,6 @@ namespace HCI_projekat2
                    mapa.Stretch = Stretch.Uniform;
                    mapa.Margin = new Thickness(0);
                    */
-
             }
             else
             {
@@ -307,15 +252,14 @@ namespace HCI_projekat2
             l.Show();
         }
 
-        private bool TipoveS()
+        private bool TipoveSacuvaj()
         {
-
             FileStream stream = null;
             BinaryFormatter bf = new BinaryFormatter();
             bool retVal = false;
             try
             {
-                stream = File.Open(CurrUser.Name + "tipovi.dat", FileMode.OpenOrCreate);
+                stream = File.Open(CurrUser.Name + "tipovi.nkvd", FileMode.OpenOrCreate);
                 bf.Serialize(stream, _tipovi);
             }
             catch
@@ -333,7 +277,7 @@ namespace HCI_projekat2
             return retVal;
         }
 
-        private bool EtiketeS()
+        private bool EtiketeSacuvaj()
         {
 
             FileStream stream = null;
@@ -341,7 +285,7 @@ namespace HCI_projekat2
             bool retVal = false;
             try
             {
-                stream = File.Open(CurrUser.Name + "etikete.dat", FileMode.OpenOrCreate);
+                stream = File.Open(CurrUser.Name + "etikete.nkvd", FileMode.OpenOrCreate);
                 bf.Serialize(stream, _etikete);
             }
             catch
@@ -359,7 +303,7 @@ namespace HCI_projekat2
             return retVal;
         }
 
-        private bool ResurseS()
+        private bool ResurseSacuvaj()
         {
 
             FileStream stream = null;
@@ -367,7 +311,7 @@ namespace HCI_projekat2
             bool retVal = false;
             try
             {
-                stream = File.Open(CurrUser.Name + "resursi.dat", FileMode.OpenOrCreate);
+                stream = File.Open(CurrUser.Name + "resursi.nkvd", FileMode.OpenOrCreate);
                 bf.Serialize(stream, _resursi);
             }
             catch
@@ -387,7 +331,7 @@ namespace HCI_projekat2
 
         private void Sacuvaj_Sve_Click(object sender, RoutedEventArgs e)
         {
-            if (EtiketeS() && ResurseS() && TipoveS())
+            if (EtiketeSacuvaj() && ResurseSacuvaj() && TipoveSacuvaj() && sacuvajKorisnike())
             {
                 MessageBoxResult msg;
                 msg = MessageBox.Show(this, "Podaci su uspešno sačuvani.", "Operacija uspešna", MessageBoxButton.OK, MessageBoxImage.None);
@@ -403,23 +347,165 @@ namespace HCI_projekat2
         {
             if (CntFlag)
             {
-                MessageBoxResult msb = MessageBox.Show("Želite li da sačuvate unete izmene?", "Čuvanje pre zatvaranja", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                MessageBoxResult msb = MessageBox.Show("Želite li da sačuvate unete izmene?", "Čuvanje pre zatvaranja", MessageBoxButton.YesNoCancel, MessageBoxImage.Question);
                 if (msb == MessageBoxResult.Yes)
                 {
-                    EtiketeS();
-                    TipoveS();
-                    ResurseS();
+                    EtiketeSacuvaj();
+                    TipoveSacuvaj();
+                    ResurseSacuvaj();
+                    sacuvajKorisnike();
+                }
+                else if (msb == MessageBoxResult.Cancel)
+                {
+                    return;
                 }
             }
             base.OnClosing(e);
         }
 
+        /*ucitava resurse, etikete i tipove za trenutno aktivnog korisnika, ako nema tog korisnika, napravi nove fajlove*/
+        private void ucitajPodatke()
+        {
+            FileStream stream = null;
+            BinaryFormatter bf = new BinaryFormatter();
+
+            TipoviFajl = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, CurrUser.Name + "tipovi.nkvd");
+            if (File.Exists(TipoviFajl))
+            {
+                try
+                {
+                    stream = File.Open(TipoviFajl, FileMode.Open);
+                    Tipovi = (Dictionary<string, TypeModel>)bf.Deserialize(stream);
+                }
+                catch
+                {
+                    //nista
+                }
+                finally
+                {
+                    if (stream != null)
+                        stream.Dispose();
+                }
+            }
+            else
+            {
+                Tipovi = new Dictionary<string, TypeModel>();
+            }
+            stream = null;
+            EtiketeFajl = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, CurrUser.Name + "etikete.nkvd");
+            if (File.Exists(EtiketeFajl))
+            {
+                try
+                {
+                    stream = File.Open(EtiketeFajl, FileMode.Open);
+                    Etikete = (Dictionary<string, LabelModel>)bf.Deserialize(stream);
+                }
+                catch
+                {
+
+                }
+                finally
+                {
+                    if (stream != null)
+                        stream.Dispose();
+                }
+            }
+            else
+            {
+
+                Etikete = new Dictionary<string, LabelModel>();
+            }
+            stream = null;
+            ResursiFajl = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, CurrUser.Name + "resursi.nkvd");
+            if (File.Exists(ResursiFajl))
+            {
+                try
+                {
+                    stream = File.Open(ResursiFajl, FileMode.Open);
+                    Resursi = (Dictionary<string, ResourceModel>)bf.Deserialize(stream);
+                }
+                catch
+                {
+
+                }
+                finally
+                {
+                    if (stream != null)
+                        stream.Dispose();
+                }
+            }
+            else
+            {
+                Resursi = new Dictionary<string, ResourceModel>();
+
+            }
+        }
+
+        private bool sacuvajKorisnike()
+        {
+            FileStream stream = null;
+            BinaryFormatter bf = new BinaryFormatter();
+            bool retVal = false;
+            try
+            {
+                stream = File.Open("korisnici.nkvd", FileMode.OpenOrCreate);
+                bf.Serialize(stream, _korisnici);
+            }
+            catch
+            {
+                //nista
+            }
+            finally
+            {
+                if (stream != null)
+                {
+                    stream.Dispose();
+                    retVal = true;
+                }
+            }
+            return retVal;
+        }
+
+        //ucitava korisnike, ako ima njihov fajl
+        private bool ucitajKorisnike()
+        {
+            bool retVal = false;
+            FileStream stream = null;
+            BinaryFormatter bf = new BinaryFormatter();
+
+            KorisniciFajl = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "korisnici.nkvd");
+            if (File.Exists(KorisniciFajl))
+            {
+                retVal = true;
+                try
+                {
+                    stream = File.Open(KorisniciFajl, FileMode.Open);
+                    Korisnici = (List<UserModel>)bf.Deserialize(stream);
+
+                }
+                catch
+                {
+                    //nista
+                }
+                finally
+                {
+                    if (stream != null)
+                        stream.Dispose();
+                }
+            }
+            else
+            {
+                Korisnici = new List<UserModel>();
+            }
+            return retVal;
+        }
 
         public void ucitajIkonice()
         {
+            ikoniceResursa = new ObservableCollection<ResourceModel>();
             foreach (ResourceModel model in Resursi.Values)
             {
-                //                    &&
+                //                    &&?
                 if (model.Point.X != 0 || model.Point.Y != 0)
                 {
                     Image cpy = new Image();
@@ -468,7 +554,6 @@ namespace HCI_projekat2
             }
         }
 
-
         private void Canvas_Drop(object sender, DragEventArgs e)
         {
             if (e.Data.GetDataPresent("ikonica"))
@@ -502,7 +587,10 @@ namespace HCI_projekat2
                 cpy.ToolTip = ((ResourceModel)img.Tag).Name + Environment.NewLine + ((ResourceModel)img.Tag).Date.ToShortDateString()
                     + Environment.NewLine + ((ResourceModel)img.Tag).Price + Environment.NewLine + ((ResourceModel)img.Tag).Type.Name;
 
-                //context menu
+                //kontekstni meni
+
+
+                Resursi[((ResourceModel)img.Tag).ID].Point = p;
 
                 double x = p.X - cpy.Width / 2;
                 double y = p.Y - cpy.Height / 2;
@@ -598,8 +686,6 @@ namespace HCI_projekat2
 
             return cm;
         }
-
-
 
     }
 }
