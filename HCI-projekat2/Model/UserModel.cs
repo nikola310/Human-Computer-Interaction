@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace HCI_projekat2.Model
 {
-    public class UserModel
+    public class UserModel : INotifyPropertyChanged
     {
         private string _name;
         public string Name
@@ -18,6 +19,7 @@ namespace HCI_projekat2.Model
             set
             {
                 _name = value;
+                OnPropertyChanged("Name");
             }
         }
 
@@ -31,8 +33,16 @@ namespace HCI_projekat2.Model
             set
             {
                 _pass = value;
+                OnPropertyChanged("Pass");
             }
         }
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected virtual void OnPropertyChanged(string name)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+        }
+
+
 
         public UserModel(string name, string pass)
         {

@@ -145,8 +145,6 @@ namespace HCI_projekat2.Dialogs
         #endregion
 
 
-        private bool retVal = false;
-
         public LoginDialog(MainWindow parent)
         {
             InitializeComponent();
@@ -170,6 +168,12 @@ namespace HCI_projekat2.Dialogs
             mW.CntFlag = true;
             mW.CurrUser = new UserModel(usrNameTextBox.Text, passwordBox.Password);
             Close();
+        }
+
+        private void newUser_Click(object sender, RoutedEventArgs e)
+        {
+            NewUserDialog user = new NewUserDialog(mW);
+            user.Show();
         }
     }
 }

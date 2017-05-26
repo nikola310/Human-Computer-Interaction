@@ -134,10 +134,9 @@
     </Compile>
     <Compile Include="Validation\AsciiValidationRule.cs" />
     <Compile Include="Validation\LabelIDValidationRule.cs" />
-    <Compile Include="Validation\PasswordStrengthValidation.cs" />
-    <Compile Include="Validation\ResourceIDValidationRule.cs" />
     <Compile Include="Validation\EmptyStringValidationRule.cs" />
     <Compile Include="Validation\MinimumValidationRule.cs" />
+    <Compile Include="Validation\ResourceIDValidationRule.cs" />
     <Compile Include="Validation\StringToDoubleValidationRule.cs" />
     <Compile Include="Validation\TypeIDValidationRule.cs" />
     <Compile Include="Validation\UserRegistrationValidation.cs" />
