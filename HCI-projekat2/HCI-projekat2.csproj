@@ -113,9 +113,16 @@
     <Compile Include="Dialogs\FilterLabel.xaml.cs">
       <DependentUpon>FilterLabel.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Dialogs\LoginDialog.xaml.cs">
+      <DependentUpon>LoginDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\NewUserDialog.xaml.cs">
+      <DependentUpon>NewUserDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Model\LabelModel.cs" />
     <Compile Include="Model\ResourceModel.cs" />
     <Compile Include="Model\TypeModel.cs" />
+    <Compile Include="Model\UserModel.cs" />
     <Compile Include="Tabels\LabelTable.xaml.cs">
       <DependentUpon>LabelTable.xaml</DependentUpon>
     </Compile>
@@ -127,11 +134,13 @@
     </Compile>
     <Compile Include="Validation\AsciiValidationRule.cs" />
     <Compile Include="Validation\LabelIDValidationRule.cs" />
+    <Compile Include="Validation\PasswordStrengthValidation.cs" />
     <Compile Include="Validation\ResourceIDValidationRule.cs" />
     <Compile Include="Validation\EmptyStringValidationRule.cs" />
     <Compile Include="Validation\MinimumValidationRule.cs" />
     <Compile Include="Validation\StringToDoubleValidationRule.cs" />
     <Compile Include="Validation\TypeIDValidationRule.cs" />
+    <Compile Include="Validation\UserRegistrationValidation.cs" />
     <Page Include="Dialogs\ChangeLabelDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -152,6 +161,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Dialogs\LoginDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Dialogs\NewLabelDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -161,6 +174,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Dialogs\NewResourceType.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dialogs\NewUserDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -263,6 +280,9 @@
     <Resource Include="Images\natural-gas.png" />
     <Resource Include="Images\water.png" />
     <Resource Include="Images\wood.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\logo.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

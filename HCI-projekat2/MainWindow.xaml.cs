@@ -63,6 +63,30 @@ namespace HCI_projekat2
             get;
             set;
         }
+        private static List<UserModel> _korisnici;
+        public static List<UserModel> Korisnici
+        {
+            get
+            {
+                return _korisnici;
+            }
+            set
+            {
+                _korisnici = value;
+            }
+        }
+        private  UserModel _currUser;
+        public  UserModel CurrUser
+        {
+            get
+            {
+                return _currUser;
+            }
+            set
+            {
+                _currUser = value;
+            }
+        }
 
         public string ResursiFajl;
         public string TipoviFajl;
@@ -117,104 +141,133 @@ namespace HCI_projekat2
         public static int imgWidth = 45;
         public static int imgHeight = 45;
 
+        private bool _cntFlag = false; //flag za nastavak rada
+        public bool CntFlag
+        {
+            get
+            {
+                return _cntFlag;
+            }
+            set
+            {
+                _cntFlag = value;
+            }
+        }
+
 
         public MainWindow()
         {
-            InitializeComponent();
-            Style = (Style)FindResource(typeof(Window));
-            FileStream stream = null;
-            BinaryFormatter bf = new BinaryFormatter();
+            Korisnici = new List<UserModel>();
+            Korisnici.Add(new UserModel("pera", "peric"));
+            Korisnici.Add(new UserModel("mika", "mikic"));
 
-            TipoviFajl = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "tipovi.dat");
-            if (File.Exists(TipoviFajl))
+            var l = new LoginDialog(this);
+            l.ShowDialog();
+
+            if (_cntFlag)
             {
-                try
+
+                InitializeComponent();
+                Style = (Style)FindResource(typeof(Window));
+                FileStream stream = null;
+                BinaryFormatter bf = new BinaryFormatter();
+
+                TipoviFajl = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, CurrUser.Name + "tipovi.dat");
+                if (File.Exists(TipoviFajl))
                 {
-                    stream = File.Open(TipoviFajl, FileMode.Open);
-                    Tipovi = (Dictionary<string, TypeModel>)bf.Deserialize(stream);
+                    try
+                    {
+                        stream = File.Open(TipoviFajl, FileMode.Open);
+                        Tipovi = (Dictionary<string, TypeModel>)bf.Deserialize(stream);
+                    }
+                    catch
+                    {
+                        //nista
+                    }
+                    finally
+                    {
+                        if (stream != null)
+                            stream.Dispose();
+                    }
                 }
-                catch
+                else
                 {
-                    //nista
+                    Tipovi = new Dictionary<string, TypeModel>();
                 }
-                finally
+                stream = null;
+                EtiketeFajl = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, CurrUser.Name + "etikete.dat");
+                if (File.Exists(EtiketeFajl))
                 {
-                    if (stream != null)
-                        stream.Dispose();
+                    try
+                    {
+                        stream = File.Open(EtiketeFajl, FileMode.Open);
+                        Etikete = (Dictionary<string, LabelModel>)bf.Deserialize(stream);
+                    }
+                    catch
+                    {
+
+                    }
+                    finally
+                    {
+                        if (stream != null)
+                            stream.Dispose();
+                    }
                 }
+                else
+                {
+
+                    Etikete = new Dictionary<string, LabelModel>();
+                }
+                stream = null;
+                ResursiFajl = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, CurrUser.Name + "resursi.dat");
+                if (File.Exists(ResursiFajl))
+                {
+                    try
+                    {
+                        stream = File.Open(ResursiFajl, FileMode.Open);
+                        Resursi = (Dictionary<string, ResourceModel>)bf.Deserialize(stream);
+                    }
+                    catch
+                    {
+
+                    }
+                    finally
+                    {
+                        if (stream != null)
+                            stream.Dispose();
+                    }
+                }
+                else
+                {
+                    Resursi = new Dictionary<string, ResourceModel>();
+
+                }
+                ikoniceResursa = new ObservableCollection<ResourceModel>();
+                ucitajIkonice();
+
+                obsEtikete = new ObservableCollection<LabelModel>(Etikete.Values);
+                obsTipovi = new ObservableCollection<TypeModel>(Tipovi.Values);
+                obsResursi = new ObservableCollection<ResourceModel>(Resursi.Values);
+
+                ikoniceCanvas = new ObservableCollection<ResourceModel>();
+                resursiNaMapi = new Dictionary<Rect, ResourceModel>();
+
+                DataContext = this;
+                /*   Uri myUri = new Uri("/Images/world.jpg", UriKind.RelativeOrAbsolute);
+                   JpegBitmapDecoder decoder2 = new JpegBitmapDecoder(myUri, BitmapCreateOptions.PreservePixelFormat, BitmapCacheOption.Default);
+                   BitmapSource bitmapSource2 = decoder2.Frames[0];
+
+                   // Draw the Image
+                   mapa.Source = bitmapSource2;
+                   mapa.Stretch = Stretch.Uniform;
+                   mapa.Margin = new Thickness(0);
+                   */
+
             }
             else
             {
-                Tipovi = new Dictionary<string, TypeModel>();
+                Close();
             }
-            stream = null;
-            EtiketeFajl = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "etikete.dat");
-            if (File.Exists(EtiketeFajl))
-            {
-                try
-                {
-                    stream = File.Open(EtiketeFajl, FileMode.Open);
-                    Etikete = (Dictionary<string, LabelModel>)bf.Deserialize(stream);
-                }
-                catch
-                {
-
-                }
-                finally
-                {
-                    if (stream != null)
-                        stream.Dispose();
-                }
-            }
-            else
-            {
-
-                Etikete = new Dictionary<string, LabelModel>();
-            }
-            stream = null;
-            ResursiFajl = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "resursi.dat");
-            if (File.Exists(ResursiFajl))
-            {
-                try
-                {
-                    stream = File.Open(ResursiFajl, FileMode.Open);
-                    Resursi = (Dictionary<string, ResourceModel>)bf.Deserialize(stream);
-                }
-                catch
-                {
-
-                }
-                finally
-                {
-                    if (stream != null)
-                        stream.Dispose();
-                }
-            }
-            else
-            {
-                Resursi = new Dictionary<string, ResourceModel>();
-
-            }
-            ikoniceResursa = new ObservableCollection<ResourceModel>();
-            ucitajIkonice();
-
-            obsEtikete = new ObservableCollection<LabelModel>(Etikete.Values);
-            obsTipovi = new ObservableCollection<TypeModel>(Tipovi.Values);
-            obsResursi = new ObservableCollection<ResourceModel>(Resursi.Values);
-
-            ikoniceCanvas = new ObservableCollection<ResourceModel>();
-            resursiNaMapi = new Dictionary<Rect, ResourceModel>();
-
-            DataContext = this;
-            /*   Uri myUri = new Uri("/Images/world.jpg", UriKind.RelativeOrAbsolute);
-               JpegBitmapDecoder decoder2 = new JpegBitmapDecoder(myUri, BitmapCreateOptions.PreservePixelFormat, BitmapCacheOption.Default);
-               BitmapSource bitmapSource2 = decoder2.Frames[0];
-
-               // Draw the Image
-               mapa.Source = bitmapSource2;
-               mapa.Stretch = Stretch.Uniform;
-               mapa.Margin = new Thickness(0);
-               */
         }
 
         private void AddNewRes_Click(object sender, RoutedEventArgs e)
@@ -262,7 +315,7 @@ namespace HCI_projekat2
             bool retVal = false;
             try
             {
-                stream = File.Open("tipovi.dat", FileMode.OpenOrCreate);
+                stream = File.Open(CurrUser.Name + "tipovi.dat", FileMode.OpenOrCreate);
                 bf.Serialize(stream, _tipovi);
             }
             catch
@@ -288,7 +341,7 @@ namespace HCI_projekat2
             bool retVal = false;
             try
             {
-                stream = File.Open("etikete.dat", FileMode.OpenOrCreate);
+                stream = File.Open(CurrUser.Name + "etikete.dat", FileMode.OpenOrCreate);
                 bf.Serialize(stream, _etikete);
             }
             catch
@@ -314,7 +367,7 @@ namespace HCI_projekat2
             bool retVal = false;
             try
             {
-                stream = File.Open("resursi.dat", FileMode.OpenOrCreate);
+                stream = File.Open(CurrUser.Name + "resursi.dat", FileMode.OpenOrCreate);
                 bf.Serialize(stream, _resursi);
             }
             catch
@@ -348,12 +401,15 @@ namespace HCI_projekat2
 
         protected override void OnClosing(System.ComponentModel.CancelEventArgs e)
         {
-            MessageBoxResult msb = MessageBox.Show("Želite li da sačuvate unete izmene?", "Čuvanje pre zatvaranja", MessageBoxButton.YesNo, MessageBoxImage.Question);
-            if (msb == MessageBoxResult.Yes)
+            if (CntFlag)
             {
-                EtiketeS();
-                TipoveS();
-                ResurseS();
+                MessageBoxResult msb = MessageBox.Show("Želite li da sačuvate unete izmene?", "Čuvanje pre zatvaranja", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                if (msb == MessageBoxResult.Yes)
+                {
+                    EtiketeS();
+                    TipoveS();
+                    ResurseS();
+                }
             }
             base.OnClosing(e);
         }
@@ -441,13 +497,13 @@ namespace HCI_projekat2
                 cpy.MouseMove += new MouseEventHandler(Image_MouseMove);
 
                 cpy.Tag = img.Tag;
-                
+
                 //DODATI JOS NECEGA U TOOLTIP
                 cpy.ToolTip = ((ResourceModel)img.Tag).Name + Environment.NewLine + ((ResourceModel)img.Tag).Date.ToShortDateString()
                     + Environment.NewLine + ((ResourceModel)img.Tag).Price + Environment.NewLine + ((ResourceModel)img.Tag).Type.Name;
 
                 //context menu
-                
+
                 double x = p.X - cpy.Width / 2;
                 double y = p.Y - cpy.Height / 2;
                 Canvas.SetLeft(cpy, x);
