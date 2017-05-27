@@ -13,12 +13,10 @@ using System.Windows.Controls;
 using System.Windows.Shapes;
 using System.Windows.Input;
 using System.Diagnostics;
+using HCI_projekat2.Help;
 
 namespace HCI_projekat2
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
         public static Dictionary<string, ResourceModel> _resursi;
@@ -114,7 +112,6 @@ namespace HCI_projekat2
             get;
             set;
         }
-
         public static ObservableCollection<ResourceModel> ikoniceCanvas
         {
             get;
@@ -170,7 +167,6 @@ namespace HCI_projekat2
 
         public MainWindow()
         {
-
             if (!ucitajKorisnike())
             {
                 var t = new NewUserDialog(this);
@@ -687,6 +683,15 @@ namespace HCI_projekat2
             return cm;
         }
 
+        internal void doThings(string param)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void Help_Click(object sender, RoutedEventArgs e)
+        {
+            HelpProvider.ShowHelp("main", this);
+        }
     }
 }
 
