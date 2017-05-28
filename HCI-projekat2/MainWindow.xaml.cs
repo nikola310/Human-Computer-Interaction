@@ -231,7 +231,7 @@ namespace HCI_projekat2
 
         private void ShowLabels_Click(object sender, RoutedEventArgs e)
         {
-            var l = new LabelTable(obsEtikete);
+            var l = new LabelTable();
             l.Show();
         }
 

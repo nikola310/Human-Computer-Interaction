@@ -23,14 +23,14 @@ namespace HCI_projekat2.Tabels
             set;
         }
 
-        public LabelTable(ObservableCollection<LabelModel> e)
+        public LabelTable()
         {
             InitializeComponent();
-            etikete = e;
-            foreach (LabelModel s in Etikete.Values)
+            etikete = new ObservableCollection<LabelModel>(Etikete.Values);
+            /*foreach (LabelModel s in Etikete.Values)
             {
                 etiketeFilter.Add(s);
-            }
+            }*/
             DataContext = this;
         }
 

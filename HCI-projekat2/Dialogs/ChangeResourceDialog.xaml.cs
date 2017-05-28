@@ -61,22 +61,28 @@ namespace HCI_projekat2.Dialogs
                 EtiketeCheckList.Items.Add(e.ID);
             }
 
-            foreach (String lbl in EtiketeCheckList.Items)
+            /*foreach (String lbl in EtiketeCheckList.Items)
             {
                 foreach (LabelModel e in model.Labels)
                 {
                     if (lbl.Equals(e.ID))
                     {
-                        EtiketeCheckList.SelectedItem = lbl;
+                        EtiketeCheckList.Items = lbl;
                     }
                 }
+            }*/
+
+            foreach(LabelModel lbl in model.Labels)
+            {
+               EtiketeCheckList.SelectedItems.Add(lbl.ID);
             }
 
             Datum.SelectedDate = model.Date;
-            measureUnit.SelectedValue = model.Unit;
-            //            measureUnit.SelectedValue = model.Unit;
+
+            renewable.IsChecked = model.Renewable;
+            important.IsChecked = model.Important;
+            exploit.IsChecked = model.Exploit;
             
-           frequency.SelectedValue = model.Freq;
         }
 
         private void Izmeni_Resurs_Click(object sender, RoutedEventArgs e)

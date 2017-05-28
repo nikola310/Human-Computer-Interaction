@@ -135,7 +135,7 @@
 
         </TextBox>
         <Label Grid.Row="3" FontSize="16" HorizontalAlignment="Left" Width="135" Margin="0,10,0,0" FontFamily="/HCI-projekat2;component/#Pragmata Pro">Frekvencija:</Label>
-        <ComboBox Grid.Column="1" Grid.Row="3" Margin="3,10,102,5" FontSize="16" Name="frequency" SelectedItem="{Binding Path=Freq}" IsEditable="False" FontFamily="/HCI-projekat2;component/#Pragmata Pro">
+        <ComboBox Grid.Column="1" Grid.Row="3" Margin="3,10,102,5" FontSize="16" Name="frequency" IsEditable="False" FontFamily="/HCI-projekat2;component/#Pragmata Pro">
             <ComboBoxItem FontSize="16">Redak</ComboBoxItem>
             <ComboBoxItem FontSize="16">Čest</ComboBoxItem>
             <ComboBoxItem FontSize="16">Univerzalan</ComboBoxItem>

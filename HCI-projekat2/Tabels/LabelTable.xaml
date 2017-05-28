@@ -14,7 +14,7 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
-        <DataGrid x:Name="dgrMain" ItemsSource="{Binding Path=etiketeFilter}" IsReadOnly="True"  AutoGenerateColumns="False" IsSynchronizedWithCurrentItem="True" Margin="0,0,0,38" Grid.RowSpan="2">
+        <DataGrid x:Name="dgrMain" ItemsSource="{Binding Path=etikete}" IsReadOnly="True"  AutoGenerateColumns="False" IsSynchronizedWithCurrentItem="True" Margin="0,0,0,38" Grid.RowSpan="2">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ID" MinWidth="60" Width="SizeToCells" Binding="{Binding ID}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Boja" MinWidth="60" Width="SizeToCells" Binding="{Binding Clr}"></DataGridTextColumn>
