@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using HCI_projekat2.Model;
 using Microsoft.Win32;
 using System.ComponentModel;
+using System.Windows.Controls.Primitives;
 
 namespace HCI_projekat2.Dialogs
 {
@@ -51,8 +52,7 @@ namespace HCI_projekat2.Dialogs
         public ChangeResourceDialog(ResourceModel model)
         {
             InitializeComponent();
-            measureUnit.SelectedValue = model.Unit;
-            frequency.SelectedValue = model.Freq;
+
             this.model = model;
             DataContext = model;
 
@@ -61,6 +61,22 @@ namespace HCI_projekat2.Dialogs
                 EtiketeCheckList.Items.Add(e.ID);
             }
 
+            foreach (String lbl in EtiketeCheckList.Items)
+            {
+                foreach (LabelModel e in model.Labels)
+                {
+                    if (lbl.Equals(e.ID))
+                    {
+                        EtiketeCheckList.SelectedItem = lbl;
+                    }
+                }
+            }
+
+            Datum.SelectedDate = model.Date;
+            measureUnit.SelectedValue = model.Unit;
+            //            measureUnit.SelectedValue = model.Unit;
+            
+           frequency.SelectedValue = model.Freq;
         }
 
         private void Izmeni_Resurs_Click(object sender, RoutedEventArgs e)
@@ -90,7 +106,7 @@ namespace HCI_projekat2.Dialogs
                     Datum.Focus();
                     return;
                 }
-                
+
                 model.Date = (DateTime)Datum.SelectedDate;
                 model.Renewable = renewable.IsChecked.Value;
                 model.Important = important.IsChecked.Value;
@@ -156,6 +172,23 @@ namespace HCI_projekat2.Dialogs
         {
             ChooseTypeDialog val = new ChooseTypeDialog(this);
             val.Show();
+        }
+
+        private void dodajEtiketu_Click(object sender, RoutedEventArgs e)
+        {
+            NewLabelDialog v = new NewLabelDialog();
+            v.ShowDialog();
+            EtiketeCheckList.Items.Clear();
+            foreach (LabelModel model in Etikete.Values)
+            {
+                EtiketeCheckList.Items.Add(model.ID);
+            }
+        }
+
+        private void dodajTip_Click(object sender, RoutedEventArgs e)
+        {
+            NewResourceType v = new NewResourceType();
+            v.ShowDialog();
         }
     }
 }

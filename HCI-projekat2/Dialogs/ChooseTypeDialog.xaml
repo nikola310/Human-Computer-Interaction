@@ -16,7 +16,7 @@
             <RowDefinition Height="91*" />
             <RowDefinition Height="16*" />
         </Grid.RowDefinitions>
-        <Label Grid.Row="0" HorizontalAlignment="Center" Margin="70,0,85,0" Width="137" FontSize="16">Izaberite jedan tip</Label>
+        <Label Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="84,0,69,0" Width="167" FontSize="16">Izaberite jedan tip</Label>
         <DataGrid Name="dgrType" Grid.Row="1" ItemsSource="{Binding Path=tipovi}" IsReadOnly="True" AutoGenerateColumns="False" IsSynchronizedWithCurrentItem="True" Margin="0,5,0,0">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ID" MinWidth="60" Width="SizeToCells" Binding="{Binding ID}"></DataGridTextColumn>

@@ -59,7 +59,7 @@
                  AcceptsReturn="True" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto"></TextBox>
         <xctk:ColorCanvas Name="Boja" Grid.Column="1" Grid.Row="1" Margin="3" ToolTip="Odaberite boju"></xctk:ColorCanvas>
 
-        <Button Grid.Column="1" Grid.Row="3" FontSize="16" Margin="10,2,279,8" Click="Button_Click" RenderTransformOrigin="0.525,0.68" Content="Dodaj">
+        <Button Grid.Column="1" Grid.Row="3" FontSize="16" Margin="10,2,232,8" Click="Button_Click" RenderTransformOrigin="0.525,0.68" Content="Dodaj etiketu">
             <Button.Style>
                 <Style TargetType="{x:Type Button}">
                     <Setter Property="IsEnabled" Value="false" />
@@ -74,6 +74,6 @@
                 </Style>
             </Button.Style>
         </Button>
-        <Button Grid.Column="1" Grid.Row="3" FontSize="16" Margin="95,2,183,8" Click="Close_Click">Odustani</Button>
+        <Button Grid.Column="1" Grid.Row="3" FontSize="16" Margin="137,2,141,8" Click="Close_Click">Odustani</Button>
     </Grid>
 </Window>

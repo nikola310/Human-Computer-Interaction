@@ -158,6 +158,23 @@ namespace HCI_projekat2.Dialogs
         {
 
         }
+
+        private void dodajEtiketu_Click(object sender, RoutedEventArgs e)
+        {
+            NewLabelDialog v = new NewLabelDialog();
+            v.ShowDialog();
+            EtiketeCheckList.Items.Clear();
+            foreach (LabelModel model in Etikete.Values)
+            {
+                EtiketeCheckList.Items.Add(model.ID);
+            }
+        }
+
+        private void dodajTip_Click(object sender, RoutedEventArgs e)
+        {
+            NewResourceType v = new NewResourceType();
+            v.ShowDialog();
+        }
     }
 }
 

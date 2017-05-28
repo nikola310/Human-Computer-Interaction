@@ -214,19 +214,19 @@ namespace HCI_projekat2
         private void AddNewRes_Click(object sender, RoutedEventArgs e)
         {
             var s = new NewResourceDialog();
-            s.Show();
+            s.ShowDialog();
         }
 
         private void NewResType_Click(object sender, RoutedEventArgs e)
         {
             var t = new NewResourceType();
-            t.Show();
+            t.ShowDialog();
         }
 
         private void NewResLabel_Click(object sender, RoutedEventArgs e)
         {
             var l = new NewLabelDialog();
-            l.Show();
+            l.ShowDialog();
         }
 
         private void ShowLabels_Click(object sender, RoutedEventArgs e)
