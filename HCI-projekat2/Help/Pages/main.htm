@@ -1,9 +1,277 @@
 ﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <html>
-	<head>
-		<title>Indeks</title>
-	</head>
-	<body>
-	    <h1>Indeks</h1>
-	</body>
+<head>
+    <title>Start</title>
+    <style type="text/css">
+        h2 {
+            font-size: 30px;
+        }
+
+        h3 {
+            font-size: 28px;
+        }
+
+        h4 {
+            font-size: 26px;
+        }
+
+        p, li, a {
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+    <h2 id="top">Sadržaj</h2>
+    <ul>
+        <li>
+            <h3>
+                <a href="#about">O aplikaciji</a>
+            </h3>
+        </li>
+        <li>
+            <h3>
+                <a href="#entities">Entiteti</a>
+            </h3>
+            <ul>
+                <li><a href="#resource">Resurs</a></li>
+                <li><a href="#rtype">Tip resursa</a></li>
+                <li><a href="#rlabel">Etiketa resursa</a></li>
+            </ul>
+        </li>
+        <li>
+            <h3>
+                <a href="#interface">Interfejs</a>
+            </h3>
+            <ul>
+                <li><a href="#menu">Meni</a></li>
+                <li><a href="#panel">Panel</a></li>
+                <li><a href="#map">Karta sveta</a></li>
+            </ul>
+        </li>
+        <li>
+            <h3>
+                <a href="#operations">Operacije</a>
+            </h3>
+            <ul>
+                <li><a href="#create">Kreiranje entiteta</a></li>
+                <li><a href="#edit">Izmena entiteta</a></li>
+                <li><a href="#mapo">Operacije nad kartom</a></li>
+                <li><a href="#users">Korisnici</a></li>
+            </ul>
+        </li>
+        <li>
+            <h3>
+                <a href="#shortcut">Prečac</a>
+            </h3>
+        </li>
+    </ul>
+    <hr />
+    <h2 id="about">O aplikaciji</h2>
+
+    <p>
+        Svrha ove aplikacije je vođenje evidencije o geografskoj distribuciji svetskih resursa.
+        Više informacija o entitetima koje se koriste u ovoj aplikaciji se nalazi pod sekcijom <a href="#entities">entiteti.</a>
+        Sekcija <a href="#interface">interfejs</a> opisuje interfejs aplikacije, dok sekcija <a href="#operations">operacije</a>
+        opisuje koje su sve operacije podržane u aplikaciji.
+    </p>
+
+    <hr />
+    <h2 id="entities">Entiteti</h2>
+
+    <h3 id="resource"><u>Resurs</u></h3>
+    <p>
+        Svaki resurs je opisan nizom atributa koji omogućavaju korisniku lakšu i specifičniju evidenciju resursa.
+        Osnovni atributi resursa su:
+    </p>
+
+    <h4>Ime</h4>
+    <p>
+        Ime predstavlja naziv resursa, preporuka je da bude lako čitljivo i prepoznatljivo, ali ne mora biti jedinstveno.
+    </p>
+
+    <h4>ID</h4>
+    <p>
+        ID predstavlja <u>jedinstveni</u> identifikator resursa (ključ), namenjen za katalogiranje i razlikovanje resursa.
+        Ne mogu da postoje dva resursa sa istim ID u bazi podataka.
+    </p>
+
+    <h4>Tip</h4>
+    <p>
+        Tip resursa predstavlja klasifikacionu grupu kojoj resurs pripada. Svaki resurs može pripadati tačno jednom tipu.
+        Više informacija o tipovima <a href="#rtype">ovde.</a>
+    </p>
+
+    <h4>Ikona</h4>
+    <p>
+        Ikona predstavlja grafičku reprezentaciju resursa. Nakon što se ispravno postavi resurs, ikona resursa je vidljiva na panelu ispod karte sveta.
+        Ikonu je moguće sa panela na određenu lokaciju na mapi. Ukoliko se ikonica eksplicitno ne navede, resursu će biti dodeljena ikonica tipa.
+    </p>
+
+    <h4>Opis</h4>
+    <p>
+        Polje opis predstavlja kratak opis onih karakteristika resursa koje nije moguće izraziti putem drugih atributa.
+        Na korisniku je da uredi ovaj tekst po želji. Preporučljivo je da korisnik unese barem nekakav komentar kako bi detaljnije opisao resurs.
+    </p>
+
+    <h4>Frekvencija</h4>
+    <p>
+        Ovaj atribut opisuje frekvenciju određenog resursa. Moguće je izabrati tri opcije: redak, čest ili univerzalan.
+    </p>
+
+    <h4>Jedinica mere</h4>
+    <p>
+        Ovaj atribut opisuje jedinicu koja se koristi za određivanje mere određenog resursa. Moguće je izabrati četiri opcije: merica, barel, tona ili kilogram.
+    </p>
+
+    <h4>Obnovljiv resurs</h4>
+    <p>
+        Daje informaciju da li je resurs obnovljiv ili ne.
+    </p>
+
+    <h4>Strateški važan resurs</h4>
+    <p>
+        Daje informaciju da li je resurs od strateške važnosti ili ne.
+    </p>
+
+    <h4>Moguće eksploatisanje</h4>
+    <p>
+        Daje informaciju da li je resurs moguće eksploatisati ili ne.
+    </p>
+
+    <h4>Cena</h4>
+    <p>
+        Cena resursa u dolarima. Predstavljena je pozitivnim realnim brojem.
+    </p>
+
+    <h4>Datum otkrivanja</h4>
+    <p>
+        Dan kad je otkriven resurs.
+    </p>
+
+    <h4>Etiketa resursa</h4>
+    <p>
+        Svaki resurs je moguće grupisati i na osnovu nekih posebnih karakteristika.
+        U tu svrhu se koriste etikete koje je moguće "tagovati" na određeni resurs.
+        Svaki resurs može imati jednu, nijednu ili više etiketa.
+    </p>
+    <a href="#top">povratak na početak</a>
+    <hr />
+    <h3 id="rtype"><u>Tip resursa</u></h3>
+    <p>
+        Tip predstavlja klasifikacionu grupu unutar koje se smeštaju srodni <a href="#resource">resursi.</a>
+        Jedan tip može obuhvatiti više resursa. Svaki tip je detaljnije opisan sa nekoliko atributa koji su dalje detaljnije objašnjeni.
+    </p>
+
+    <h4>Ime</h4>
+    <p>
+        Ime specificira naziv tipa. Ne mora biti jedinstveno.
+    </p>
+
+    <h4>ID</h4>
+    <p>
+        ID predstavlja <u>jedinstveni</u> identifikator tipa (ključ), namenjen za katalogiranje i razlikovanje tipova.
+        Ne mogu da postoje dva tipa sa istim ID u bazi podataka.
+    </p>
+
+    <h4>Ikona</h4>
+    <p>
+        Ikona predstavlja grafičku reprezentacuje resursa koje on predstavlja. U slučaju da sama vrsta nema svoju
+        ikonu, toj vrsti se dodeljuje ikona tipa kome ona pripada.
+    </p>
+
+    <h4>Opis</h4>
+    <p>
+        Opis predstavlja kratak opis onih karakteristika resursa koje nije moguće izraziti putem drugih atributa.
+        Na korisniku je da uredi ovaj tekst po želji. Preporučljivo je da korisnik unese barem nekakav komentar kako bi detaljnije opisao tip.
+    </p>
+
+    <a href="#top">povratak na početak</a>
+    <hr />
+    <h3 id="label"><u>Etiketa</u></h3>
+    <p>
+        Etiketa predstavlja posebnu oznaku koja se može dodeliti svakom resursu. Svaki resurs može imati jednu, nijednu ili više etiketa.
+        Namena etiketa je da grupišu određene resurse koje poseduju neku zajedničku karakteristiku nezavisnu od tipa.
+    </p>
+
+    <h4>ID</h4>
+    <p>
+        ID predstavlja <u>jedinstveni</u> identifikator etikete (ključ), namenjen za katalogiranje i razlikovanje etiketa.
+        Ne mogu da postoje dve etikete sa istim ID u bazi podataka.
+    </p>
+
+    <h4>Boja</h4>
+    <p>
+        Boja predstavlja "grafičku" reprezentaciju etikete. Svaka etiketa ima jednu boju koja ne mora biti jedinstvena.
+        Boja se dodeljuje na osnovu neke karakteristike same etikete i zavisi isključivo od logike kojom se koristi korisnik
+        (na primer, bojanje resursi čija eksploatacija je opasna za okoliš crvenom bojom).
+    </p>
+
+    <h4>Opis</h4>
+    <p>
+        Opis predstavlja kratak opis onih karakteristika etikete koje nije moguće izraziti putem drugih atributa.
+        Na korisniku je da uredi ovaj tekst po želji. Preporučljivo je da korisnik unese barem nekakav komentar kako bi detaljnije opisao etiketu.
+    </p>
+    <a href="#top">povratak na početak</a>
+    <hr />
+
+    <h2 id="interface">Interfejs</h2>
+    <p>
+        Ova sekcija sadrži osnovni opis interfejsa aplikacije.
+    </p>
+
+    <h3 id="menu">Meni</h3>
+    <p>
+        Meni na vrhu glavnog prozora sadrži tri podmenija. Klikom na "Datoteka", otvara se podmeni gde se mogu izabrati dijalozi za dodavanje
+        novih resursa, tipova i etiketa. Klikom na "Pregled", otvara se podmeni odakle se mogu izabrati tabelarni prikazi evidentiranih resursa, tipova i etiketa.
+        Pomoć se poziva pritiskom na podmeni "Pomoć".
+    </p>
+
+    <h3 id="panel">Panel</h3>
+    <p>
+        Panel na dnu glavnog prozora sadrži ikone evidentiranih resursa. Inicijalno je prazan.
+    </p>
+
+    <h3 id="map">Karta</h3>
+    <p>
+        Karta je satelitska snimka Zemlje. Inicijalno je prazna, ali je moguće dodati nove resurse njihovim prevlačenjem sa donjeg panela.
+    </p>
+
+    <a href="#top">povratak na početak</a>
+    <hr />
+    <h2 id="operations">Operacije</h2>
+    <p>
+        Aplikacija podržava rad nad resursima, tipovima i etiketama, sa ciljem evidentiranja resursa svetskih resursa. Svaki korisnik može praviti nove
+        entitete, menjati ih i brisati. Resurse je moguće pomerati po karti pomoću <i>Drag &amp; Drop</i> tehnike.
+    </p>
+
+    <h3 id="create">Kreiranje entiteta</h3>
+    <p>
+        Korisnik može praviti nove resurse, tipove i etikete. Da bi se napravio novi entitet potrebno je izabrati "Datoteka" iz glavnog menija i onda izabrati
+        određeni entitet. U zavisnosti od izbora pojaviće se određeni dijalog u kojem je moguće dalje moguće unositi vrednost određenih atributa.
+    </p>
+
+    <h3 id="edit">Izmena entiteta</h3>
+    <p>
+        Izmena vrednosti atributa entiteta je moguće otvaranjem tabelarnog prikaza, odabirom određenog entiteta i pozivom dijaloga za izmenu.
+        Tabelarnom prikazu se može pristupiti izborom opcije "Pregled" iz glavnog menija, te izborom odgovarajuće tabele (tj. tabele resursa, tipova ili etiketa).
+    </p>
+
+    <h3 id="mapf">Operacije nad kartom</h3>
+    <p>
+        Karta služi kako bi organizovala resurse po njihovoj geografskoj lokaciji na planeti. Potrebno je napraviti barem jedan entitet kako bi bilo moguće koristiti
+        funkcije mape. Kada se napravi novi entitet, on će biti vidljiv unutar panela na dnu glavnog prozora. Iz tog panela je moguće prevući ikonu resursa i smestiti
+        ju na kartu. Ikonu koja je smeštena unutar karte moguće je prevući na drugu lokaciju. Dva resursa ne mogu biti na istoj lokaciji.
+    </p>
+    <a href="#top">povratak na početak</a>
+    <hr />
+    <h3 id="users">Korisnici</h3>
+    <p>
+        
+    </p>
+
+    <h3 id="shortcut">Prečaci</h3>
+    <p>Ova sekcija sadrži korisne prečace koje podržava aplikacija.</p>
+
+
+</body>
 </html>

@@ -25,12 +25,12 @@ namespace HCI_projekat2.Help
         {
             InitializeComponent();
             string curDir = Directory.GetCurrentDirectory();
-            string path = String.Format("{0}/Help/{1}.htm", curDir, key);
+            string path = String.Format("{0}/Help/Pages/{1}.htm", curDir, key);
             if (!File.Exists(path))
             {
                 key = "error";
             }
-            Uri u = new Uri(String.Format("file:///{0}/Help/{1}.htm", curDir, key));
+            Uri u = new Uri(String.Format("file:///{0}/Help/Pages/{1}.htm", curDir, key));
             ch = new JavaScriptControlHelper(originator);
             wbHelp.ObjectForScripting = ch;
             wbHelp.Navigate(u);

@@ -294,12 +294,24 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <Content Include="Help\Pages\error.htm" />
-    <Resource Include="Help\Pages\graph2.png" />
-    <Content Include="Help\Pages\Ime.htm" />
-    <Content Include="Help\Pages\main.htm" />
-    <Content Include="Help\Pages\index.htm" />
-    <Content Include="Help\Pages\Prezime.htm" />
+    <Content Include="Help\Pages\error.htm">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Resource Include="Help\Pages\graph2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Content Include="Help\Pages\Ime.htm">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Help\Pages\index.htm">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Help\Pages\main.htm">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Help\Pages\Prezime.htm">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
