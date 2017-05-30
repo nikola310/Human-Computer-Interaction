@@ -1,4 +1,5 @@
 ﻿using HCI_projekat2.Model;
+using HCI_projekat2.Tabels;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -25,7 +26,9 @@ namespace HCI_projekat2.Dialogs
         private TypeModel mod = new TypeModel();
         private NewResourceDialog res;
         private ChangeResourceDialog chr;
+        private ResourceTable resTable;
         private bool flag = false;
+        private bool resTableFlag = false;
 
         public ObservableCollection<TypeModel> tipovi
         {
@@ -57,6 +60,19 @@ namespace HCI_projekat2.Dialogs
             DataContext = this;
         }
 
+        public ChooseTypeDialog(ResourceTable dg)
+        {
+            InitializeComponent();
+            tipovi = new ObservableCollection<TypeModel>();
+            resTable = dg;
+            resTableFlag = true;
+            foreach (TypeModel s in Tipovi.Values)
+            {
+                tipovi.Add(s);
+            }
+            DataContext = this;
+        }
+
         private void Odustani_Click(object sender, RoutedEventArgs e)
         {
             Close();
@@ -71,6 +87,9 @@ namespace HCI_projekat2.Dialogs
             if (flag)
             {
                 chr.Model.Type = model;
+            }else if (resTableFlag)
+            {
+                resTable.tipTextBox.Text = model.ID;
             }
             else
             {

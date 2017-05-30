@@ -27,7 +27,6 @@ namespace HCI_projekat2.Dialogs
         private string oldID;
         private Dictionary<string, LabelModel> oldDictionary;
         private LabelTable parent;
-        private ObservableCollection<LabelModel> oldEtikete;
 
         public ChangeLabelDialog(LabelTable parent, LabelModel m)
         {

@@ -4,44 +4,143 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:f="clr-namespace:HCI_projekat2"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         xmlns:local="clr-namespace:HCI_projekat2.Tabels"
         mc:Ignorable="d"
-        Title="ResourceTable" Height="604.593" Width="1188.15" FontSize="16" ResizeMode="CanMinimize" FontFamily="/HCI-projekat2;component/#Pragmata Pro">
+        Title="ResourceTable" Height="594.593" Width="1188.15" FontSize="16" ResizeMode="CanMinimize" FontFamily="/HCI-projekat2;component/#Pragmata Pro">
     <Grid Margin="0,0,0,5">
         <Grid.RowDefinitions>
-            <RowDefinition Height="354*" />
-            <RowDefinition Height="37*" />
+            <RowDefinition Height="58*" />
+            <RowDefinition Height="5*" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="60*" />
-            <ColumnDefinition Width="137*" />
+            <ColumnDefinition Width="69*" />
+            <ColumnDefinition Width="128*" />
         </Grid.ColumnDefinitions>
 
-        <ScrollViewer Grid.Column="0" Grid.Row="0" Margin="0,0,0,-100" Grid.RowSpan="2">
-            <Grid>
+        <!--ScrollViewer Margin="12,12,10,0" Grid.Column="0">
+            <Grid Width="224">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="62*" />
-                    <RowDefinition Height="47*" />
-                    <RowDefinition Height="46*" />
-                    <RowDefinition Height="171*" />
-                    <RowDefinition Height="93*" />
-                    <RowDefinition Height="24*" />
-                    <RowDefinition Height="24*" />
-                    <RowDefinition Height="0*" />
-                    <RowDefinition Height="204*" />
+                    <RowDefinition Height="28" />
+                    <RowDefinition Height="28" />
+                    <RowDefinition Height="13" />
+                    <RowDefinition Height="15" />
+                    <RowDefinition Height="28" />
+                    <RowDefinition Height="28" />
+                    <RowDefinition Height="28" />
+                    <RowDefinition Height="28" />
+                    <RowDefinition Height="28" />
+                    <RowDefinition Height="28" />
+                    <RowDefinition Height="28" />
+                    <RowDefinition Height="28" />
+                    <RowDefinition Height="28" />
+                    <RowDefinition Height="28" />
+                    <RowDefinition Height="28" />
+                    <RowDefinition Height="28" />
+                    <RowDefinition Height="28" />
+                    <RowDefinition Height="28" />
+                    <RowDefinition Height="16*" />
+                </Grid.RowDefinitions>
+                <Label Content="Oznaka:" Height="28" HorizontalAlignment="Left" Margin="6,0,0,0" Name="label1" VerticalAlignment="Top" FontSize="16" />
+                <TextBox Grid.Row="4" Height="23" HorizontalAlignment="Left" Margin="13,5,0,0" Name="imeFilter" VerticalAlignment="Top" Width="120" TextChanged="filterTabeleTxt" />
+                <Label Content="Ime:" Grid.Row="2" Height="28" HorizontalAlignment="Left" Margin="7,0,0,0" Name="label2" VerticalAlignment="Top" FontSize="16" Grid.RowSpan="2" />
+                <Label Content="Dozvoljen alkohol:" Grid.Row="7" Grid.RowSpan="2" Height="28" HorizontalAlignment="Left" Margin="6,1,0,0" Name="label3" VerticalAlignment="Top" FontSize="16" />
+                <Label Content="Cena:" Grid.Row="9" Height="28" HorizontalAlignment="Left" Margin="7,0,0,0" Name="label4" VerticalAlignment="Top" FontSize="16" />
+                <Label Content="Tip:" Grid.Row="11" Height="44" HorizontalAlignment="Left" Margin="9,0,0,0" Name="label5" VerticalAlignment="Top" FontSize="16" Grid.RowSpan="2" />
+                <Label Content="Dozvoljeno za pusace:" Height="28" HorizontalAlignment="Left" Margin="16,54,0,0" Name="label6" VerticalAlignment="Top" Grid.Row="14" Grid.RowSpan="2" />
+                <Label Content="Opis:" Grid.Row="5" Height="51" HorizontalAlignment="Left" Margin="6,0,0,0" Name="label7" VerticalAlignment="Top" Width="85" FontSize="16" Grid.RowSpan="2" />
+                <TextBox Grid.Row="6" Height="23" HorizontalAlignment="Left" Margin="13,0,0,0" Name="opisFilter" VerticalAlignment="Top" Width="120" TextChanged="filterTabeleTxt" />
+                <ComboBox Grid.Row="8" Height="23" HorizontalAlignment="Left" Margin="13,5,0,0" Name="alkoholKombo" VerticalAlignment="Top" Width="120" SelectionChanged="filterTabeleCmb">
+                    <ComboBoxItem Name="alkObe">Bez filtera</ComboBoxItem>
+                    <ComboBoxItem Name="neSluzi">Ne služi se</ComboBoxItem>
+                    <ComboBoxItem Name="sluzi23">Služi do 23</ComboBoxItem>
+                    <ComboBoxItem Name="sluziNocu">Služi i kasno noću</ComboBoxItem>
+                </ComboBox>
+                <ComboBox Grid.Row="10" Height="23" HorizontalAlignment="Left" Margin="13,5,0,0" Name="cenaKombo" VerticalAlignment="Top" Width="120" SelectionChanged="filterTabeleCmb">
+                    <ComboBoxItem Name="Obe">Bez filtera</ComboBoxItem>
+                    <ComboBoxItem Name="Niske">Niske</ComboBoxItem>
+                    <ComboBoxItem Name="Srednje">Srednje</ComboBoxItem>
+                    <ComboBoxItem Name="Visoke">Visoke</ComboBoxItem>
+                    <ComboBoxItem Name="ExtrVisoke">Izuzetno Visoke</ComboBoxItem>
+                </ComboBox>
+                <Label Content="Dostupan hendikepiranima:" Grid.Row="13" Height="45" HorizontalAlignment="Left" Margin="6,0,0,0" Name="label8" VerticalAlignment="Top" FontSize="16" Grid.RowSpan="2" />
+                <ComboBox Grid.Row="12" Height="23" HorizontalAlignment="Left" Margin="13,5,0,0" Name="tipKombo" VerticalAlignment="Top" Width="120" SelectionChanged="filterTabeleCmb" />
+                <ComboBox Grid.Row="14" Height="23" HorizontalAlignment="Left" Margin="13,5,0,0" Name="hendikepiraniKombo" VerticalAlignment="Top" Width="120" SelectionChanged="filterTabeleCmb">
+                    <ComboBoxItem Name="hendiObe">Bez filtera</ComboBoxItem>
+                    <ComboBoxItem Name="hendiDa">Da</ComboBoxItem>
+                    <ComboBoxItem Name="hendiNe">Ne</ComboBoxItem>
+                </ComboBox>
+                <Label Grid.Row="15" Height="54" HorizontalAlignment="Left" Margin="6,0,0,0" Name="label9" VerticalAlignment="Top" FontSize="16" Grid.RowSpan="2" Width="188" Content="Dozvoljeno pusenje:" />
+                <ComboBox Grid.Row="16" Height="23" HorizontalAlignment="Left" Margin="13,3,0,0" Name="pusenjeKombo" VerticalAlignment="Top" Width="120" SelectionChanged="filterTabeleCmb">
+                    <ComboBoxItem Name="pusObe">Bez filtera</ComboBoxItem>
+                    <ComboBoxItem Name="pusDa">Da</ComboBoxItem>
+                    <ComboBoxItem Name="pusNe">Ne</ComboBoxItem>
+                </ComboBox>
+                <Label Grid.Row="17" Grid.RowSpan="2" Height="46" HorizontalAlignment="Left" Margin="6,3,0,0" Name="label10" VerticalAlignment="Top" FontSize="16" Width="120" Content="Rezervacije:" />
+                <ComboBox Grid.Row="18" Height="23" HorizontalAlignment="Left" Margin="13,4,0,0" Name="rezervacijeKombo" VerticalAlignment="Top" Width="120" SelectionChanged="filterTabeleCmb">
+                    <ComboBoxItem Name="rezervObe">Bez filtera</ComboBoxItem>
+                    <ComboBoxItem Name="rezervDa">Da</ComboBoxItem>
+                    <ComboBoxItem Name="rezervNe">Ne</ComboBoxItem>
+                </ComboBox>
+                <TextBox Height="23" HorizontalAlignment="Left" Margin="13,0,0,0" Name="oznakaFilter" VerticalAlignment="Top" Width="120" TextChanged="filterTabeleTxt" Grid.Row="1" />
+            </Grid>
+        </ScrollViewer-->
+
+        <ScrollViewer Grid.Column="0" Grid.Row="0">
+            <Grid Width="400">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="45" />
+                    <RowDefinition Height="45" />
+                    <RowDefinition Height="45" />
+                    <RowDefinition Height="45" />
+                    <RowDefinition Height="45" />
+                    <RowDefinition Height="45" />
+                    <RowDefinition Height="45" />
+                    <RowDefinition Height="45" />
+                    <RowDefinition Height="45" />
+                    <RowDefinition Height="45" />
+                    <RowDefinition Height="45" />
+                    <RowDefinition Height="45" />
+                    <RowDefinition Height="45" />
+                    <RowDefinition Height="45" />
+                    <RowDefinition Height="45" />
+                    <RowDefinition Height="45" />
+                    <RowDefinition />
                 </Grid.RowDefinitions>
                 <Label x:Name="idLabel" Content="ID:" HorizontalAlignment="Left" Margin="10,14,0,0" VerticalAlignment="Top" Grid.Row="0" Height="27" Width="41"/>
-                <TextBox x:Name="idTextBox" MaxLength="20"  HorizontalAlignment="Left" Height="27" Margin="106,14,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="227" Grid.Row="0" TextChanged="filtrirajTabelu"/>
-                <Label x:Name="opisLabel" Content="Opis:" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="3" VerticalAlignment="Top" RenderTransformOrigin="0.392,0.5" Height="28" Width="51"/>
-                <TextBox x:Name="opisTextBox" HorizontalAlignment="Left" Height="148" Margin="106,10,0,0" Grid.Row="3" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" TextWrapping="Wrap" VerticalAlignment="Top" Width="227" TextChanged="filtrirajTabelu"/>
+                <TextBox x:Name="idTextBox" MaxLength="20"  HorizontalAlignment="Left" Height="27" Margin="141,14,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="227" Grid.Row="0" TextChanged="filtrirajTabelu"/>
+                <Label x:Name="opisLabel" Content="Opis:" HorizontalAlignment="Left" Margin="21,10,0,0" Grid.Row="9" VerticalAlignment="Top" RenderTransformOrigin="0.392,0.5" Height="28" Width="51"/>
+                <TextBox x:Name="opisTextBox" HorizontalAlignment="Left" Height="70" Margin="141,10,0,0" Grid.Row="9" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" TextWrapping="Wrap" VerticalAlignment="Top" Width="227" TextChanged="filtrirajTabelu" Grid.RowSpan="2"/>
                 <Label x:Name="label" Content="Ime:" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top" Height="28" Width="43"/>
-                <TextBox x:Name="imeTextBox" HorizontalAlignment="Left" Height="28" Margin="106,10,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="227"/>
+                <TextBox x:Name="imeTextBox" HorizontalAlignment="Left" Height="28" Margin="141,10,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="227" TextChanged="filtrirajTabelu"/>
                 <Label x:Name="label1" Content="Cena[USD]:" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="2" VerticalAlignment="Top" Height="28" Width="93"/>
-                <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="28" Margin="106,10,0,0" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="227"/>
+                <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="28" Margin="141,10,0,0" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="227" TextChanged="filtrirajTabelu"/>
+                <Button x:Name="tipButton" Content="Izaberi" HorizontalAlignment="Left" Margin="293,12,0,0" Grid.Row="3" VerticalAlignment="Top" Width="75" Height="22" Click="tipButton_Click"/>
+                <Button x:Name="button3" Content="Button" HorizontalAlignment="Left" Margin="76,13,0,0" Grid.Row="15" VerticalAlignment="Top" Width="75" Height="22"/>
+                <Label x:Name="label2" Content="Tip:" HorizontalAlignment="Left" Margin="10,7,0,0" Grid.Row="3" VerticalAlignment="Top"/>
+                <TextBox x:Name="tipTextBox" HorizontalAlignment="Left" Height="23" Margin="141,12,0,0" Grid.Row="3" TextWrapping="Wrap" VerticalAlignment="Top" Width="147" IsReadOnly="True" TextChanged="filtrirajTabelu" />
+                <Label x:Name="label3" Content="Frekvencija:" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="4" VerticalAlignment="Top"/>
+                <ComboBox x:Name="frekvencijaComboBox" HorizontalAlignment="Left" Margin="141,10,0,0" Grid.Row="4" VerticalAlignment="Top" Width="134" SelectionChanged="filtrirajTabeluComboBox">
+                    <ComboBoxItem FontSize="16" Content="" />
+                    <ComboBoxItem FontSize="16">Redak</ComboBoxItem>
+                    <ComboBoxItem FontSize="16">Čest</ComboBoxItem>
+                    <ComboBoxItem FontSize="16">Univerzalan</ComboBoxItem>
+                </ComboBox>
+                <Label x:Name="label4" Content="Jedinica mere:" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="5" VerticalAlignment="Top"/>
+                <ComboBox x:Name="meraComboBox" HorizontalAlignment="Left" Margin="141,10,0,0" Grid.Row="5" VerticalAlignment="Top" Width="134" SelectionChanged="filtrirajTabeluComboBox">
+                    <ComboBoxItem FontSize="16" Content="" />
+                    <ComboBoxItem FontSize="16">Merica</ComboBoxItem>
+                    <ComboBoxItem FontSize="16">Barel</ComboBoxItem>
+                    <ComboBoxItem FontSize="16">Tona</ComboBoxItem>
+                    <ComboBoxItem FontSize="16">Kilogram</ComboBoxItem>
+                </ComboBox>
+                <CheckBox x:Name="obnovljivCheckBox" Content="Obnovljiv resurs" HorizontalAlignment="Left" Margin="21,10,0,0" Grid.Row="6" VerticalAlignment="Top" Checked="filtrirajTabeluCheckBox" Unchecked="filtrirajTabeluCheckBox"/>
+                <CheckBox x:Name="strategijaCheckBox" Content="Strateški važan resurs" HorizontalAlignment="Left" Margin="21,10,0,0" Grid.Row="7" VerticalAlignment="Top" Checked="filtrirajTabeluCheckBox" Unchecked="filtrirajTabeluCheckBox"/>
+                <CheckBox x:Name="eksploatisanjeCheckBox" Content="Moguće eksploatisanje" HorizontalAlignment="Left" Margin="21,10,0,0" Grid.Row="8" VerticalAlignment="Top" Checked="filtrirajTabeluCheckBox" Unchecked="filtrirajTabeluCheckBox"/>
             </Grid>
         </ScrollViewer>
 
-        <DataGrid x:Name="dgrMain" Grid.Column="1" ItemsSource="{Binding Path=resursi}" IsReadOnly="True" AutoGenerateColumns="False" IsSynchronizedWithCurrentItem="True">
+        <DataGrid x:Name="dgrMain" Grid.Column="1" ItemsSource="{Binding Path=resursi}" IsReadOnly="True" AutoGenerateColumns="False" IsSynchronizedWithCurrentItem="True" HorizontalScrollBarVisibility="Auto">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ID" MinWidth="60" Width="SizeToCells" Binding="{Binding ID}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Ime" MinWidth="60" Width="SizeToCells" Binding="{Binding Name}"></DataGridTextColumn>
@@ -59,9 +158,9 @@
 
         </DataGrid>
 
-        <Button Grid.Row="1" FontSize="16"  Grid.Column="1" Margin="147,8,604,10" Click="Obrisi_Click">Obriši</Button>
-        <Button Grid.Row="1" FontSize="16"  Grid.Column="1" Content="Izmeni" Margin="25,8,724,10" Click="Izmeni_Click" ToolTip="Izmenite izabrani resurs"/>
-        <Button Grid.Row="1" FontSize="16"  Grid.Column="1" Content="Izađi" Margin="269,7,490,10" Click="Izadji_Click"/>
-        <Button x:Name="resetFilter" FontSize="16" Content="Resetuj filter" HorizontalAlignment="Left" Margin="66,7,0,0" VerticalAlignment="Top" Width="127" Height="25" Click="resetFilter_Click" Grid.Row="1"/>
+        <Button Grid.Row="1" FontSize="16"  Grid.Column="1" Margin="143,10,550,8" Click="Obrisi_Click">Obriši</Button>
+        <Button Grid.Row="1" FontSize="16"  Grid.Column="1" Content="Izmeni" Margin="43,10,654,8" Click="Izmeni_Click" ToolTip="Izmenite izabrani resurs"/>
+        <Button Grid.Row="1" FontSize="16"  Grid.Column="1" Content="Izađi" Margin="247,10,461,8" Click="Izadji_Click"/>
+        <Button x:Name="resetFilter" FontSize="16" Content="Resetuj filter" HorizontalAlignment="Left" Margin="127,10,0,0" VerticalAlignment="Top" Width="127" Height="25" Click="resetFilter_Click" Grid.Row="1"/>
     </Grid>
 </Window>

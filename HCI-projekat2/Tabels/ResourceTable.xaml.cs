@@ -37,17 +37,22 @@ namespace HCI_projekat2.Tabels
             get;
             set;
         }
-
+        public ObservableCollection<ResourceModel> resursiContainer
+        {
+            get;
+            set;
+        }
 
         public ResourceTable(MainWindow parent)
         {
             InitializeComponent();
-            resursi = new ObservableCollection<ResourceModel>();
+            resursi = new ObservableCollection<ResourceModel>(Resursi.Values);
+            resursiContainer = new ObservableCollection<ResourceModel>(Resursi.Values);
             labels = new ObservableCollection<LabelModel>();
-            foreach (ResourceModel tmp in Resursi.Values)
-            {
-                resursi.Add(tmp);
-            }
+            /*            foreach (ResourceModel tmp in Resursi.Values)
+                        {
+                            resursi.Add(tmp);
+                        }*/
             //foreach(LabelModel lab in )
             mW = parent;
             DataContext = this;
@@ -66,7 +71,7 @@ namespace HCI_projekat2.Tabels
             {
                 ResourceModel model = (ResourceModel)dgrMain.SelectedItem;
 
-                foreach(Image img in mW.Canvas.Children)
+                foreach (Image img in mW.Canvas.Children)
                 {
                     if (img.Tag.Equals(model))
                     {
@@ -86,7 +91,7 @@ namespace HCI_projekat2.Tabels
 
                 mW.iscrtajOpet();
 
-                mW.removeResourceFromMap(model);                
+                mW.removeResourceFromMap(model);
 
                 MessageBox.Show(this, "Resurs je obrisan.", "Operacija uspešna", MessageBoxButton.OK, MessageBoxImage.Information);
             }
@@ -98,7 +103,7 @@ namespace HCI_projekat2.Tabels
             ChangeResourceDialog val = new ChangeResourceDialog(model, mW);
             val.ShowDialog();
 
-            
+
         }
 
         private void resetFilter_Click(object sender, RoutedEventArgs e)
@@ -108,7 +113,60 @@ namespace HCI_projekat2.Tabels
 
         private void filtrirajTabelu(object sender, TextChangedEventArgs e)
         {
+            filtriraj();
+        }
 
+        private void filtrirajTabeluComboBox(object sender, SelectionChangedEventArgs e)
+        {
+            filtriraj();
+        }
+
+        private void filtriraj()
+        {
+            resursi.Clear();
+            bool uslov;
+
+            foreach (ResourceModel res in resursiContainer)
+            {
+                uslov = true;
+                if (!idTextBox.Text.Equals(""))
+                {
+                    if (!res.ID.Contains(idTextBox.Text))
+                    {
+                        uslov = false;
+                    }
+                }
+
+                if (!opisTextBox.Text.Equals(""))
+                {
+                    if (!res.Desc.Contains(opisTextBox.Text))
+                    {
+                        uslov = false;
+                    }
+                }
+
+                if (!tipTextBox.Text.Equals(""))
+                {
+                    if (!res.Type.ID.Contains(tipTextBox.Text))
+                    {
+                        uslov = false;
+                    }
+                }
+
+                if (uslov)
+                    resursi.Add(res);
+            }
+        }
+
+        private void filtrirajTabeluCheckBox(object sender, RoutedEventArgs e)
+        {
+            filtriraj();
+        }
+
+        private void tipButton_Click(object sender, RoutedEventArgs e)
+        {
+            ChooseTypeDialog val = new ChooseTypeDialog(this);
+            val.ShowDialog();
         }
     }
 }
