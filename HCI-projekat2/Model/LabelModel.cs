@@ -69,5 +69,12 @@ namespace HCI_projekat2.Model
             Clr = selectedColor;
             Desc = desc;
         }
+
+        public LabelModel(LabelModel m)
+        {
+            ID = m.ID;
+            Clr = m.Clr;
+            Desc = m.Desc;
+        }
     }
 }

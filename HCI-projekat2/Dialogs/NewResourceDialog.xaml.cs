@@ -71,7 +71,11 @@ namespace HCI_projekat2.Dialogs
         private void Izaberi_Tip_Click(object sender, RoutedEventArgs e)
         {
             ChooseTypeDialog val = new ChooseTypeDialog(this);
-            val.Show();
+            val.ShowDialog();
+            if(model.Type.ID != null && (model.IconPath == "" || model.IconPath == null || model.IconPath == "/Images/qmark2.png"))
+            {
+                model.IconPath = model.Type.IconPath;
+            }
         }
 
         private void Dodaj_Resurs_Click(object sender, RoutedEventArgs e)

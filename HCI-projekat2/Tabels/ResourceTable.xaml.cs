@@ -95,8 +95,10 @@ namespace HCI_projekat2.Tabels
         private void Izmeni_Click(object sender, RoutedEventArgs e)
         {
             ResourceModel model = (ResourceModel)dgrMain.SelectedItem;
-            ChangeResourceDialog val = new ChangeResourceDialog(model);
-            val.Show();
+            ChangeResourceDialog val = new ChangeResourceDialog(model, mW);
+            val.ShowDialog();
+
+            
         }
     }
 }

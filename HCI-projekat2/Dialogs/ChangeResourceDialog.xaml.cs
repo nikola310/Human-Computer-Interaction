@@ -38,6 +38,8 @@ namespace HCI_projekat2.Dialogs
             }
         }
 
+        private MainWindow mW;
+
         public event PropertyChangedEventHandler PropertyChanged;
         protected virtual void OnPropertyChanged(string name)
         {
@@ -49,13 +51,13 @@ namespace HCI_projekat2.Dialogs
             InitializeComponent();
         }
 
-        public ChangeResourceDialog(ResourceModel model)
+        public ChangeResourceDialog(ResourceModel model, MainWindow mW)
         {
             InitializeComponent();
 
             this.model = model;
             DataContext = model;
-
+            this.mW = mW;
             foreach (LabelModel e in Etikete.Values)
             {
                 EtiketeCheckList.Items.Add(e.ID);
@@ -72,9 +74,9 @@ namespace HCI_projekat2.Dialogs
                 }
             }*/
 
-            foreach(LabelModel lbl in model.Labels)
+            foreach (LabelModel lbl in model.Labels)
             {
-               EtiketeCheckList.SelectedItems.Add(lbl.ID);
+                EtiketeCheckList.SelectedItems.Add(lbl.ID);
             }
 
             Datum.SelectedDate = model.Date;
@@ -82,7 +84,7 @@ namespace HCI_projekat2.Dialogs
             renewable.IsChecked = model.Renewable;
             important.IsChecked = model.Important;
             exploit.IsChecked = model.Exploit;
-            
+
         }
 
         private void Izmeni_Resurs_Click(object sender, RoutedEventArgs e)
@@ -153,6 +155,18 @@ namespace HCI_projekat2.Dialogs
 
                 Resursi[model.ID] = model;
 
+                foreach (Image img in mW.Canvas.Children)
+                {
+                    ResourceModel mdl = (ResourceModel)img.Tag;
+                    if (mdl.ID.Equals(model.ID))
+                    {
+                        img.Source = new ImageSourceConverter().ConvertFromString(mdl.IconPath) as ImageSource;
+                        img.ToolTip = mW.addTooltip(mdl);
+                        img.Tag = model;
+                        break;
+                    }
+                }
+
                 Close();
             }
         }
@@ -196,5 +210,7 @@ namespace HCI_projekat2.Dialogs
             NewResourceType v = new NewResourceType();
             v.ShowDialog();
         }
+
+
     }
 }

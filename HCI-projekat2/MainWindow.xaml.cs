@@ -195,15 +195,6 @@ namespace HCI_projekat2
                 
 
                 DataContext = this;
-                /* Uri myUri = new Uri("/Images/world.jpg", UriKind.RelativeOrAbsolute);
-                   JpegBitmapDecoder decoder2 = new JpegBitmapDecoder(myUri, BitmapCreateOptions.PreservePixelFormat, BitmapCacheOption.Default);
-                   BitmapSource bitmapSource2 = decoder2.Frames[0];
-
-                   // Draw the Image
-                   mapa.Source = bitmapSource2;
-                   mapa.Stretch = Stretch.Uniform;
-                   mapa.Margin = new Thickness(0);
-                   */
             }
             else
             {
@@ -330,7 +321,7 @@ namespace HCI_projekat2
             if (EtiketeSacuvaj() && ResurseSacuvaj() && TipoveSacuvaj() && sacuvajKorisnike())
             {
                 MessageBoxResult msg;
-                msg = MessageBox.Show(this, "Podaci su uspešno sačuvani.", "Operacija uspešna", MessageBoxButton.OK, MessageBoxImage.None);
+                msg = MessageBox.Show(this, "Podaci su uspešno sačuvani.", "Operacija uspešna", MessageBoxButton.OK, MessageBoxImage.Exclamation);
             }
             else
             {
@@ -501,7 +492,7 @@ namespace HCI_projekat2
             ikoniceResursa = new ObservableCollection<ResourceModel>();
             foreach (ResourceModel model in Resursi.Values)
             {
-                //                    &&?
+
                 if (model.Point.X != 0 || model.Point.Y != 0)
                 {
                     Image cpy = new Image();
@@ -514,9 +505,8 @@ namespace HCI_projekat2
 
                     cpy.Tag = model;
 
-                    //DODATI JOS NECEGA U TOOLTIP
-                    cpy.ToolTip = model.Name + Environment.NewLine + model.Date.ToShortDateString()
-                        + Environment.NewLine + model.Price + Environment.NewLine + model.Type.Name;
+
+                    cpy.ToolTip = addTooltip(model);
 
                     Canvas.SetLeft(cpy, model.Point.X - cpy.Width / 2);
                     Canvas.SetTop(cpy, model.Point.Y - cpy.Height / 2);
@@ -576,12 +566,10 @@ namespace HCI_projekat2
                 cpy.Cursor = Cursors.Hand;
                 cpy.PreviewMouseLeftButtonDown += new MouseButtonEventHandler(Image_PreviewMouseLeftButtonDown);
                 cpy.MouseMove += new MouseEventHandler(Image_MouseMove);
-
+                
                 cpy.Tag = img.Tag;
 
-                //DODATI JOS NECEGA U TOOLTIP
-                cpy.ToolTip = ((ResourceModel)img.Tag).Name + Environment.NewLine + ((ResourceModel)img.Tag).Date.ToShortDateString()
-                    + Environment.NewLine + ((ResourceModel)img.Tag).Price + Environment.NewLine + ((ResourceModel)img.Tag).Type.Name;
+                cpy.ToolTip = addTooltip(((ResourceModel)img.Tag));
 
                 //kontekstni meni
 
@@ -692,6 +680,15 @@ namespace HCI_projekat2
         {
             HelpProvider.ShowHelp("main", this);
         }
+
+        //DODATI JOS NESTO U TOOLTIP???
+        public string addTooltip(ResourceModel model)
+        {
+            return model.Name + Environment.NewLine + model.Date.ToShortDateString() + Environment.NewLine + model.Price + "$" 
+                + Environment.NewLine + model.Type.Name;
+        }
+
+
     }
 }
 

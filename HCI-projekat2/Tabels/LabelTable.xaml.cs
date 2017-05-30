@@ -68,8 +68,9 @@ namespace HCI_projekat2.Tabels
         private void Izmeni_Click(object sender, RoutedEventArgs e)
         {
             LabelModel model = (LabelModel)dgrMain.SelectedItem;
-            ChangeLabelDialog val = new ChangeLabelDialog(model);
-            val.Show();
+            ChangeLabelDialog val = new ChangeLabelDialog(this, model);
+            val.ShowDialog();
+            dgrMain.Items.Refresh();
         }
 
         private void filterButton_Click(object sender, RoutedEventArgs e)

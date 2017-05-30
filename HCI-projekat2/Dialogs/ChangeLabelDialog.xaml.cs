@@ -1,6 +1,8 @@
 ﻿using HCI_projekat2.Model;
+using HCI_projekat2.Tabels;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,14 +24,21 @@ namespace HCI_projekat2.Dialogs
     public partial class ChangeLabelDialog : Window
     {
         private LabelModel model;
+        private string oldID;
+        private Dictionary<string, LabelModel> oldDictionary;
+        private LabelTable parent;
+        private ObservableCollection<LabelModel> oldEtikete;
 
-        public ChangeLabelDialog(LabelModel m)
+        public ChangeLabelDialog(LabelTable parent, LabelModel m)
         {
             InitializeComponent();
-            model = m;
+            this.parent = parent;
+            oldDictionary = Etikete;
+            oldID = m.ID;
+            model = new LabelModel(m);
             Boja.SelectedColor = (Color)ColorConverter.ConvertFromString(model.Clr);
             Opis.Text = model.Desc;
-            IDetikete.Text = model.ID;
+            DataContext = model;
         }
 
         private void Izmeni_Click(object sender, RoutedEventArgs e)
@@ -46,9 +55,20 @@ namespace HCI_projekat2.Dialogs
                 Opis.Text = "";
             }
 
-            Etikete[model.ID].Clr = Boja.SelectedColor.ToString();
-            Etikete[model.ID].Desc = Opis.Text;
+            if (!IDetikete.Text.Equals(oldID))
+            {
+                Etikete.Clear();
+                oldDictionary.Remove(oldID);
+                LabelModel tmp = new LabelModel(IDetikete.Text, Boja.SelectedColor.ToString(), Opis.Text);
+                oldDictionary.Add(tmp.ID, tmp);
+                Etikete = new Dictionary<string, LabelModel>(oldDictionary);
+                parent.dgrMain.Items.Refresh();
+            } else {
 
+
+                Etikete[model.ID].Clr = Boja.SelectedColor.ToString();
+                Etikete[model.ID].Desc = Opis.Text;
+            }
             Close();
         }
     }
