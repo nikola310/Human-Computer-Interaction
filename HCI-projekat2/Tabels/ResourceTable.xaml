@@ -6,19 +6,45 @@
         xmlns:f="clr-namespace:HCI_projekat2"
         xmlns:local="clr-namespace:HCI_projekat2.Tabels"
         mc:Ignorable="d"
-        Title="ResourceTable" Height="389.593" Width="927.15" ResizeMode="CanMinimize" FontFamily="/HCI-projekat2;component/#Pragmata Pro">
+        Title="ResourceTable" Height="604.593" Width="1188.15" FontSize="16" ResizeMode="CanMinimize" FontFamily="/HCI-projekat2;component/#Pragmata Pro">
     <Grid Margin="0,0,0,5">
         <Grid.RowDefinitions>
             <RowDefinition Height="354*" />
             <RowDefinition Height="37*" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition />
+            <ColumnDefinition Width="60*" />
+            <ColumnDefinition Width="137*" />
         </Grid.ColumnDefinitions>
-        <DataGrid x:Name="dgrMain" ItemsSource="{Binding Path=resursi}" IsReadOnly="True" AutoGenerateColumns="False" IsSynchronizedWithCurrentItem="True">
+
+        <ScrollViewer Grid.Column="0" Grid.Row="0" Margin="0,0,0,-100" Grid.RowSpan="2">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="62*" />
+                    <RowDefinition Height="47*" />
+                    <RowDefinition Height="46*" />
+                    <RowDefinition Height="171*" />
+                    <RowDefinition Height="93*" />
+                    <RowDefinition Height="24*" />
+                    <RowDefinition Height="24*" />
+                    <RowDefinition Height="0*" />
+                    <RowDefinition Height="204*" />
+                </Grid.RowDefinitions>
+                <Label x:Name="idLabel" Content="ID:" HorizontalAlignment="Left" Margin="10,14,0,0" VerticalAlignment="Top" Grid.Row="0" Height="27" Width="41"/>
+                <TextBox x:Name="idTextBox" MaxLength="20"  HorizontalAlignment="Left" Height="27" Margin="106,14,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="227" Grid.Row="0" TextChanged="filtrirajTabelu"/>
+                <Label x:Name="opisLabel" Content="Opis:" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="3" VerticalAlignment="Top" RenderTransformOrigin="0.392,0.5" Height="28" Width="51"/>
+                <TextBox x:Name="opisTextBox" HorizontalAlignment="Left" Height="148" Margin="106,10,0,0" Grid.Row="3" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" TextWrapping="Wrap" VerticalAlignment="Top" Width="227" TextChanged="filtrirajTabelu"/>
+                <Label x:Name="label" Content="Ime:" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top" Height="28" Width="43"/>
+                <TextBox x:Name="imeTextBox" HorizontalAlignment="Left" Height="28" Margin="106,10,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="227"/>
+                <Label x:Name="label1" Content="Cena[USD]:" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="2" VerticalAlignment="Top" Height="28" Width="93"/>
+                <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="28" Margin="106,10,0,0" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="227"/>
+            </Grid>
+        </ScrollViewer>
+
+        <DataGrid x:Name="dgrMain" Grid.Column="1" ItemsSource="{Binding Path=resursi}" IsReadOnly="True" AutoGenerateColumns="False" IsSynchronizedWithCurrentItem="True">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ID" MinWidth="60" Width="SizeToCells" Binding="{Binding ID}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Naziv" MinWidth="60" Width="SizeToCells" Binding="{Binding Name}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Ime" MinWidth="60" Width="SizeToCells" Binding="{Binding Name}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Tip" MinWidth="60" Width="SizeToCells" Binding="{Binding Type.ID}"></DataGridTextColumn>
                 <!--DataGridCheckBoxColumn Header="Obnovljiv" MinWidth="60" Width="SizeToCells" Binding="{Binding Renewable}"></-->
                 <!--DataGridCheckBoxColumn Header="Strateška važnost" MinWidth="60" Width="SizeToCells" Binding="{Binding Importance}"></DataGridCheckBoxColumn-->
@@ -30,11 +56,12 @@
                 <DataGridTextColumn Header="Datum otkrivanja" MinWidth="70" Width="*" Binding="{Binding Date}" />
                 <DataGridTextColumn Header="Etikete" MinWidth="80" Width="*" Binding="{Binding resursi.Labels.ID}" />
             </DataGrid.Columns>
-            
+
         </DataGrid>
 
-        <Button Grid.Row="1" FontSize="16"  Margin="113,5,718,5" Click="Obrisi_Click">Obriši</Button>
-        <Button Grid.Row="1" FontSize="16"   Content="Izmeni" Margin="10,5,824,5" Click="Izmeni_Click" ToolTip="Izmenite izabrani resurs"/>
-        <Button Grid.Row="1" FontSize="16"  Content="Izađi" Margin="217,5,619,5" Click="Izadji_Click"/>
+        <Button Grid.Row="1" FontSize="16"  Grid.Column="1" Margin="147,8,604,10" Click="Obrisi_Click">Obriši</Button>
+        <Button Grid.Row="1" FontSize="16"  Grid.Column="1" Content="Izmeni" Margin="25,8,724,10" Click="Izmeni_Click" ToolTip="Izmenite izabrani resurs"/>
+        <Button Grid.Row="1" FontSize="16"  Grid.Column="1" Content="Izađi" Margin="269,7,490,10" Click="Izadji_Click"/>
+        <Button x:Name="resetFilter" FontSize="16" Content="Resetuj filter" HorizontalAlignment="Left" Margin="66,7,0,0" VerticalAlignment="Top" Width="127" Height="25" Click="resetFilter_Click" Grid.Row="1"/>
     </Grid>
 </Window>

@@ -100,5 +100,15 @@ namespace HCI_projekat2.Tabels
 
             
         }
+
+        private void resetFilter_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void filtrirajTabelu(object sender, TextChangedEventArgs e)
+        {
+
+        }
     }
 }

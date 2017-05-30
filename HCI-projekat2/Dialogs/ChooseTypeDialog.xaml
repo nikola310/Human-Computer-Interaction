@@ -6,7 +6,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HCI_projekat2.Dialogs"
         mc:Ignorable="d"
-        Title="ChooseTypeDialog" Height="305" Width="328" FontFamily="/HCI-projekat2;component/#Pragmata Pro">
+        Title="Izbor tipa" Height="305" Width="328" FontFamily="/HCI-projekat2;component/#Pragmata Pro">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition />

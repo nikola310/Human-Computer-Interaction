@@ -27,11 +27,9 @@ namespace HCI_projekat2.Tabels
         {
             InitializeComponent();
             etikete = new ObservableCollection<LabelModel>(Etikete.Values);
-            /*foreach (LabelModel s in Etikete.Values)
-            {
-                etiketeFilter.Add(s);
-            }*/
+            etiketeFilter = new ObservableCollection<LabelModel>(Etikete.Values);
             DataContext = this;
+            //dgrMain.SelectedItem = null;
         }
 
         private void Obrisi_Click(object sender, RoutedEventArgs e)
@@ -46,9 +44,6 @@ namespace HCI_projekat2.Tabels
                 {
                     r.Labels.Remove(model);
                 }
-
-
-
 
                 Etikete.Remove(model.ID);
                 etikete.Clear();
@@ -73,21 +68,44 @@ namespace HCI_projekat2.Tabels
             dgrMain.Items.Refresh();
         }
 
-        private void filterButton_Click(object sender, RoutedEventArgs e)
-        {
-            FilterLabel filter = new FilterLabel(this);
-            filter.Show();
-        }
-
         public void resetFilter_Click(object sender, RoutedEventArgs e)
         {
-            etiketeFilter.Clear();
-            foreach(LabelModel model in etikete)
+            etikete.Clear();
+            foreach(LabelModel model in etiketeFilter)
             {
-                etiketeFilter.Add(model);
+                etikete.Add(model);
             }
+            idTextBox.Text = "";
+            opisTextBox.Text = "";
         }
 
+        private void filtrirajTabelu(object sender, System.Windows.Controls.TextChangedEventArgs e)
+        {
+            etikete.Clear();
+            bool uslov;
 
+            foreach(LabelModel lbl in etiketeFilter)
+            {
+                uslov = true;
+                if (!idTextBox.Text.Equals(""))
+                {
+                    if (!lbl.ID.Contains(idTextBox.Text))
+                    {
+                        uslov = false;
+                    }
+                }
+
+                if (!opisTextBox.Text.Equals(""))
+                {
+                    if (!lbl.Desc.Contains(opisTextBox.Text))
+                    {
+                        uslov = false;
+                    }
+                }
+
+                if (uslov)
+                    etikete.Add(lbl);
+            }
+        }
     }
 }

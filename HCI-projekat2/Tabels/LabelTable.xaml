@@ -5,16 +5,31 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HCI_projekat2.Tabels"
         mc:Ignorable="d"
-        Title="LabelTable" Height="342" Width="468" ResizeMode="CanMinimize" FontFamily="/HCI-projekat2;component/#Pragmata Pro">
+        Title="Tabela etiketa" Height="353" Width="746" ResizeMode="CanMinimize" FontFamily="/HCI-projekat2;component/#Pragmata Pro" FontSize="16">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition />
-            <RowDefinition />
+            <RowDefinition Height="283*" />
+            <RowDefinition Height="41*" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition />
+            <ColumnDefinition Width="301*" />
+            <ColumnDefinition Width="415*" />
         </Grid.ColumnDefinitions>
-        <DataGrid x:Name="dgrMain" ItemsSource="{Binding Path=etikete}" IsReadOnly="True"  AutoGenerateColumns="False" IsSynchronizedWithCurrentItem="True" Margin="0,0,0,38" Grid.RowSpan="2">
+
+        <ScrollViewer Grid.Column="0" Grid.Row="0" VerticalScrollBarVisibility="Auto">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="57*" />
+                    <RowDefinition Height="226*" />
+                </Grid.RowDefinitions>
+                <Label x:Name="idLabel" Content="ID:" HorizontalAlignment="Left" Margin="10,14,0,0" VerticalAlignment="Top" Grid.Row="0" Height="27" Width="41"/>
+                <TextBox x:Name="idTextBox" MaxLength="20"  HorizontalAlignment="Left" Height="23" Margin="78,18,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="206" Grid.Row="0" TextChanged="filtrirajTabelu"/>
+                <Label x:Name="opisLabel" Content="Opis:" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top" RenderTransformOrigin="0.392,0.5" Height="28" Width="51"/>
+                <TextBox x:Name="opisTextBox" HorizontalAlignment="Left" Height="206" Margin="78,10,0,0" Grid.Row="1" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" TextWrapping="Wrap" VerticalAlignment="Top" Width="206" TextChanged="filtrirajTabelu"/>
+            </Grid>
+        </ScrollViewer>
+
+        <DataGrid x:Name="dgrMain" Grid.Column="1" ItemsSource="{Binding Path=etikete}" IsReadOnly="True"  AutoGenerateColumns="False" IsSynchronizedWithCurrentItem="True" Margin="0,0,0,1">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ID" MinWidth="60" Width="SizeToCells" Binding="{Binding ID}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Boja" MinWidth="60" Width="SizeToCells" Binding="{Binding Clr}"></DataGridTextColumn>
@@ -22,11 +37,10 @@
             </DataGrid.Columns>
         </DataGrid>
 
-        <Button Grid.Row="1" FontSize="16" Margin="252,124,133,4" Click="Obrisi_Click">Obriši</Button>
-        <Button Grid.Row="1" FontSize="16" Margin="334,124,63,4" Content="Izađi" Click="Izadji_Click"/>
-        <Button Grid.Row="1" FontSize="16" Margin="170,124,215,4" Content="Izmeni" Click="Izmeni_Click"/>
-        <Button x:Name="filterButton" Content="Filter" Click="filterButton_Click" HorizontalAlignment="Left" Margin="10,124,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75" FontSize="16" Height="29"/>
-        <Button x:Name="resetFilter" FontSize="16" Content="Reset" HorizontalAlignment="Left" Margin="90,124,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75" Height="29" Click="resetFilter_Click"/>
+        <Button Grid.Row="1" Grid.Column="1" FontSize="16" Margin="109,10,231,5" Click="Obrisi_Click">Obriši</Button>
+        <Button Grid.Row="1" Grid.Column="1" FontSize="16" Margin="214,10,127,5" Content="Izađi" Click="Izadji_Click"/>
+        <Button Grid.Row="1" Grid.Column="1" FontSize="16" Margin="10,10,335,5" Content="Izmeni" Click="Izmeni_Click"/>
+        <Button x:Name="resetFilter" FontSize="16" Content="Resetuj filter" HorizontalAlignment="Left" Margin="78,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="127" Height="25" Click="resetFilter_Click"/>
     </Grid>
 
 </Window>

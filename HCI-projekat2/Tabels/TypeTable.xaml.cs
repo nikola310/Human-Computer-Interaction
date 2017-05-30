@@ -21,14 +21,18 @@ namespace HCI_projekat2.Tabels
             set;
         }
 
+        public ObservableCollection<TypeModel> tipoviContainer
+        {
+            get;
+            set;
+        }
+
+
         public TypeTable()
         {
             InitializeComponent();
-            tipovi = new ObservableCollection<TypeModel>();
-            foreach (TypeModel s in Tipovi.Values)
-            {
-                tipovi.Add(s);
-            }
+            tipovi = new ObservableCollection<TypeModel>(Tipovi.Values);
+            tipoviContainer = new ObservableCollection<TypeModel>(Tipovi.Values);
             DataContext = this;
         }
 
@@ -44,7 +48,7 @@ namespace HCI_projekat2.Tabels
             if (result == MessageBoxResult.Yes)
             {
                 TypeModel model = (TypeModel)dgrMain.SelectedItem;
-                foreach(ResourceModel r in Resursi.Values)
+                foreach (ResourceModel r in Resursi.Values)
                 {
                     if (r.Type.ID.Equals(model.ID))
                     {
@@ -55,7 +59,7 @@ namespace HCI_projekat2.Tabels
 
                 Tipovi.Remove(model.ID);
                 tipovi.Clear();
-                foreach(TypeModel t in Tipovi.Values)
+                foreach (TypeModel t in Tipovi.Values)
                 {
                     tipovi.Add(t);
                 }
@@ -68,6 +72,53 @@ namespace HCI_projekat2.Tabels
             TypeModel model = (TypeModel)dgrMain.SelectedItem;
             ChangeTypeDialog val = new ChangeTypeDialog(model);
             val.Show();
+        }
+
+        private void resetFilter_Click(object sender, RoutedEventArgs e)
+        {
+            idTextBox.Text = "";
+            opisTextBox.Text = "";
+            imeTextBox.Text = "";
+
+            tipovi.Clear();
+
+            foreach(TypeModel tip in tipoviContainer)
+            {
+                tipovi.Add(tip);
+            }
+        }
+
+        private void filtrirajTabelu(object sender, System.Windows.Controls.TextChangedEventArgs e)
+        {
+            tipovi.Clear();
+            bool uslov;
+
+            foreach (TypeModel tip in tipoviContainer)
+            {
+                uslov = true;
+                if (!idTextBox.Text.Equals(""))
+                {
+                    if (!tip.ID.Contains(idTextBox.Text))
+                    {
+                        uslov = false;
+                    }
+                }
+
+                if (!opisTextBox.Text.Equals(""))
+                {
+                    if (!tip.Desc.Contains(opisTextBox.Text))
+                    {
+                        uslov = false;
+                    }
+                }
+
+                if (!imeTextBox.Text.Equals(""))
+                    if (!tip.Name.Contains(imeTextBox.Text))
+                        uslov = false;
+
+                if (uslov)
+                    tipovi.Add(tip);
+            }
         }
     }
 }
