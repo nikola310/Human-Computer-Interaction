@@ -3,6 +3,7 @@ using HCI_projekat2.Model;
 using static HCI_projekat2.MainWindow;
 using System.Windows.Data;
 using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace HCI_projekat2.Dialogs
 {
@@ -27,8 +28,13 @@ namespace HCI_projekat2.Dialogs
             {
                 if (Boja.SelectedColor == null)
                 {
+//                    Color? boja = Boja.SelectedColor;
+                    Boja.SelectedColor = Color.FromRgb(255, 255, 255);
                     MessageBoxResult message = MessageBox.Show("Morate izabrati boju!", "Nedostaje vrednost", MessageBoxButton.OK, MessageBoxImage.Error);
-                    Boja.Focus();
+                    //Boja.Focus();
+                    Boja.SelectedColor = Color.FromRgb(255, 255, 255); //prepraviti
+                   // Boja.
+                    Boja.CaptureMouse();
                     return;
                 }
                 if (Opis.Text == null)
@@ -55,6 +61,11 @@ namespace HCI_projekat2.Dialogs
         private void Close_Click(object sender, RoutedEventArgs e)
         {
             Close();
+        }
+
+        private void Boja_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+
         }
     }
 }

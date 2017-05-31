@@ -25,8 +25,8 @@
             </DataGrid.Columns>
         </DataGrid>
 
-        <Button Grid.Row="2" Margin="10,6,242,7" Click="Izaberi_Tip_Click" FontSize="16" ToolTip="Izaberite selektovani tip">Izaberi</Button>
-        <Button Grid.Row="2" Margin="93,6,149,7" Click="Odustani_Click" FontSize="16">Odustani</Button>
+        <Button Grid.Row="2" Margin="10,6,242,7" Click="Izaberi_Tip_Click" FontSize="16" ToolTip="Izaberite selektovani tip" IsDefault="True" TabIndex="0">Izaberi</Button>
+        <Button Grid.Row="2" Margin="93,6,149,7" Click="Odustani_Click" FontSize="16" TabIndex="1">Odustani</Button>
     </Grid>
 
 

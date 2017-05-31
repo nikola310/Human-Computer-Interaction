@@ -90,7 +90,7 @@ namespace HCI_projekat2.Commands
             }
             );
 
-        public static readonly RoutedUICommand newuser = new RoutedUICommand(
+        public static readonly RoutedUICommand newUser = new RoutedUICommand(
             "newuser",
             "New User",
             typeof(Commands),

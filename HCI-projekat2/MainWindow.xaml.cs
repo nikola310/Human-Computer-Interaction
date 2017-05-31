@@ -186,11 +186,8 @@ namespace HCI_projekat2
                 t.ShowDialog();
             }
 
-            //while (_login)
-            //{
                 var l = new LoginDialog(this);
-                l.Show();
-            //}
+                l.ShowDialog();
 
             if (_cntFlag)
             {
