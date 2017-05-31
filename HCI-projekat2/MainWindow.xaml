@@ -5,7 +5,18 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HCI_projekat2"
         mc:Ignorable="d"
+        xmlns:cmd="clr-namespace:HCI_projekat2.Commands"
         Title="Mapa Resursa" Height="616.705" Width="1031.098" FontFamily="/HCI-projekat2;component/#Pragmata Pro" FontSize="16">
+    <Window.CommandBindings>
+        <CommandBinding Command="cmd:Commands.Help" CanExecute="Help_CanExecute" Executed="Help_Executed" />
+        <CommandBinding Command="cmd:Commands.newResource" Executed="New_Resource_Command_Executed" />
+        <CommandBinding Command="cmd:Commands.newResourceType" Executed="New_Type_Executed" />
+        <CommandBinding Command="cmd:Commands.newResourceLabel" Executed="New_Label_Executed" />
+        <CommandBinding Command="cmd:Commands.showResTable" Executed="Show_ResTable_Executed" />
+        <CommandBinding Command="cmd:Commands.showLabTable" Executed="Show_LabTable_Executed" />
+        <CommandBinding Command="cmd:Commands.showTypeTable" Executed="Show_TypeTable_Executed" />
+        <CommandBinding Command="cmd:Commands.saveProject" Executed="Save_Project_Executed" />
+    </Window.CommandBindings>
     <DockPanel>
         <Menu DockPanel.Dock="Top" Height="30" FontFamily="/HCI-projekat2;component/#Pragmata Pro" FontSize="16">
             <Menu.ItemsPanel>
@@ -14,18 +25,18 @@
                 </ItemsPanelTemplate>
             </Menu.ItemsPanel>
             <MenuItem Header="_Datoteka">
-                <MenuItem Header="Novi _Resurs" InputGestureText="Ctrl+Shift+N"  Click="AddNewRes_Click"></MenuItem>
-                <MenuItem Header="Novi _Tip Resursa" InputGestureText="Ctrl+Shift+T"  Click="NewResType_Click"></MenuItem>
-                <MenuItem Header="Novu _Etiketu Resursa" InputGestureText="Ctrl+Shift+E" Click="NewResLabel_Click"></MenuItem>
+                <MenuItem Header="Novi _Resurs" InputGestureText="Ctrl+R"  Click="AddNewRes_Click"></MenuItem>
+                <MenuItem Header="Novi _Tip Resursa" InputGestureText="Ctrl+T"  Click="NewResType_Click"></MenuItem>
+                <MenuItem Header="Novu _Etiketu Resursa" InputGestureText="Ctrl+E" Click="NewResLabel_Click"></MenuItem>
                 <Separator />
                 <MenuItem Header="Sačuvaj _projekat" InputGestureText="Ctrl+S" Click="Sacuvaj_Sve_Click"></MenuItem>
             </MenuItem>
             <MenuItem Header="P_regled">
-                <MenuItem Header="Evidentiranih _Resursa" Click="ShowRes_Click"/>
-                <MenuItem Header="Evidentiranih _Tipova Resursa" Click="ShowTypes_Click"/>
-                <MenuItem Header="Evidentiranih _Etiketa Resursa" Click="ShowLabels_Click"/>
+                <MenuItem Header="Evidentiranih _Resursa" InputGestureText="Ctrl+F"  Click="ShowRes_Click"/>
+                <MenuItem Header="Evidentiranih _Tipova Resursa" InputGestureText="Ctrl+G" Click="ShowTypes_Click"/>
+                <MenuItem Header="Evidentiranih _Etiketa Resursa" InputGestureText="Ctrl+D" Click="ShowLabels_Click"/>
             </MenuItem>
-            <MenuItem Header="_Pomoć" Click="Help_Click" InputGestureText="F1" ToolTip="Help"></MenuItem>
+            <MenuItem Header="_Pomoć" Click="Help_Click" ToolTip="Otvori pomoć"></MenuItem>
         </Menu>
         <Grid>
             <Grid.RowDefinitions>
@@ -66,11 +77,6 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-
-            <!--Image x:Name="image" HorizontalAlignment="Left"  
-                   Margin="0,10,-1,-210" VerticalAlignment="Top" 
-                   Source="/Images/world.jpg"/>
-            <Image x:Name="image1" HorizontalAlignment="Left" Height="100" Margin="645,430,0,0" VerticalAlignment="Top" Width="100"/-->
         </Grid>
     </DockPanel>
 </Window>

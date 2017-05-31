@@ -98,6 +98,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Commands\Commands.cs" />
     <Compile Include="Dialogs\ChangeLabelDialog.xaml.cs">
       <DependentUpon>ChangeLabelDialog.xaml</DependentUpon>
     </Compile>

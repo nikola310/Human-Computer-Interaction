@@ -165,6 +165,19 @@ namespace HCI_projekat2
             }
         }
 
+        private bool _login = true;
+        public bool Login
+        {
+            get
+            {
+                return _login;
+            }
+            set
+            {
+                _login = value;
+            }
+        }
+
         public MainWindow()
         {
             if (!ucitajKorisnike())
@@ -173,8 +186,11 @@ namespace HCI_projekat2
                 t.ShowDialog();
             }
 
-            var l = new LoginDialog(this);
-            l.ShowDialog();
+            //while (_login)
+            //{
+                var l = new LoginDialog(this);
+                l.Show();
+            //}
 
             if (_cntFlag)
             {
@@ -192,7 +208,7 @@ namespace HCI_projekat2
                 obsTipovi = new ObservableCollection<TypeModel>(Tipovi.Values);
                 obsResursi = new ObservableCollection<ResourceModel>(Resursi.Values);
 
-                
+
 
                 DataContext = this;
             }
@@ -223,14 +239,13 @@ namespace HCI_projekat2
         private void ShowLabels_Click(object sender, RoutedEventArgs e)
         {
             var l = new LabelTable();
-            l.Show();
+            l.ShowDialog();
         }
 
         private void ShowTypes_Click(object sender, RoutedEventArgs e)
         {
             var l = new TypeTable();
-            l.Show();
-
+            l.ShowDialog();
         }
 
         private void ShowRes_Click(object sender, RoutedEventArgs e)
@@ -566,7 +581,7 @@ namespace HCI_projekat2
                 cpy.Cursor = Cursors.Hand;
                 cpy.PreviewMouseLeftButtonDown += new MouseButtonEventHandler(Image_PreviewMouseLeftButtonDown);
                 cpy.MouseMove += new MouseEventHandler(Image_MouseMove);
-                
+
                 cpy.Tag = img.Tag;
 
                 cpy.ToolTip = addTooltip(((ResourceModel)img.Tag));
@@ -671,6 +686,7 @@ namespace HCI_projekat2
             return cm;
         }
 
+        //????
         internal void doThings(string param)
         {
             throw new NotImplementedException();
@@ -684,11 +700,60 @@ namespace HCI_projekat2
         //DODATI JOS NESTO U TOOLTIP???
         public string addTooltip(ResourceModel model)
         {
-            return model.Name + Environment.NewLine + model.Date.ToShortDateString() + Environment.NewLine + model.Price + "$" 
+            return model.Name + Environment.NewLine + model.Date.ToShortDateString() + Environment.NewLine + model.Price + "$"
                 + Environment.NewLine + model.Type.Name;
         }
 
+        private void Help_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = true;
+        }
 
+        private void Help_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            HelpProvider.ShowHelp("main", this);
+            /*IInputElement focusedControl = FocusManager.GetFocusedElement(Application.Current.Windows[0]);
+            if (focusedControl is DependencyObject)
+            {
+                string str = HelpProvider.GetHelpKey((DependencyObject)focusedControl);
+                HelpProvider.ShowHelp(str, this);
+            }*/
+        }
+
+        private void New_Resource_Command_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            AddNewRes_Click(sender, e);
+        }
+
+        private void New_Type_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            NewResType_Click(sender, e);
+        }
+
+        private void New_Label_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            NewResLabel_Click(sender, e);
+        }
+
+        private void Show_ResTable_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            ShowRes_Click(sender, e);
+        }
+
+        private void Show_LabTable_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            ShowLabels_Click(sender, e);
+        }
+
+        private void Show_TypeTable_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            ShowTypes_Click(sender, e);
+        }
+
+        private void Save_Project_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            Sacuvaj_Sve_Click(sender, e);
+        }
     }
 }
 

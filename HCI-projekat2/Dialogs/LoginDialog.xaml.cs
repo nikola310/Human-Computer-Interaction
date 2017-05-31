@@ -91,14 +91,16 @@ namespace HCI_projekat2.Dialogs
 
         #endregion
 
-        private static readonly RoutedEventHandler HideWhenLoadedDelegate = (sender, args) => {
+        private static readonly RoutedEventHandler HideWhenLoadedDelegate = (sender, args) =>
+        {
             if (sender is Window == false) return;
             var w = (Window)sender;
             HideCloseButton(w);
             w.Loaded -= HideWhenLoadedDelegate;
         };
 
-        private static readonly RoutedEventHandler ShowWhenLoadedDelegate = (sender, args) => {
+        private static readonly RoutedEventHandler ShowWhenLoadedDelegate = (sender, args) =>
+        {
             if (sender is Window == false) return;
             var w = (Window)sender;
             ShowCloseButton(w);
@@ -160,20 +162,28 @@ namespace HCI_projekat2.Dialogs
 
         private void enter_Click(object sender, RoutedEventArgs e)
         {
-            if(!(korisnici.Exists(x => x.Name.Equals(usrNameTextBox.Text) && x.Pass.Equals(passwordBox.Password))))
+            if (!(korisnici.Exists(x => x.Name.Equals(usrNameTextBox.Text) && x.Pass.Equals(passwordBox.Password))))
             {
                 MessageBox.Show("Korisničko ime ili lozinka su pogrešni!", "Neuspešna operacija", MessageBoxButton.OK, MessageBoxImage.Hand);
                 return;
             }
-            mW.CntFlag = true;
-            mW.CurrUser = new UserModel(usrNameTextBox.Text, passwordBox.Password);
-            Close();
+            else
+            {
+                mW.CntFlag = true;
+                mW.CurrUser = new UserModel(usrNameTextBox.Text, passwordBox.Password);
+                this.Close();
+            }
         }
 
         private void newUser_Click(object sender, RoutedEventArgs e)
         {
             NewUserDialog user = new NewUserDialog(mW);
             user.Show();
+        }
+
+        private void New_User_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            newUser_Click(sender, e);
         }
     }
 }
