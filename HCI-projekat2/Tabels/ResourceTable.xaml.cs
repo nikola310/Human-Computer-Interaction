@@ -49,13 +49,9 @@ namespace HCI_projekat2.Tabels
             resursi = new ObservableCollection<ResourceModel>(Resursi.Values);
             resursiContainer = new ObservableCollection<ResourceModel>(Resursi.Values);
             labels = new ObservableCollection<LabelModel>();
-            /*            foreach (ResourceModel tmp in Resursi.Values)
-                        {
-                            resursi.Add(tmp);
-                        }*/
-            //foreach(LabelModel lab in )
             mW = parent;
             DataContext = this;
+
         }
 
         private void Izadji_Click(object sender, RoutedEventArgs e)
@@ -65,6 +61,12 @@ namespace HCI_projekat2.Tabels
 
         private void Obrisi_Click(object sender, RoutedEventArgs e)
         {
+            if (dgrMain.SelectedItem == null)
+            {
+                MessageBox.Show(this, "Morate izabrati jedan resurs iz tabele.", "Operacija neuspešna", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
             MessageBoxResult result = MessageBox.Show(this, "Jeste li sigurni da želite obrisati selektovani resurs?", "Potvrda brisanja", MessageBoxButton.YesNo, MessageBoxImage.Question);
 
             if (result == MessageBoxResult.Yes)
@@ -99,6 +101,12 @@ namespace HCI_projekat2.Tabels
 
         private void Izmeni_Click(object sender, RoutedEventArgs e)
         {
+            if (dgrMain.SelectedItem == null)
+            {
+                MessageBox.Show(this, "Morate izabrati jedan resurs iz tabele.", "Operacija neuspešna", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
             ResourceModel model = (ResourceModel)dgrMain.SelectedItem;
             ChangeResourceDialog val = new ChangeResourceDialog(model, mW);
             val.ShowDialog();
@@ -108,7 +116,24 @@ namespace HCI_projekat2.Tabels
 
         private void resetFilter_Click(object sender, RoutedEventArgs e)
         {
-
+            resursi.Clear();
+            foreach (ResourceModel model in resursiContainer)
+            {
+                resursi.Add(model);
+            }
+            idTextBox.Clear();
+            tipTextBox.Clear();
+            opisTextBox.Clear();
+            imeTextBox.Clear();
+            cenaTextBox.Clear();
+            frekvencijaComboBox.SelectedIndex = 0;
+            meraComboBox.SelectedIndex = 0;
+            obnovljivCheckBox.IsChecked = false;
+            strategijaCheckBox.IsChecked = false;
+            eksploatisanjeCheckBox.IsChecked = false;
+            veceRadioButton.IsChecked = false;
+            manjeRadioButton.IsChecked = false;
+            jednakoRadioButton.IsChecked = false;
         }
 
         private void filtrirajTabelu(object sender, TextChangedEventArgs e)
@@ -153,12 +178,91 @@ namespace HCI_projekat2.Tabels
                     }
                 }
 
+                if (frekvencijaComboBox.SelectedIndex != 0)
+                {
+                    if (frekvencijaComboBox.SelectedIndex == 1 && !res.Freq.Equals(MainWindow.Redak))
+                        uslov = false;
+                    else if (frekvencijaComboBox.SelectedIndex == 2 && !res.Freq.Equals(MainWindow.Cest))
+                        uslov = false;
+                    else if (frekvencijaComboBox.SelectedIndex == 3 && !res.Freq.Equals(MainWindow.Univerzalan))
+                        uslov = false;
+                }
+
+                if (meraComboBox.SelectedIndex != 0)
+                {
+                    if (meraComboBox.SelectedIndex == 1 && !res.Unit.Equals(MainWindow.Merica))
+                        uslov = false;
+                    else if (meraComboBox.SelectedIndex == 2 && !res.Unit.Equals(MainWindow.Barel))
+                        uslov = false;
+                    else if (meraComboBox.SelectedIndex == 3 && !res.Unit.Equals(MainWindow.Tona))
+                        uslov = false;
+                    else if (meraComboBox.SelectedIndex == 4 && !res.Unit.Equals(MainWindow.Kg))
+                        uslov = false;
+                }
+
+                double cena;
+                bool cenaParse = Double.TryParse(cenaTextBox.Text, out cena);
+
+                if (cenaParse)
+                {
+                    cena = double.Parse(cenaTextBox.Text, System.Globalization.NumberStyles.AllowDecimalPoint, System.Globalization.NumberFormatInfo.InvariantInfo);
+
+                    if (veceRadioButton.IsChecked == true)
+                    {
+                        if (res.Price <= cena)
+                            uslov = false;
+                    }
+                    else if (manjeRadioButton.IsChecked == true)
+                    {
+                        if (res.Price >= cena)
+                            uslov = false;
+                    }
+                    else if (res.Price != cena)
+                    {
+                        uslov = false;
+                    }
+
+                    /*                    if (res.Price != cena)
+                                        {
+                                            uslov = false;
+                                        }*/
+                }
+
+                if (!imeTextBox.Text.Equals(""))
+                {
+                    if (!res.Name.Contains(imeTextBox.Text))
+                    {
+                        uslov = false;
+                    }
+                }
+
+                bool? otkacen = obnovljivCheckBox.IsChecked;
+                if (otkacen.Equals(true))
+                {
+                    if (!res.Renewable)
+                        uslov = false;
+                }
+
+                otkacen = strategijaCheckBox.IsChecked;
+                if (otkacen.Equals(true))
+                {
+                    if (!res.Important)
+                        uslov = false;
+                }
+
+                otkacen = eksploatisanjeCheckBox.IsChecked;
+                if (otkacen.Equals(true))
+                {
+                    if (!res.Exploit)
+                        uslov = false;
+                }
+
                 if (uslov)
                     resursi.Add(res);
             }
         }
 
-        private void filtrirajTabeluCheckBox(object sender, RoutedEventArgs e)
+        private void filtrirajTabeluCheck(object sender, RoutedEventArgs e)
         {
             filtriraj();
         }

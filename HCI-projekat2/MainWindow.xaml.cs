@@ -124,7 +124,7 @@ namespace HCI_projekat2
 
         //frekvencije
         public static string Redak = "Redak";
-        public static string Cest = "Cest";
+        public static string Cest = "Čest";
         public static string Univerzalan = "Univerzalan";
 
         public static List<string> mere { get; set; }

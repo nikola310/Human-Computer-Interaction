@@ -43,6 +43,12 @@ namespace HCI_projekat2.Tabels
 
         private void Obrisi_Click(object sender, RoutedEventArgs e)
         {
+            if (dgrMain.SelectedItem == null)
+            {
+                MessageBox.Show(this, "Morate izabrati jedan tip iz tabele.", "Operacija neuspešna", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
             MessageBoxResult result = MessageBox.Show(this, "Jeste li sigurni da želite obrisati selektovani tip?", "Potvrda brisanja", MessageBoxButton.YesNo, MessageBoxImage.Question);
 
             if (result == MessageBoxResult.Yes)
@@ -69,6 +75,12 @@ namespace HCI_projekat2.Tabels
 
         private void Izmeni_Click(object sender, RoutedEventArgs e)
         {
+            if (dgrMain.SelectedItem == null)
+            {
+                MessageBox.Show(this, "Morate izabrati jedan tip iz tabele.", "Operacija neuspešna", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
             TypeModel model = (TypeModel)dgrMain.SelectedItem;
             ChangeTypeDialog val = new ChangeTypeDialog(model);
             val.Show();

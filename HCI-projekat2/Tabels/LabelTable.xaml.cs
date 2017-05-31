@@ -29,11 +29,16 @@ namespace HCI_projekat2.Tabels
             etikete = new ObservableCollection<LabelModel>(Etikete.Values);
             etiketeFilter = new ObservableCollection<LabelModel>(Etikete.Values);
             DataContext = this;
-            //dgrMain.SelectedItem = null;
         }
 
         private void Obrisi_Click(object sender, RoutedEventArgs e)
         {
+            if (dgrMain.SelectedItem == null)
+            {
+                MessageBox.Show(this, "Morate izabrati jednu etiketu iz tabele.", "Operacija neuspešna", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
             MessageBoxResult result = MessageBox.Show(this, "Brisanjem ove etikete će doći do njenog brisanja iz svakog resursa koji ju sadrži. Jeste li sigurni da želite obrisati selektovanu etiketu?", "Potvrda brisanja", MessageBoxButton.YesNo, MessageBoxImage.Question);
 
             if (result == MessageBoxResult.Yes)
@@ -62,6 +67,12 @@ namespace HCI_projekat2.Tabels
 
         private void Izmeni_Click(object sender, RoutedEventArgs e)
         {
+            if (dgrMain.SelectedItem == null)
+            {
+                MessageBox.Show(this, "Morate izabrati jednu etiketu iz tabele.", "Operacija neuspešna", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
             LabelModel model = (LabelModel)dgrMain.SelectedItem;
             ChangeLabelDialog val = new ChangeLabelDialog(this, model);
             val.ShowDialog();
