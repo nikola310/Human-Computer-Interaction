@@ -7,9 +7,17 @@
         xmlns:system="clr-namespace:System;assembly=mscorlib"
         xmlns:val="clr-namespace:HCI_projekat2.Validation"
         xmlns:local="clr-namespace:HCI_projekat2.Dialogs"
+        xmlns:cmd="clr-namespace:HCI_projekat2.Commands"
         mc:Ignorable="d"
         Title="ChangeResourceDialog" Height="410.794" Width="1150.944" ResizeMode="CanMinimize" FontFamily="/HCI-projekat2;component/#Pragmata Pro"
         SizeToContent="WidthAndHeight" FontSize="16">
+    <Window.CommandBindings>
+        <CommandBinding Command="cmd:Commands.Help" Executed="Help_Command" />
+        <CommandBinding Command="cmd:Commands.changeIcon" Executed="Change_Icon_Command" />
+        <CommandBinding Command="cmd:Commands.newResourceType" Executed="Choose_Type_Command" />
+        <CommandBinding Command="cmd:Commands.newResourceLabel" Executed="Add_Label_Cmd" />
+        <CommandBinding Command="cmd:Commands.newUser" Executed="Add_New_Type_Cmd" />
+    </Window.CommandBindings>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />

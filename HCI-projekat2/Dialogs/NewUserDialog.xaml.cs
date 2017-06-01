@@ -118,5 +118,10 @@ namespace HCI_projekat2.Dialogs
             regButton.IsEnabled = true;
             return;
         }
+
+        private void Help_Command(object sender, System.Windows.Input.ExecutedRoutedEventArgs e)
+        {
+            // znas vec sta treba
+        }
     }
 }

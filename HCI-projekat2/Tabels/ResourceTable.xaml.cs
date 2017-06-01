@@ -272,5 +272,25 @@ namespace HCI_projekat2.Tabels
             ChooseTypeDialog val = new ChooseTypeDialog(this);
             val.ShowDialog();
         }
+
+        private void Help_Command(object sender, System.Windows.Input.ExecutedRoutedEventArgs e)
+        {
+            // znas vec sta treba
+        }
+
+        private void Izmeni_Cmd(object sender, System.Windows.Input.ExecutedRoutedEventArgs e)
+        {
+            Izmeni_Click(sender, e);
+        }
+
+        private void Obrisi_Cmd(object sender, System.Windows.Input.ExecutedRoutedEventArgs e)
+        {
+            Obrisi_Click(sender, e);
+        }
+
+        private void Resetuj_Cmd(object sender, System.Windows.Input.ExecutedRoutedEventArgs e)
+        {
+            resetFilter_Click(sender, e);
+        }
     }
 }

@@ -5,8 +5,12 @@
         xmlns:val="clr-namespace:HCI_projekat2.Validation"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HCI_projekat2.Dialogs"
+        xmlns:cmd="clr-namespace:HCI_projekat2.Commands"
         mc:Ignorable="d"
         Title="Registracija" Height="224.14" Width="526.657" FontSize="16" ResizeMode="CanMinimize" FontFamily="/HCI-projekat2;component/#Pragmata Pro">
+    <Window.CommandBindings>
+        <CommandBinding Command="cmd:Commands.Help" Executed="Help_Command" />
+    </Window.CommandBindings>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="154*" />
@@ -21,12 +25,12 @@
         <Label x:Name="usrLabel" Content="Korisničko ime:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" Height="28" Width="144"/>
         <Label x:Name="passLabel" Content="Šifra:" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top" Height="28" Width="144"/>
         <Label x:Name="confLabel" Content="Potvrdite šifru:" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="2" VerticalAlignment="Top" Height="28" Width="144"/>
-        <PasswordBox x:Name="passwordBox" Grid.Column="1" HorizontalAlignment="Left" Margin="10,18,0,0" 
+        <PasswordBox x:Name="passwordBox" Grid.Column="1" HorizontalAlignment="Left" Margin="10,18,0,0" TabIndex="1"
                      Grid.Row="1" VerticalAlignment="Top" Width="244" MaxLength="16" Height="20" PasswordChanged="passwordBox_PasswordChanged"/>
-        <PasswordBox x:Name="confirmPassword" Grid.Column="1" HorizontalAlignment="Left" Margin="10,18,0,0" Grid.Row="2" 
+        <PasswordBox x:Name="confirmPassword" Grid.Column="1" HorizontalAlignment="Left" Margin="10,18,0,0" Grid.Row="2" TabIndex="2"
                      MaxLength="16" VerticalAlignment="Top" Width="244" Height="20" PasswordChanged="confirmPassword_PasswordChanged"/>
         <TextBox x:Name="usrName" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="10,15,0,0" TextWrapping="Wrap"
-                 VerticalAlignment="Top" Width="244" MaxLength="10">
+                 VerticalAlignment="Top" Width="244" MaxLength="10" TabIndex="0">
             <TextBox.Text>
                 <Binding Path="Name" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
                     <Binding.ValidationRules>
@@ -58,8 +62,8 @@
                 </ControlTemplate>
             </Validation.ErrorTemplate>
         </TextBox>
-        <Button x:Name="regButton" Content="Registruj se" Grid.Column="1" HorizontalAlignment="Left" Margin="10,17,0,0"
-                Grid.Row="3" VerticalAlignment="Top" Width="110" Height="22" Click="regButton_Click">
+        <Button x:Name="regButton" Content="Registruj se" Grid.Column="1" HorizontalAlignment="Left" Margin="10,17,0,0" IsDefault="True"
+                Grid.Row="3" VerticalAlignment="Top" Width="110" Height="22" Click="regButton_Click" TabIndex="3">
             <Button.Style>
                 <Style TargetType="{x:Type Button}">
                     <Setter Property="IsEnabled" Value="false" />
@@ -75,7 +79,7 @@
             </Button.Style>
         </Button>
         <Button x:Name="cancelButton" Content="Odustani" Grid.Column="1" HorizontalAlignment="Left" Margin="138,17,0,0" 
-                Grid.Row="3" VerticalAlignment="Top" Width="86" Height="22" Click="cancelButton_Click"/>
+                Grid.Row="3" VerticalAlignment="Top" Width="86" Height="22" Click="cancelButton_Click" TabIndex="4"/>
         <Label x:Name="pswLabel" Grid.Column="1" HorizontalAlignment="Left" Margin="10,38,-1,0" VerticalAlignment="Top" Width="358" Grid.Row="1" Height="29" Grid.RowSpan="2"/>
         <Label x:Name="pswConfirmLabel" Grid.Column="1" HorizontalAlignment="Left" Margin="10,38,-1,0" Grid.Row="2" VerticalAlignment="Top" Height="29" Width="358" Grid.RowSpan="2"/>
 

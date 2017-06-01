@@ -10,6 +10,7 @@
         Title="Prijava" Height="225.564" Width="535.714" FontSize="16" ResizeMode="CanMinimize" FontFamily="/HCI-projekat2;component/#Pragmata Pro">
     <Window.CommandBindings>
         <CommandBinding Command="cmd:Commands.newUser" Executed="New_User_Executed" />
+        <CommandBinding Command="cmd:Commands.Help" Executed="Help_Cmd" />
     </Window.CommandBindings>
     <Grid>
         <Grid.ColumnDefinitions>

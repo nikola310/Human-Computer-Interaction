@@ -67,5 +67,10 @@ namespace HCI_projekat2.Dialogs
         {
 
         }
+
+        private void CommandBinding_Executed(object sender, System.Windows.Input.ExecutedRoutedEventArgs e)
+        {
+            //TO DO: Add help page and then call it here
+        }
     }
 }

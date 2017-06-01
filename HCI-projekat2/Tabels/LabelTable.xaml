@@ -4,8 +4,15 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HCI_projekat2.Tabels"
+        xmlns:cmd="clr-namespace:HCI_projekat2.Commands"
         mc:Ignorable="d"
         Title="Tabela etiketa" Height="353" Width="746" ResizeMode="CanMinimize" FontFamily="/HCI-projekat2;component/#Pragmata Pro" FontSize="16">
+    <Window.CommandBindings>
+        <CommandBinding Command="cmd:Commands.Help" Executed="Help_Command" />
+        <CommandBinding Command="cmd:Commands.showLabTable" Executed="Obrisi_Cmd" />
+        <CommandBinding Command="cmd:Commands.changeIcon" Executed="Izmeni_Cmd" />
+        <CommandBinding Command="cmd:Commands.newResource" Executed="Resetuj_Cmd" />
+    </Window.CommandBindings>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="283*" />

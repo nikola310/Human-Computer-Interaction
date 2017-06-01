@@ -211,6 +211,29 @@ namespace HCI_projekat2.Dialogs
             v.ShowDialog();
         }
 
+        private void Help_Command(object sender, System.Windows.Input.ExecutedRoutedEventArgs e)
+        {
+            // znas vec sta treba
+        }
 
+        private void Change_Icon_Command(object sender, System.Windows.Input.ExecutedRoutedEventArgs e)
+        {
+            Browse_Click(sender, e);
+        }
+
+        private void Choose_Type_Command(object sender, System.Windows.Input.ExecutedRoutedEventArgs e)
+        {
+            Izaberi_Tip_Click(sender, e);
+        }
+
+        private void Add_Label_Cmd(object sender, System.Windows.Input.ExecutedRoutedEventArgs e)
+        {
+            dodajEtiketu_Click(sender, e);
+        }
+
+        private void Add_New_Type_Cmd(object sender, System.Windows.Input.ExecutedRoutedEventArgs e)
+        {
+            dodajTip_Click(sender, e);
+        }
     }
 }

@@ -100,5 +100,14 @@ namespace HCI_projekat2.Commands
             }
             );
 
+        public static readonly RoutedUICommand changeIcon = new RoutedUICommand(
+            "changeIcon",
+            "Change Icon",
+            typeof(Commands),
+            new InputGestureCollection()
+            {
+                new KeyGesture(Key.I, ModifierKeys.Control)
+            }
+            );
     }
 }

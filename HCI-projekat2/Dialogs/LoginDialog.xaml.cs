@@ -185,5 +185,10 @@ namespace HCI_projekat2.Dialogs
         {
             newUser_Click(sender, e);
         }
+
+        private void Help_Cmd(object sender, ExecutedRoutedEventArgs e)
+        {
+            //TO DO: write a page, then call it here
+        }
     }
 }

@@ -6,8 +6,15 @@
         xmlns:f="clr-namespace:HCI_projekat2"
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         xmlns:local="clr-namespace:HCI_projekat2.Tabels"
+        xmlns:cmd="clr-namespace:HCI_projekat2.Commands"
         mc:Ignorable="d"
         Title="ResourceTable" Height="594.593" Width="1188.15" FontSize="16" ResizeMode="CanMinimize" FontFamily="/HCI-projekat2;component/#Pragmata Pro">
+    <Window.CommandBindings>
+        <CommandBinding Command="cmd:Commands.Help" Executed="Help_Command" />
+        <CommandBinding Command="cmd:Commands.showLabTable" Executed="Obrisi_Cmd" />
+        <CommandBinding Command="cmd:Commands.changeIcon" Executed="Izmeni_Cmd" />
+        <CommandBinding Command="cmd:Commands.newResource" Executed="Resetuj_Cmd" />
+    </Window.CommandBindings>
     <Grid Margin="0,0,0,5">
         <Grid.RowDefinitions>
             <RowDefinition Height="58*" />

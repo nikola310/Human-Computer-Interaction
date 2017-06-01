@@ -5,8 +5,13 @@
         xmlns:val="clr-namespace:HCI_projekat2.Validation"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HCI_projekat2.Dialogs"
+        xmlns:cmd="clr-namespace:HCI_projekat2.Commands"
         mc:Ignorable="d"
-        Title="ChangeTypeDialog" Height="265.162" Width="581.315" ResizeMode="CanMinimize" FontFamily="/HCI-projekat2;component/#Pragmata Pro">
+        Title="Izmena tipa" Height="265.162" Width="581.315" ResizeMode="CanMinimize" FontFamily="/HCI-projekat2;component/#Pragmata Pro" FontSize="16">
+    <Window.CommandBindings>
+        <CommandBinding Command="cmd:Commands.Help" Executed="Help_Executed" />
+        <CommandBinding Command="cmd:Commands.changeIcon" Executed="Change_Icon_Command" />
+    </Window.CommandBindings>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />

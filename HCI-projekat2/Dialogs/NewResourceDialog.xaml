@@ -9,9 +9,17 @@
         xmlns:system="clr-namespace:System;assembly=mscorlib"
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         xmlns:src="clr-namespace:HCI_projekat2.Dialogs"
+        xmlns:cmd="clr-namespace:HCI_projekat2.Commands"
         mc:Ignorable="d"
         Title="Dodaj Novi Resurs" FontFamily="/HCI-projekat2;component/#Pragmata Pro" Height="422.794" Width="1158.944" ResizeMode="CanMinimize" FontSize="16"
         SizeToContent="WidthAndHeight">
+    <Window.CommandBindings>
+        <CommandBinding Command="cmd:Commands.Help" Executed="Help_Command" />
+        <CommandBinding Command="cmd:Commands.changeIcon" Executed="Change_Icon_Command" />
+        <CommandBinding Command="cmd:Commands.newResourceType" Executed="Choose_Type_Command" />
+        <CommandBinding Command="cmd:Commands.newResourceLabel" Executed="Add_Label_Cmd" />
+        <CommandBinding Command="cmd:Commands.newUser" Executed="Add_New_Type_Cmd" />
+    </Window.CommandBindings>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />

@@ -80,7 +80,15 @@ namespace HCI_projekat2.Dialogs
             Close();
         }
 
+        private void Change_Icon_Command(object sender, System.Windows.Input.ExecutedRoutedEventArgs e)
+        {
+            Browse_Click(sender, e);
+        }
 
+        private void Help_Executed(object sender, System.Windows.Input.ExecutedRoutedEventArgs e)
+        {
+            //TO DO: write page then call it here
+        }
     }
 }
 

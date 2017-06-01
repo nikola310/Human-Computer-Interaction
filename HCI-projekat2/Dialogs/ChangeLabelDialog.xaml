@@ -6,8 +6,12 @@
         xmlns:val="clr-namespace:HCI_projekat2.Validation"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HCI_projekat2.Dialogs"
+        xmlns:cmd="clr-namespace:HCI_projekat2.Commands"
         mc:Ignorable="d"
         Title="ChangeLabelDialog" Height="551" Width="420.526" ResizeMode="CanMinimize" FontFamily="/HCI-projekat2;component/#Pragmata Pro">
+    <Window.CommandBindings>
+        <CommandBinding Command="cmd:Commands.Help"  Executed="Help_Executed" />
+    </Window.CommandBindings>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />

@@ -97,5 +97,10 @@ namespace HCI_projekat2.Dialogs
             }
             Close();
         }
+
+        private void Help_Command(object sender, ExecutedRoutedEventArgs e)
+        {
+            //TO DO: add help page, then call it here
+        }
     }
 }
