@@ -123,7 +123,6 @@
                 <Label x:Name="label1" Content="Cena[USD]:" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="8" VerticalAlignment="Top" Height="28" Width="93"/>
                 <TextBox x:Name="cenaTextBox" HorizontalAlignment="Left" Height="28" Margin="141,10,0,0" Grid.Row="8" TextWrapping="Wrap" VerticalAlignment="Top" Width="227" TextChanged="filtrirajTabelu"/>
                 <Button x:Name="tipButton" Content="Izaberi" HorizontalAlignment="Left" Margin="293,11,0,0" Grid.Row="2" VerticalAlignment="Top" Width="75" Height="22" Click="tipButton_Click"/>
-                <Button x:Name="button3" Content="Button" HorizontalAlignment="Left" Margin="76,13,0,0" Grid.Row="15" VerticalAlignment="Top" Width="75" Height="22"/>
                 <Label x:Name="label2" Content="Tip:" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="2" VerticalAlignment="Top"/>
                 <TextBox x:Name="tipTextBox" HorizontalAlignment="Left" Height="23" Margin="141,10,0,0" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="147" IsReadOnly="True" TextChanged="filtrirajTabelu" />
                 <Label x:Name="label3" Content="Frekvencija:" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="3" VerticalAlignment="Top"/>

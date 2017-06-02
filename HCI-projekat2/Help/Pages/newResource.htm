@@ -1,0 +1,110 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+    <title></title>
+    <style type="text/css">
+        h2 {
+            font-size: 30px;
+        }
+
+        h3 {
+            font-size: 28px;
+        }
+
+        h4 {
+            font-size: 26px;
+        }
+
+        p, li, a {
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Dodavanje novog resursa</h2>
+    <p>
+        Proces dodavanja resursa se svodi na ispunjavanje neophodnih formi u dijalogu za dodavanje novog resursa.
+        Više informacija o resursima se nalazi na <a href="main.htm#resource">ovom</a> linku.
+        Kada se forma pravilno ispuni, pritiskom na dugme "Dodaj resurs", novi resurs se dodaje u listu evidentiranih resursa.
+        Moguće je i napustiti formu klikom na dugme "Odustani" 
+        <br />
+        Polja koja se nalaze u formi su:
+    </p>
+
+    <h4>Ime</h4>
+    <p>
+        Ime predstavlja naziv resursa, preporuka je da bude lako čitljivo i prepoznatljivo, ali ne mora biti jedinstveno.
+    </p>
+
+    <h4>ID</h4>
+    <p>
+        ID predstavlja <u>jedinstveni</u> identifikator resursa (ključ), namenjen za katalogiranje i razlikovanje resursa.
+        Ne mogu da postoje dva resursa sa istim ID u bazi podataka.
+    </p>
+
+    <h4>Tip</h4>
+    <p>
+        Tip resursa predstavlja klasifikacionu grupu kojoj resurs pripada. Svaki resurs može pripadati tačno jednom tipu.
+        Više informacija o tipovima <a href="main.htm#rtype">ovde.</a>
+    </p>
+
+    <h4>Ikona</h4>
+    <p>
+        Ikona predstavlja grafičku reprezentaciju resursa. Nakon što se ispravno postavi resurs, ikona resursa je vidljiva na panelu ispod karte sveta.
+        Ikonu je moguće sa panela na određenu lokaciju na mapi. Ukoliko se ikonica eksplicitno ne navede, resursu će biti dodeljena ikonica tipa.
+    </p>
+
+    <h4>Opis</h4>
+    <p>
+        Polje opis predstavlja kratak opis onih karakteristika resursa koje nije moguće izraziti putem drugih atributa.
+        Na korisniku je da uredi ovaj tekst po želji. Preporučljivo je da korisnik unese barem nekakav komentar kako bi detaljnije opisao resurs.
+    </p>
+
+    <h4>Frekvencija</h4>
+    <p>
+        Ovaj atribut opisuje frekvenciju određenog resursa. Moguće je izabrati tri opcije: redak, čest ili univerzalan.
+    </p>
+
+    <h4>Jedinica mere</h4>
+    <p>
+        Ovaj atribut opisuje jedinicu koja se koristi za određivanje mere određenog resursa. Moguće je izabrati četiri opcije: merica, barel, tona ili kilogram.
+    </p>
+
+    <h4>Obnovljiv resurs</h4>
+    <p>
+        Logička vrednost koja daje informaciju da li je resurs obnovljiv ili ne.
+    </p>
+
+    <h4>Strateški važan resurs</h4>
+    <p>
+        Logička vrednost koja daje informaciju da li je resurs od strateške važnosti ili ne.
+    </p>
+
+    <h4>Moguće eksploatisanje</h4>
+    <p>
+        Logička vrednost koja daje informaciju da li je resurs moguće eksploatisati ili ne.
+    </p>
+
+    <h4>Cena</h4>
+    <p>
+        Cena resursa u dolarima. Predstavljena je pozitivnim realnim brojem.
+    </p>
+
+    <h4>Datum otkrivanja</h4>
+    <p>
+        Dan kad je otkriven resurs.
+    </p>
+
+    <p>
+        Obavezna polja su: ID, ime, ikona, tip, cena, jedinica mere, frekvencija i datum.
+    </p>
+
+    <h2>Prečice</h2>
+    <ul>
+        <li>Pomoć: F1</li>
+        <li>Izaberi tip: Ctrl + T</li>
+        <li>Dodaj novi tip: Ctrl + N</li>
+        <li>Odaberi ikonu: Ctrl + I</li>
+    </ul>
+</body>
+</html>

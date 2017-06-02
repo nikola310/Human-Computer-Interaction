@@ -43,38 +43,7 @@
         <Image Grid.Column="4" Grid.Row="2" Grid.RowSpan="3" Source="{Binding IconPath}" Margin="6,14,10,10"></Image>
         <Button Grid.Row="5" Grid.Column="4" Margin="6,6,6,4" FontSize="16" Click="Browse_Click" FontFamily="/HCI-projekat2;component/#Pragmata Pro">Promeni ikonu</Button>
         <Label Grid.Row="0" FontSize="16" FontFamily="/HCI-projekat2;component/#Pragmata Pro">ID:</Label>
-        <TextBox Name="IDResursa" Grid.Column="1" Grid.Row="0" FontSize="16" Margin="3" MaxLength="20" FontFamily="/HCI-projekat2;component/#Pragmata Pro" ToolTip="Unesite ID resursa">
-            <TextBox.Text>
-                <Binding Path="ID" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
-                    <Binding.ValidationRules>
-                        <val:EmptyStringValidationRule ValidationStep="RawProposedValue" />
-                        <val:ResourceIDValidationRule ValidationStep="RawProposedValue" />
-                        <val:AsciiValidationRule ValidationStep="RawProposedValue" />
-                    </Binding.ValidationRules>
-                </Binding>
-            </TextBox.Text>
-            <Validation.ErrorTemplate>
-                <ControlTemplate>
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition />
-                            <RowDefinition Height="Auto"/>
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition />
-                            <ColumnDefinition Width="Auto" />
-                        </Grid.ColumnDefinitions>
-                        <Border BorderBrush="Red" BorderThickness="2">
-                            <AdornedElementPlaceholder Grid.Column="0" Grid.Row="0" x:Name="broj"/>
-                        </Border>
-                        <Border BorderBrush="Red" BorderThickness="2" Grid.Column="0" Grid.Row="1">
-                            <TextBlock Text="{Binding [0].ErrorContent}"
-                                   Foreground="Red" FontSize="16" Background="White"/>
-                        </Border>
-                    </Grid>
-                </ControlTemplate>
-            </Validation.ErrorTemplate>
-        </TextBox>
+        <TextBox Name="IDResursa" Grid.Column="1" Grid.Row="0" FontSize="16" Margin="3" MaxLength="20" FontFamily="/HCI-projekat2;component/#Pragmata Pro" ToolTip="Unesite ID resursa"  IsReadOnly="True" />
         <Label Grid.Row="1" FontSize="16" FontFamily="/HCI-projekat2;component/#Pragmata Pro">Ime:</Label>
         <TextBox Name="ImeResursa" Grid.Column="1" Grid.Row="1" FontSize="16" Margin="3" MaxLength="20" FontFamily="/HCI-projekat2;component/#Pragmata Pro" ToolTip="Unesite ime resursa">
             <TextBox.Text>

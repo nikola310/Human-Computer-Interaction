@@ -6,6 +6,7 @@ using Microsoft.Win32;
 using System.Windows.Media.Imaging;
 using System;
 using HCI_projekat2.Dialogs;
+using HCI_projekat2.Help;
 
 namespace HCI_projekat2.Tabels
 {
@@ -135,7 +136,7 @@ namespace HCI_projekat2.Tabels
 
         private void Help_Command(object sender, System.Windows.Input.ExecutedRoutedEventArgs e)
         {
-            // znas vec sta treba
+            HelpProvider.ShowHelp("typeTable", this);
         }
 
         private void Izmeni_Cmd(object sender, System.Windows.Input.ExecutedRoutedEventArgs e)

@@ -4,6 +4,7 @@ using static HCI_projekat2.MainWindow;
 using System.Windows.Data;
 using System.Windows.Controls;
 using System.Windows.Media;
+using HCI_projekat2.Help;
 
 namespace HCI_projekat2.Dialogs
 {
@@ -70,7 +71,7 @@ namespace HCI_projekat2.Dialogs
 
         private void CommandBinding_Executed(object sender, System.Windows.Input.ExecutedRoutedEventArgs e)
         {
-            //TO DO: Add help page and then call it here
+            HelpProvider.ShowHelp("newLabel", this);
         }
     }
 }

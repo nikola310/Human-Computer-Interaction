@@ -1,5 +1,6 @@
 ﻿using System.Runtime.InteropServices;
 using System.Security.Permissions;
+using System.Windows;
 
 namespace HCI_projekat2.Help
 {
@@ -7,15 +8,15 @@ namespace HCI_projekat2.Help
     [ComVisible(true)]
     public class JavaScriptControlHelper
     {
-        MainWindow prozor;
-        public JavaScriptControlHelper(MainWindow w)
+        Window prozor;
+        public JavaScriptControlHelper(Window w)
         {
             prozor = w;
         }
 
         public void RunFromJavascript(string param)
         {
-            prozor.doThings(param);
+            //prozor.doThings(param);
         }
     }
 }

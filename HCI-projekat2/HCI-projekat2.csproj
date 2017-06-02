@@ -291,21 +291,15 @@
     <Content Include="Help\Pages\error.htm">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Resource Include="Help\Pages\graph2.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Content Include="Help\Pages\Ime.htm">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Help\Pages\index.htm">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    <Content Include="Help\Pages\typeTable.htm" />
+    <Content Include="Help\Pages\resourceTable.htm" />
+    <Content Include="Help\Pages\labelTable.htm" />
     <Content Include="Help\Pages\main.htm">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Help\Pages\Prezime.htm">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    <Content Include="Help\Pages\newLabel.htm" />
+    <Content Include="Help\Pages\newResource.htm" />
+    <Content Include="Help\Pages\newType.htm" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

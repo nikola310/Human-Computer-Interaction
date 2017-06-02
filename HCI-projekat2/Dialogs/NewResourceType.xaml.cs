@@ -5,6 +5,7 @@ using static HCI_projekat2.MainWindow;
 using System;
 using System.Windows.Data;
 using System.Windows.Controls;
+using HCI_projekat2.Help;
 
 namespace HCI_projekat2.Dialogs
 {
@@ -87,7 +88,7 @@ namespace HCI_projekat2.Dialogs
 
         private void Help_Executed(object sender, System.Windows.Input.ExecutedRoutedEventArgs e)
         {
-            //TO DO: write page then call it here
+            HelpProvider.ShowHelp("newType", this);
         }
     }
 }

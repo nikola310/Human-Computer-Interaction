@@ -1,4 +1,5 @@
-﻿using HCI_projekat2.Model;
+﻿using HCI_projekat2.Help;
+using HCI_projekat2.Model;
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
@@ -182,7 +183,7 @@ namespace HCI_projekat2.Dialogs
 
         private void Help_Command(object sender, System.Windows.Input.ExecutedRoutedEventArgs e)
         {
-            // znas vec sta treba
+            HelpProvider.ShowHelp("newResource", this);
         }
 
         private void Change_Icon_Command(object sender, System.Windows.Input.ExecutedRoutedEventArgs e)

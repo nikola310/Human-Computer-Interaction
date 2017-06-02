@@ -21,7 +21,7 @@ namespace HCI_projekat2.Help
     public partial class HelpViewer : Window
     {
         private JavaScriptControlHelper ch;
-        public HelpViewer(string key, MainWindow originator)
+        public HelpViewer(string key, Window originator)
         {
             InitializeComponent();
             string curDir = Directory.GetCurrentDirectory();
