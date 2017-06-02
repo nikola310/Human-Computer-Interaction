@@ -586,6 +586,10 @@ namespace HCI_projekat2
                 //kontekstni meni
 
 
+
+                cpy.ContextMenu = createContextMenu();
+
+
                 Resursi[((ResourceModel)img.Tag).ID].Point = p;
 
                 double x = p.X - cpy.Width / 2;
@@ -596,6 +600,51 @@ namespace HCI_projekat2
 
                 resursiNaMapi.Add(new Rect(x, y, imgWidth, imgHeight), (ResourceModel)img.Tag);
             }
+        }
+
+        private ContextMenu createContextMenu()
+        {
+            ContextMenu cm = new ContextMenu();
+            MenuItem editMenuItem = new MenuItem();
+            editMenuItem.Header = "Izmeni";
+            editMenuItem.Click += new RoutedEventHandler(EditElement);
+
+            MenuItem deleteMenuItem = new MenuItem();
+            deleteMenuItem.Header = "Obriši";
+            deleteMenuItem.Click += new RoutedEventHandler(DeleteElement);
+            
+
+            cm.Items.Add(editMenuItem);
+            cm.Items.Add(deleteMenuItem);
+
+            return cm;
+        }
+
+        private void DeleteElement(object sender, RoutedEventArgs e)
+        {
+            MenuItem menuItem = (MenuItem)e.Source;
+            Image image = ((ContextMenu)menuItem.Parent).PlacementTarget as Image;
+            ResourceModel model = ((ResourceModel)image.Tag);
+            foreach (ResourceModel m in Resursi.Values)
+            {
+                if (m.ID.Equals(model.ID))
+                {
+                    Resursi.Remove(m.ID);
+                    break;
+                }
+            }
+            removeResourceFromMap(model);
+            iscrtajOpet();
+            Canvas.Children.Remove(image);
+        }
+
+        private void EditElement(object sender, RoutedEventArgs e)
+        {
+            MenuItem menuItem = (MenuItem)e.Source;
+            Image image = ((ContextMenu)menuItem.Parent).PlacementTarget as Image;
+            ChangeResourceDialog res = new ChangeResourceDialog((ResourceModel)image.Tag, this);
+            //res.Edit(((NewElementModel)image.Tag));
+            res.ShowDialog();
         }
 
         private Rectangle preview = null;
