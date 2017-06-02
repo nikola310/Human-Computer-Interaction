@@ -21,14 +21,14 @@
     </style>
 </head>
 <body>
-    <h2>Dodavanje novog resursa</h2>
+    <h2>Izmena resursa</h2>
     <p>
-        Proces dodavanja resursa se svodi na ispunjavanje neophodnih formi u dijalogu za dodavanje novog resursa.
-        Više informacija o resursima se nalazi na <a href="main.htm#resource">ovom</a> linku.
-        Kada se forma pravilno ispuni, pritiskom na dugme "Dodaj resurs", novi resurs se dodaje u listu evidentiranih resursa.
-        Moguće je i napustiti formu klikom na dugme "Odustani"
-        <br />
-        Polja koja se nalaze u formi su:
+        Sam proces izmene resursa je gotovo isti kao i proces dodavanja resursa.
+        Svodi se na ispunjenje neophodnih polja u formi koja se dobija izborom opcije za dodavanje novog resursa.
+        Jedinu razliku predstavlja činjenica da se u svim poljima nalaze predefinisane vrednosti, tj. vrednosti koje pripadaju resursu koji se menja.
+        Također je razlika ta što se polje "ID" ne može promeniti.
+        Kada se forma ispuni, pritiskom na dugme "Izmeni resurs", dovodi do čuvanja unetih izmena.
+        Moguće je i napustiti formu klikom na dugme "Odustani" bez čuvanja izmena. Polja koja se nalaze u formi su:
     </p>
 
     <h4>Ime</h4>
@@ -38,16 +38,13 @@
 
     <h4>ID</h4>
     <p>
-        ID predstavlja <u>jedinstveni</u> identifikator resursa (ključ), namenjen za katalogiranje i razlikovanje resursa.
-        Ne mogu da postoje dva resursa sa istim ID u bazi podataka.
+        ID nije moguće promeniti.
     </p>
 
     <h4>Tip</h4>
     <p>
         Tip resursa predstavlja klasifikacionu grupu kojoj resurs pripada. Svaki resurs može pripadati tačno jednom tipu.
         Više informacija o tipovima <a href="main.htm#rtype">ovde.</a>
-        Pritiskom na dugme "Izaberi tip", otvara se dijalog u kojem možete izabrati neki od postojećih tipova.
-        Ukoliko želite dodati novi, nepostojeći tip resursu, to možete uraditi pritiskom na dugme "Dodaj tip".
     </p>
 
     <h4>Ikona</h4>
@@ -100,9 +97,6 @@
     <h4>Etikete resursa</h4>
     <p>
         Kako bi ste tagovali određenu etiketu resursu, potrebno je samo pritisnuti željeno <i>checkbox</i> polje
-    </p>
-    <p>
-        Obavezna polja su: ID, ime, ikona, tip, cena, jedinica mere, frekvencija i datum.
     </p>
 
     <h2>Prečice</h2>

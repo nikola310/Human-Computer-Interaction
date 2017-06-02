@@ -59,7 +59,7 @@ namespace HCI_projekat2.Tabels
                 {
                     if (r.Type.ID.Equals(model.ID))
                     {
-                        MessageBoxResult mbr = MessageBox.Show("Ne može se obrisati tip kojem pripadaju neke vrste. Molimo Vas, izmenite resurse pre brisanja tipa.", "Nedozvoljena operacija", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                        MessageBoxResult mbr = MessageBox.Show("Ne može se obrisati tip kojem pripadaju neki resursi. Molimo Vas, izmenite resurse pre brisanja tipa.", "Nedozvoljena operacija", MessageBoxButton.OK, MessageBoxImage.Exclamation);
                         return;
                     }
                 }

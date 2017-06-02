@@ -1,4 +1,5 @@
-﻿using HCI_projekat2.Model;
+﻿using HCI_projekat2.Help;
+using HCI_projekat2.Model;
 using Microsoft.Win32;
 using System.Windows;
 using System.Windows.Controls;
@@ -73,7 +74,7 @@ namespace HCI_projekat2.Dialogs
 
         private void Help_Executed(object sender, System.Windows.Input.ExecutedRoutedEventArgs e)
         {
-            //TO DO: write page then call it here
+            HelpProvider.ShowHelp("changeType", this);
         }
     }
 }

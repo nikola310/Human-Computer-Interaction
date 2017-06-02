@@ -1,4 +1,5 @@
-﻿using HCI_projekat2.Model;
+﻿using HCI_projekat2.Help;
+using HCI_projekat2.Model;
 using HCI_projekat2.Tabels;
 using System;
 using System.Collections.Generic;
@@ -73,7 +74,7 @@ namespace HCI_projekat2.Dialogs
 
         private void Help_Executed(object sender, ExecutedRoutedEventArgs e)
         {
-            //TO DO: add help page then call it here
+            HelpProvider.ShowHelp("changeLabel", this);
         }
     }
 }

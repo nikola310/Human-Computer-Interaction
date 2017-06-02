@@ -1,4 +1,5 @@
 ﻿using HCI_projekat2.Dialogs;
+using HCI_projekat2.Help;
 using HCI_projekat2.Model;
 using System.Collections.ObjectModel;
 using System.Windows;
@@ -121,7 +122,7 @@ namespace HCI_projekat2.Tabels
 
         private void Help_Command(object sender, System.Windows.Input.ExecutedRoutedEventArgs e)
         {
-            // znas vec sta treba
+            HelpProvider.ShowHelp("labelTable", this);
         }
 
         private void Izmeni_Cmd(object sender, System.Windows.Input.ExecutedRoutedEventArgs e)

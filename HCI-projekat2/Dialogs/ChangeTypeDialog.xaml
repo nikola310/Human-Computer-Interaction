@@ -7,7 +7,7 @@
         xmlns:local="clr-namespace:HCI_projekat2.Dialogs"
         xmlns:cmd="clr-namespace:HCI_projekat2.Commands"
         mc:Ignorable="d"
-        Title="Izmena tipa" Height="265.162" Width="581.315" ResizeMode="CanMinimize" FontFamily="/HCI-projekat2;component/#Pragmata Pro" FontSize="16">
+        Title="Izmena tipa" Height="265.162" Width="609.226" ResizeMode="CanMinimize" FontFamily="/HCI-projekat2;component/#Pragmata Pro" FontSize="16">
     <Window.CommandBindings>
         <CommandBinding Command="cmd:Commands.Help" Executed="Help_Executed" />
         <CommandBinding Command="cmd:Commands.changeIcon" Executed="Change_Icon_Command" />
@@ -63,7 +63,7 @@
         <TextBox Name="Opis" Grid.Column="1" Grid.Row="2" Margin="3,3,3,10" FontSize="16" TextWrapping="Wrap" ToolTip="Promenite opis resursa"
                  AcceptsReturn="True" MaxLines="30" Grid.RowSpan="3" Text="{Binding Path=Desc}" VerticalScrollBarVisibility="Auto"/>
 
-        <Button Grid.Column="1" Grid.Row="5" FontSize="16" Margin="7,7,315,3" Click="Izmeni_Click" Content="Izmeni">
+        <Button Grid.Column="1" Grid.Row="5" FontSize="16" Margin="7,7,331,3" Click="Izmeni_Click" Content="Izmeni">
             <Button.Style>
                 <Style TargetType="{x:Type Button}">
                     <Setter Property="IsEnabled" Value="false" />
@@ -78,7 +78,7 @@
                 </Style>
             </Button.Style>
         </Button>
-        <Button Grid.Column="1" Grid.Row="5" FontSize="16" Margin="106,7,200,3" Click="Odustani_Click">Odustani</Button>
+        <Button Grid.Column="1" Grid.Row="5" FontSize="16" Margin="130,7,200,3" Click="Odustani_Click">Odustani</Button>
         <Image Name="Ikona" Grid.Column="2" Grid.Row="0" Source="{Binding Path=IconPath }" Margin="24,25,23,10" 
                Grid.RowSpan="4" RenderTransformOrigin="1.867,0.498">
             <Image.RenderTransform>
@@ -90,6 +90,6 @@
                 </TransformGroup>
             </Image.RenderTransform>
         </Image>
-        <Button Name="BrowseButton" Grid.Row="4" Grid.Column="2" RenderTransformOrigin="0.177,-0.236" Margin="10,10,10,47" Click="Browse_Click">Promeni ikonu</Button>
+        <Button Name="BrowseButton" Grid.Row="4" Grid.Column="2" RenderTransformOrigin="0.177,-0.236" Margin="2,10,8,47" Click="Browse_Click">Promeni ikonu</Button>
     </Grid>
 </Window>

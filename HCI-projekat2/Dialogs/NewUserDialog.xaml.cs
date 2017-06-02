@@ -1,4 +1,5 @@
-﻿using HCI_projekat2.Model;
+﻿using HCI_projekat2.Help;
+using HCI_projekat2.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -121,7 +122,7 @@ namespace HCI_projekat2.Dialogs
 
         private void Help_Command(object sender, System.Windows.Input.ExecutedRoutedEventArgs e)
         {
-            // znas vec sta treba
+            HelpProvider.ShowHelp("newUser", this);
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using HCI_projekat2.Model;
+﻿using HCI_projekat2.Help;
+using HCI_projekat2.Model;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -188,7 +189,7 @@ namespace HCI_projekat2.Dialogs
 
         private void Help_Cmd(object sender, ExecutedRoutedEventArgs e)
         {
-            //TO DO: write a page, then call it here
+            HelpProvider.ShowHelp("login", this);
         }
     }
 }
