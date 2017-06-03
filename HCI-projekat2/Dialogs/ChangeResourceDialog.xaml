@@ -9,7 +9,7 @@
         xmlns:local="clr-namespace:HCI_projekat2.Dialogs"
         xmlns:cmd="clr-namespace:HCI_projekat2.Commands"
         mc:Ignorable="d"
-        Title="ChangeResourceDialog" Height="410.794" Width="1150.944" ResizeMode="CanMinimize" FontFamily="/HCI-projekat2;component/#Pragmata Pro"
+        Title="Izmena resursa" Height="410.794" Width="1150.944" ResizeMode="CanMinimize" FontFamily="/HCI-projekat2;component/#Pragmata Pro"
         SizeToContent="WidthAndHeight" FontSize="16">
     <Window.CommandBindings>
         <CommandBinding Command="cmd:Commands.Help" Executed="Help_Command" />
@@ -43,7 +43,7 @@
         <Image Grid.Column="4" Grid.Row="2" Grid.RowSpan="3" Source="{Binding IconPath}" Margin="6,14,10,10"></Image>
         <Button Grid.Row="5" Grid.Column="4" Margin="6,6,6,4" FontSize="16" Click="Browse_Click" FontFamily="/HCI-projekat2;component/#Pragmata Pro">Promeni ikonu</Button>
         <Label Grid.Row="0" FontSize="16" FontFamily="/HCI-projekat2;component/#Pragmata Pro">ID:</Label>
-        <TextBox Name="IDResursa" Grid.Column="1" Grid.Row="0" FontSize="16" Margin="3" MaxLength="20" FontFamily="/HCI-projekat2;component/#Pragmata Pro" ToolTip="Unesite ID resursa"  IsReadOnly="True" />
+        <TextBox Name="IDResursa" Grid.Column="1" Grid.Row="0" FontSize="16" Margin="3" MaxLength="20" Text="{Binding Path=ID}" FontFamily="/HCI-projekat2;component/#Pragmata Pro" ToolTip="ID se ne može promeniti"  IsReadOnly="True" />
         <Label Grid.Row="1" FontSize="16" FontFamily="/HCI-projekat2;component/#Pragmata Pro">Ime:</Label>
         <TextBox Name="ImeResursa" Grid.Column="1" Grid.Row="1" FontSize="16" Margin="3" MaxLength="20" FontFamily="/HCI-projekat2;component/#Pragmata Pro" ToolTip="Unesite ime resursa">
             <TextBox.Text>

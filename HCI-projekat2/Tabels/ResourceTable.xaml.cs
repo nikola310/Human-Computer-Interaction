@@ -44,15 +44,19 @@ namespace HCI_projekat2.Tabels
             set;
         }
 
+        private bool _flag = false;
+
         public ResourceTable(MainWindow parent)
         {
-            InitializeComponent();
             resursi = new ObservableCollection<ResourceModel>(Resursi.Values);
             resursiContainer = new ObservableCollection<ResourceModel>(Resursi.Values);
             labels = new ObservableCollection<LabelModel>();
             mW = parent;
             DataContext = this;
 
+            InitializeComponent();
+
+            _flag = true;
         }
 
         private void Izadji_Click(object sender, RoutedEventArgs e)
@@ -126,7 +130,7 @@ namespace HCI_projekat2.Tabels
             tipTextBox.Clear();
             opisTextBox.Clear();
             imeTextBox.Clear();
-            cenaTextBox.Clear();
+            cenaUpDown.Value = 0;
             frekvencijaComboBox.SelectedIndex = 0;
             meraComboBox.SelectedIndex = 0;
             obnovljivCheckBox.IsChecked = false;
@@ -201,32 +205,23 @@ namespace HCI_projekat2.Tabels
                         uslov = false;
                 }
 
-                double cena;
-                bool cenaParse = Double.TryParse(cenaTextBox.Text, out cena);
 
-                if (cenaParse)
+                double? dbtmp = cenaUpDown.Value;
+                double cena = dbtmp.GetValueOrDefault(0);
+
+                if (veceRadioButton.IsChecked == true)
                 {
-                    cena = double.Parse(cenaTextBox.Text, System.Globalization.NumberStyles.AllowDecimalPoint, System.Globalization.NumberFormatInfo.InvariantInfo);
-
-                    if (veceRadioButton.IsChecked == true)
-                    {
-                        if (res.Price <= cena)
-                            uslov = false;
-                    }
-                    else if (manjeRadioButton.IsChecked == true)
-                    {
-                        if (res.Price >= cena)
-                            uslov = false;
-                    }
-                    else if (res.Price != cena)
-                    {
+                    if (res.Price <= cena)
                         uslov = false;
-                    }
-
-                    /*                    if (res.Price != cena)
-                                        {
-                                            uslov = false;
-                                        }*/
+                }
+                else if (manjeRadioButton.IsChecked == true)
+                {
+                    if (res.Price >= cena)
+                        uslov = false;
+                }
+                else if (res.Price != cena)
+                {
+                    uslov = false;
                 }
 
                 if (!imeTextBox.Text.Equals(""))
@@ -292,6 +287,12 @@ namespace HCI_projekat2.Tabels
         private void Resetuj_Cmd(object sender, System.Windows.Input.ExecutedRoutedEventArgs e)
         {
             resetFilter_Click(sender, e);
+        }
+
+        private void cenaUpDown_ValueChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
+        {
+            if (_flag)
+                filtriraj();
         }
     }
 }

@@ -8,17 +8,17 @@
         xmlns:local="clr-namespace:HCI_projekat2.Tabels"
         xmlns:cmd="clr-namespace:HCI_projekat2.Commands"
         mc:Ignorable="d"
-        Title="ResourceTable" Height="594.593" Width="1188.15" FontSize="16" ResizeMode="CanMinimize" FontFamily="/HCI-projekat2;component/#Pragmata Pro">
+        Title="Tabela resursa" Height="622.093" Width="1188.15" FontSize="16" ResizeMode="CanMinimize" FontFamily="/HCI-projekat2;component/#Pragmata Pro">
     <Window.CommandBindings>
         <CommandBinding Command="cmd:Commands.Help" Executed="Help_Command" />
         <CommandBinding Command="cmd:Commands.showLabTable" Executed="Obrisi_Cmd" />
         <CommandBinding Command="cmd:Commands.changeIcon" Executed="Izmeni_Cmd" />
         <CommandBinding Command="cmd:Commands.newResource" Executed="Resetuj_Cmd" />
     </Window.CommandBindings>
-    <Grid Margin="0,0,0,5">
+    <Grid Margin="0,0,0,2">
         <Grid.RowDefinitions>
-            <RowDefinition Height="58*" />
-            <RowDefinition Height="5*" />
+            <RowDefinition Height="548*" />
+            <RowDefinition Height="43*" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="69*" />
@@ -93,7 +93,7 @@
             </Grid>
         </ScrollViewer-->
 
-        <ScrollViewer Grid.Column="0" Grid.Row="0">
+        <ScrollViewer Grid.Column="0" Grid.Row="0" VerticalScrollBarVisibility="Hidden">
             <Grid Width="400">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="45" />
@@ -107,48 +107,44 @@
                     <RowDefinition Height="45" />
                     <RowDefinition Height="45" />
                     <RowDefinition Height="45" />
-                    <RowDefinition Height="45" />
-                    <RowDefinition Height="45" />
-                    <RowDefinition Height="45" />
-                    <RowDefinition Height="45" />
-                    <RowDefinition Height="45" />
-                    <RowDefinition />
                 </Grid.RowDefinitions>
                 <Label x:Name="idLabel" Content="ID:" HorizontalAlignment="Left" Margin="10,14,0,0" VerticalAlignment="Top" Grid.Row="0" Height="27" Width="41"/>
-                <TextBox x:Name="idTextBox" MaxLength="20"  HorizontalAlignment="Left" Height="27" Margin="141,14,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="227" Grid.Row="0" TextChanged="filtrirajTabelu"/>
-                <Label x:Name="opisLabel" Content="Opis:" HorizontalAlignment="Left" Margin="21,10,0,0" Grid.Row="10" VerticalAlignment="Top" RenderTransformOrigin="0.392,0.5" Height="28" Width="51"/>
-                <TextBox x:Name="opisTextBox" HorizontalAlignment="Left" Height="70" Margin="141,10,0,0" Grid.Row="10" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" TextWrapping="Wrap" VerticalAlignment="Top" Width="227" TextChanged="filtrirajTabelu" Grid.RowSpan="2"/>
+                <TextBox x:Name="idTextBox" TabIndex="0" MaxLength="20"  HorizontalAlignment="Left" Height="27" Margin="141,14,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="227" Grid.Row="0" TextChanged="filtrirajTabelu"/>
+                <Label x:Name="opisLabel" Content="Opis:" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="10" VerticalAlignment="Top" RenderTransformOrigin="0.392,0.5" Height="28" Width="51"/>
+                <TextBox x:Name="opisTextBox" TabIndex="12" HorizontalAlignment="Left" Height="26" Margin="141,10,0,0" Grid.Row="10" TextWrapping="Wrap" VerticalAlignment="Top" Width="227" TextChanged="filtrirajTabelu"/>
                 <Label x:Name="label" Content="Ime:" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top" Height="28" Width="43"/>
-                <TextBox x:Name="imeTextBox" HorizontalAlignment="Left" Height="28" Margin="141,10,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="227" TextChanged="filtrirajTabelu"/>
+                <TextBox x:Name="imeTextBox" TabIndex="1" HorizontalAlignment="Left" Height="28" Margin="141,10,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="227" TextChanged="filtrirajTabelu"/>
                 <Label x:Name="label1" Content="Cena[USD]:" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="8" VerticalAlignment="Top" Height="28" Width="93"/>
-                <TextBox x:Name="cenaTextBox" HorizontalAlignment="Left" Height="28" Margin="141,10,0,0" Grid.Row="8" TextWrapping="Wrap" VerticalAlignment="Top" Width="227" TextChanged="filtrirajTabelu"/>
-                <Button x:Name="tipButton" Content="Izaberi" HorizontalAlignment="Left" Margin="293,11,0,0" Grid.Row="2" VerticalAlignment="Top" Width="75" Height="22" Click="tipButton_Click"/>
-                <Label x:Name="label2" Content="Tip:" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="2" VerticalAlignment="Top"/>
+                <Button x:Name="tipButton" TabIndex="2" Content="Izaberi" HorizontalAlignment="Left" Margin="293,11,0,0" Grid.Row="2" VerticalAlignment="Top" Width="75" Height="22" Click="tipButton_Click"/>
+                <Label x:Name="label2" Content="Tip:" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="2" VerticalAlignment="Top" Height="28" Width="43"/>
                 <TextBox x:Name="tipTextBox" HorizontalAlignment="Left" Height="23" Margin="141,10,0,0" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="147" IsReadOnly="True" TextChanged="filtrirajTabelu" />
-                <Label x:Name="label3" Content="Frekvencija:" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="3" VerticalAlignment="Top"/>
-                <ComboBox x:Name="frekvencijaComboBox" HorizontalAlignment="Left" Margin="141,14,0,0" Grid.Row="3" VerticalAlignment="Top" Width="134" SelectionChanged="filtrirajTabeluComboBox">
+                <Label x:Name="label3" Content="Frekvencija:" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="3" VerticalAlignment="Top" Height="28" Width="109"/>
+                <ComboBox x:Name="frekvencijaComboBox" TabIndex="3" HorizontalAlignment="Left" Margin="141,14,0,0" Grid.Row="3" VerticalAlignment="Top" Width="134" SelectionChanged="filtrirajTabeluComboBox" Height="24">
                     <ComboBoxItem FontSize="16" Content="" />
                     <ComboBoxItem FontSize="16">Redak</ComboBoxItem>
                     <ComboBoxItem FontSize="16">Čest</ComboBoxItem>
                     <ComboBoxItem FontSize="16">Univerzalan</ComboBoxItem>
                 </ComboBox>
-                <Label x:Name="label4" Content="Jedinica mere:" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="4" VerticalAlignment="Top"/>
-                <ComboBox x:Name="meraComboBox" HorizontalAlignment="Left" Margin="141,14,0,0" Grid.Row="4" VerticalAlignment="Top" Width="134" SelectionChanged="filtrirajTabeluComboBox">
+                <xctk:DoubleUpDown Minimum="0" Value="0" TabIndex="8" Name="cenaUpDown" FormatString="F3" ValueChanged="cenaUpDown_ValueChanged"  HorizontalAlignment="Left" Height="28" Margin="141,10,0,0" Grid.Row="8" VerticalAlignment="Top" Width="227">
+
+                </xctk:DoubleUpDown>
+                <Label x:Name="label4" Content="Jedinica mere:" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="4" VerticalAlignment="Top" Height="28" Width="126"/>
+                <ComboBox x:Name="meraComboBox" TabIndex="4" HorizontalAlignment="Left" Margin="141,14,0,0" Grid.Row="4" VerticalAlignment="Top" Width="134" SelectionChanged="filtrirajTabeluComboBox" Height="24">
                     <ComboBoxItem FontSize="16" Content="" />
                     <ComboBoxItem FontSize="16">Merica</ComboBoxItem>
                     <ComboBoxItem FontSize="16">Barel</ComboBoxItem>
                     <ComboBoxItem FontSize="16">Tona</ComboBoxItem>
                     <ComboBoxItem FontSize="16">Kilogram</ComboBoxItem>
                 </ComboBox>
-                <CheckBox x:Name="obnovljivCheckBox" Content="Obnovljiv resurs" HorizontalAlignment="Left" Margin="21,18,0,0" Grid.Row="5" VerticalAlignment="Top" Checked="filtrirajTabeluCheck" Unchecked="filtrirajTabeluCheck"/>
-                <CheckBox x:Name="strategijaCheckBox" Content="Strateški važan resurs" HorizontalAlignment="Left" Margin="21,18,0,0" Grid.Row="6" VerticalAlignment="Top" Checked="filtrirajTabeluCheck" Unchecked="filtrirajTabeluCheck"/>
-                <CheckBox x:Name="eksploatisanjeCheckBox" Content="Moguće eksploatisanje" HorizontalAlignment="Left" Margin="21,18,0,0" Grid.Row="7" VerticalAlignment="Top" Checked="filtrirajTabeluCheck" Unchecked="filtrirajTabeluCheck"/>
+                <CheckBox x:Name="obnovljivCheckBox" TabIndex="5" Content="Obnovljiv resurs" HorizontalAlignment="Left" Margin="21,18,0,0" Grid.Row="5" VerticalAlignment="Top" Checked="filtrirajTabeluCheck" Unchecked="filtrirajTabeluCheck" Height="17" Width="152"/>
+                <CheckBox x:Name="strategijaCheckBox" TabIndex="6" Content="Strateški važan resurs" HorizontalAlignment="Left" Margin="21,18,0,0" Grid.Row="6" VerticalAlignment="Top" Checked="filtrirajTabeluCheck" Unchecked="filtrirajTabeluCheck" Height="17" Width="202"/>
+                <CheckBox x:Name="eksploatisanjeCheckBox" TabIndex="7" Content="Moguće eksploatisanje" HorizontalAlignment="Left" Margin="21,18,0,0" Grid.Row="7" VerticalAlignment="Top" Checked="filtrirajTabeluCheck" Unchecked="filtrirajTabeluCheck" Height="17" Width="194"/>
                 <StackPanel HorizontalAlignment="Left" Height="35" Margin="141,10,0,0" Grid.Row="9" VerticalAlignment="Top" Width="227" Orientation="Horizontal">
-                    <RadioButton x:Name="veceRadioButton" Content="Veće" HorizontalAlignment="Left" VerticalAlignment="Top" Height="15" Margin="0,10,0,0" Checked="filtrirajTabeluCheck"/>
+                    <RadioButton x:Name="veceRadioButton" TabIndex="9" Content="Veće" HorizontalAlignment="Left" VerticalAlignment="Top" Height="15" Margin="0,10,0,0" Checked="filtrirajTabeluCheck"/>
                     <Separator Opacity="0" Width="10"/>
-                    <RadioButton x:Name="manjeRadioButton" Content="Manje" HorizontalAlignment="Left" VerticalAlignment="Top" Height="23" Margin="0,10,0,0" Checked="filtrirajTabeluCheck"/>
+                    <RadioButton x:Name="manjeRadioButton" TabIndex="10" Content="Manje" HorizontalAlignment="Left" VerticalAlignment="Top" Height="23" Margin="0,10,0,0" Checked="filtrirajTabeluCheck"/>
                     <Separator Opacity="0" Width="10"/>
-                    <RadioButton x:Name="jednakoRadioButton" Content="Jednako" HorizontalAlignment="Left" VerticalAlignment="Top" Height="15" Margin="0,10,0,0" Checked="filtrirajTabeluCheck"/>
+                    <RadioButton x:Name="jednakoRadioButton" TabIndex="11" Content="Jednako" HorizontalAlignment="Left" VerticalAlignment="Top" Height="15" Margin="0,10,0,0" Checked="filtrirajTabeluCheck"/>
                 </StackPanel>
             </Grid>
         </ScrollViewer>
@@ -171,9 +167,9 @@
 
         </DataGrid>
 
-        <Button Grid.Row="1" FontSize="16"  Grid.Column="1" Margin="143,10,550,8" Click="Obrisi_Click">Obriši</Button>
-        <Button Grid.Row="1" FontSize="16"  Grid.Column="1" Content="Izmeni" Margin="43,10,654,8" Click="Izmeni_Click" ToolTip="Izmenite izabrani resurs"/>
-        <Button Grid.Row="1" FontSize="16"  Grid.Column="1" Content="Izađi" Margin="247,10,461,8" Click="Izadji_Click"/>
-        <Button x:Name="resetFilter" FontSize="16" Content="Resetuj filter" HorizontalAlignment="Left" Margin="127,10,0,0" VerticalAlignment="Top" Width="127" Height="25" Click="resetFilter_Click" Grid.Row="1"/>
+        <Button Grid.Row="1" FontSize="16" TabIndex="15" Grid.Column="1" Margin="143,10,550,8" Click="Obrisi_Click">Obriši</Button>
+        <Button Grid.Row="1" FontSize="16" TabIndex="14" Grid.Column="1" Content="Izmeni" Margin="43,10,654,8" Click="Izmeni_Click" ToolTip="Izmenite izabrani resurs"/>
+        <Button Grid.Row="1" FontSize="16" TabIndex="16" Grid.Column="1" Content="Izađi" Margin="247,10,461,8" Click="Izadji_Click"/>
+        <Button x:Name="resetFilter" TabIndex="13" FontSize="16" Content="Resetuj filter" HorizontalAlignment="Left" Margin="127,10,0,0" VerticalAlignment="Top" Width="127" Height="25" Click="resetFilter_Click" Grid.Row="1"/>
     </Grid>
 </Window>
