@@ -140,7 +140,7 @@
                 <CheckBox x:Name="strategijaCheckBox" TabIndex="6" Content="Strateški važan resurs" HorizontalAlignment="Left" Margin="21,18,0,0" Grid.Row="6" VerticalAlignment="Top" Checked="filtrirajTabeluCheck" Unchecked="filtrirajTabeluCheck" Height="17" Width="202"/>
                 <CheckBox x:Name="eksploatisanjeCheckBox" TabIndex="7" Content="Moguće eksploatisanje" HorizontalAlignment="Left" Margin="21,18,0,0" Grid.Row="7" VerticalAlignment="Top" Checked="filtrirajTabeluCheck" Unchecked="filtrirajTabeluCheck" Height="17" Width="194"/>
                 <StackPanel HorizontalAlignment="Left" Height="35" Margin="141,10,0,0" Grid.Row="9" VerticalAlignment="Top" Width="227" Orientation="Horizontal">
-                    <RadioButton x:Name="veceRadioButton" TabIndex="9" Content="Veće" HorizontalAlignment="Left" VerticalAlignment="Top" Height="15" Margin="0,10,0,0" Checked="filtrirajTabeluCheck"/>
+                    <RadioButton x:Name="veceRadioButton" IsChecked="True" TabIndex="9" Content="Veće" HorizontalAlignment="Left" VerticalAlignment="Top" Height="15" Margin="0,10,0,0" Checked="filtrirajTabeluCheck"/>
                     <Separator Opacity="0" Width="10"/>
                     <RadioButton x:Name="manjeRadioButton" TabIndex="10" Content="Manje" HorizontalAlignment="Left" VerticalAlignment="Top" Height="23" Margin="0,10,0,0" Checked="filtrirajTabeluCheck"/>
                     <Separator Opacity="0" Width="10"/>

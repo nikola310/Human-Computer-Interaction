@@ -4,6 +4,7 @@ using Microsoft.Win32;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
+using System.Windows.Media;
 using static HCI_projekat2.MainWindow;
 
 namespace HCI_projekat2.Dialogs
@@ -14,11 +15,13 @@ namespace HCI_projekat2.Dialogs
     public partial class ChangeTypeDialog : Window
     {
         TypeModel model;
+        MainWindow mW;
 
-        public ChangeTypeDialog(TypeModel m)
+        public ChangeTypeDialog(TypeModel m, MainWindow mW)
         {
             InitializeComponent();
             model = m;
+            this.mW = mW;
             DataContext = model;
         }
 
@@ -45,7 +48,8 @@ namespace HCI_projekat2.Dialogs
 
                 Tipovi[model.ID].Name = model.Name;
                 Tipovi[model.ID].Desc = model.Desc;
-
+                Tipovi[model.ID].IconPath = model.IconPath;
+                RefreshResourceImage();
                 Close();
             }
         }
@@ -75,6 +79,38 @@ namespace HCI_projekat2.Dialogs
         private void Help_Executed(object sender, System.Windows.Input.ExecutedRoutedEventArgs e)
         {
             HelpProvider.ShowHelp("changeType", this);
+        }
+
+
+        public void RefreshResourceImage()
+        {
+
+            foreach (Image image in mW.Canvas.Children)
+            {
+                ResourceModel temp = (ResourceModel)image.Tag;
+                if (temp.Type.ID.Equals(model.ID))
+                {
+                    if (temp.TypeIcon)
+                    {
+                        image.Source = new ImageSourceConverter().ConvertFromString(model.IconPath) as ImageSource;
+                        image.ToolTip = mW.addTooltip(temp);
+                        image.Tag = model;
+                        //break;
+                    }
+                }
+            }
+
+            foreach (ResourceModel temp in mW.listaIkonica.Items)
+            {   
+                if (temp.Type.ID.Equals(model.ID))
+                {
+                    if (temp.TypeIcon)
+                    {
+                        temp.IconPath = model.IconPath;
+                        //break;
+                    }
+                }
+            }
         }
     }
 }

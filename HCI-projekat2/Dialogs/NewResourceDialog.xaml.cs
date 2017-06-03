@@ -62,6 +62,7 @@ namespace HCI_projekat2.Dialogs
                 string fajl = dijalog.FileName;
                 model.IconPath = fajl;
             }
+            model.TypeIcon = false;
         }
 
         private void Odustani_Click(object sender, RoutedEventArgs e)
@@ -99,6 +100,7 @@ namespace HCI_projekat2.Dialogs
 
                 if (Datum.Text == "" || Datum.Text == null)
                 {
+                    MessageBoxResult result = MessageBox.Show("Morate odabrati datum!", "Nedostaje vrednost", MessageBoxButton.OK, MessageBoxImage.Error);
                     Datum.Focus();
                     return;
                 }

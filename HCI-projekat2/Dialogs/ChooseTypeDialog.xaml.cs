@@ -41,6 +41,7 @@ namespace HCI_projekat2.Dialogs
             InitializeComponent();
             tipovi = new ObservableCollection<TypeModel>();
             res = dg;
+            flag = true;
             foreach (TypeModel s in Tipovi.Values)
             {
                 tipovi.Add(s);
@@ -84,16 +85,21 @@ namespace HCI_projekat2.Dialogs
             //pre je bilo bez flaga i bez ovog ifa
             //dakle samo
             //res.Model.Type = model;
-            if (flag)
-            {
-                chr.Model.Type = model;
-            }else if (resTableFlag)
+            // if (flag)
+            // {
+            //   chr.Model.Type = model;
+            //  }
+            //else 
+            if (resTableFlag)
             {
                 resTable.tipTextBox.Text = model.ID;
+            }else if (flag)
+            {
+                res.Model.Type = model;
             }
             else
             {
-                res.Model.Type = model;
+                chr.Model.Type = model;
             }
             Close();
         }

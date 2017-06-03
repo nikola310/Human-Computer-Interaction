@@ -58,7 +58,7 @@
             </Validation.ErrorTemplate>
         </TextBox>
         <Label Grid.Column="0" Grid.Row="1" FontSize="16" Grid.RowSpan="2">ID:</Label>
-        <TextBox Name="TipID" Grid.Column="1" Grid.Row="1" IsReadOnly="True" FontSize="16" Margin="3" MaxLength="20" Text="{Binding Path=ID}" IsReadOnly="True" ToolTip="Ključ se ne može promeniti"/>
+        <TextBox Name="TipID" Grid.Column="1" Grid.Row="1" IsReadOnly="True" FontSize="16" Margin="3" MaxLength="20" Text="{Binding Path=ID}" ToolTip="Ključ se ne može promeniti"/>
         <Label Grid.Column="0" Grid.Row="2" FontSize="16">Opis:</Label>
         <TextBox Name="Opis" Grid.Column="1" Grid.Row="2" Margin="3,3,3,10" FontSize="16" TextWrapping="Wrap" ToolTip="Promenite opis resursa"
                  AcceptsReturn="True" MaxLines="30" Grid.RowSpan="3" Text="{Binding Path=Desc}" VerticalScrollBarVisibility="Auto"/>

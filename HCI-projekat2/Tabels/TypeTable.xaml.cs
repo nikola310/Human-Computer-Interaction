@@ -28,10 +28,12 @@ namespace HCI_projekat2.Tabels
             set;
         }
 
+        private MainWindow mW;
 
-        public TypeTable()
+        public TypeTable(MainWindow mW)
         {
             InitializeComponent();
+            this.mW = mW;
             tipovi = new ObservableCollection<TypeModel>(Tipovi.Values);
             tipoviContainer = new ObservableCollection<TypeModel>(Tipovi.Values);
             DataContext = this;
@@ -83,7 +85,7 @@ namespace HCI_projekat2.Tabels
             }
 
             TypeModel model = (TypeModel)dgrMain.SelectedItem;
-            ChangeTypeDialog val = new ChangeTypeDialog(model);
+            ChangeTypeDialog val = new ChangeTypeDialog(model, mW);
             val.Show();
         }
 

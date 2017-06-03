@@ -241,7 +241,7 @@ namespace HCI_projekat2
 
         private void ShowTypes_Click(object sender, RoutedEventArgs e)
         {
-            var l = new TypeTable();
+            var l = new TypeTable(this);
             l.ShowDialog();
         }
 

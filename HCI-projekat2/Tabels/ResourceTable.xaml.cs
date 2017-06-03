@@ -136,7 +136,7 @@ namespace HCI_projekat2.Tabels
             obnovljivCheckBox.IsChecked = false;
             strategijaCheckBox.IsChecked = false;
             eksploatisanjeCheckBox.IsChecked = false;
-            veceRadioButton.IsChecked = false;
+            veceRadioButton.IsChecked = true;
             manjeRadioButton.IsChecked = false;
             jednakoRadioButton.IsChecked = false;
         }

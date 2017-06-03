@@ -86,6 +86,20 @@ namespace HCI_projekat2.Model
             }
         }
 
+        private bool _typeIcon;
+        public bool TypeIcon
+        {
+            get
+            {
+                return _typeIcon;
+            }
+            set
+            {
+                _typeIcon = value;
+                OnPropertyChanged("TypeIcon");
+            }
+        }
+
         private TypeModel _type;
         public TypeModel Type
         {
@@ -225,6 +239,7 @@ namespace HCI_projekat2.Model
             Type = new TypeModel();
             Date = DateTime.Now;
             IconPath = "/Images/qmark2.png";
+            TypeIcon = true;
             Point = new Point();
         }
     }
