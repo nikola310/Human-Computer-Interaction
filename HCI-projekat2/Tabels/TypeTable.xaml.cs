@@ -2,9 +2,6 @@
 using System.Windows;
 using HCI_projekat2.Model;
 using static HCI_projekat2.MainWindow;
-using Microsoft.Win32;
-using System.Windows.Media.Imaging;
-using System;
 using HCI_projekat2.Dialogs;
 using HCI_projekat2.Help;
 

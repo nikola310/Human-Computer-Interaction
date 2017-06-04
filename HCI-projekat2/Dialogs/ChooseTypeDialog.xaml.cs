@@ -1,19 +1,9 @@
-﻿using HCI_projekat2.Model;
+﻿using HCI_projekat2.Help;
+using HCI_projekat2.Model;
 using HCI_projekat2.Tabels;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using static HCI_projekat2.MainWindow;
 
 namespace HCI_projekat2.Dialogs
@@ -82,14 +72,6 @@ namespace HCI_projekat2.Dialogs
         private void Izaberi_Tip_Click(object sender, RoutedEventArgs e)
         {
             TypeModel model = (TypeModel)dgrType.SelectedItem;
-            //pre je bilo bez flaga i bez ovog ifa
-            //dakle samo
-            //res.Model.Type = model;
-            // if (flag)
-            // {
-            //   chr.Model.Type = model;
-            //  }
-            //else 
             if (resTableFlag)
             {
                 resTable.tipTextBox.Text = model.ID;
@@ -106,7 +88,7 @@ namespace HCI_projekat2.Dialogs
 
         private void Help_Command(object sender, ExecutedRoutedEventArgs e)
         {
-            //TO DO: add help page, then call it here
+            HelpProvider.ShowHelp("chooseType", this);
         }
     }
 }

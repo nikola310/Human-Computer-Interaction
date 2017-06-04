@@ -1,6 +1,5 @@
 ﻿using System;
 using System.ComponentModel;
-using System.Windows.Media;
 
 namespace HCI_projekat2.Model
 {

@@ -1,21 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
 using static HCI_projekat2.MainWindow;
-using System.Windows.Shapes;
 using HCI_projekat2.Model;
 using Microsoft.Win32;
 using System.ComponentModel;
-using System.Windows.Controls.Primitives;
 using HCI_projekat2.Help;
 
 namespace HCI_projekat2.Dialogs
@@ -182,6 +174,7 @@ namespace HCI_projekat2.Dialogs
             {
                 string fajl = dijalog.FileName;
                 model.IconPath = fajl;
+                model.TypeIcon = false;
             }
         }
 
@@ -193,7 +186,7 @@ namespace HCI_projekat2.Dialogs
         private void Izaberi_Tip_Click(object sender, RoutedEventArgs e)
         {
             ChooseTypeDialog val = new ChooseTypeDialog(this);
-            val.Show();
+            val.ShowDialog();
         }
 
         private void dodajEtiketu_Click(object sender, RoutedEventArgs e)

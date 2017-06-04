@@ -12,7 +12,6 @@ using System.Windows.Media;
 using System.Windows.Controls;
 using System.Windows.Shapes;
 using System.Windows.Input;
-using System.Diagnostics;
 using HCI_projekat2.Help;
 
 namespace HCI_projekat2
@@ -583,13 +582,8 @@ namespace HCI_projekat2
 
                 cpy.ToolTip = addTooltip(((ResourceModel)img.Tag));
 
-                //kontekstni meni
-
-
-
                 cpy.ContextMenu = createContextMenu();
-
-
+                
                 Resursi[((ResourceModel)img.Tag).ID].Point = p;
 
                 double x = p.X - cpy.Width / 2;
@@ -643,7 +637,6 @@ namespace HCI_projekat2
             MenuItem menuItem = (MenuItem)e.Source;
             Image image = ((ContextMenu)menuItem.Parent).PlacementTarget as Image;
             ChangeResourceDialog res = new ChangeResourceDialog((ResourceModel)image.Tag, this);
-            //res.Edit(((NewElementModel)image.Tag));
             res.ShowDialog();
         }
 

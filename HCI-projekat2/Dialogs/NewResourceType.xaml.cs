@@ -2,7 +2,6 @@
 using HCI_projekat2.Model;
 using Microsoft.Win32;
 using static HCI_projekat2.MainWindow;
-using System;
 using System.Windows.Data;
 using System.Windows.Controls;
 using HCI_projekat2.Help;

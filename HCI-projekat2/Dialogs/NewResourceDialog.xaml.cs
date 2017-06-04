@@ -61,8 +61,8 @@ namespace HCI_projekat2.Dialogs
             {
                 string fajl = dijalog.FileName;
                 model.IconPath = fajl;
+                model.TypeIcon = false;
             }
-            model.TypeIcon = false;
         }
 
         private void Odustani_Click(object sender, RoutedEventArgs e)
@@ -159,11 +159,6 @@ namespace HCI_projekat2.Dialogs
                 ikoniceResursa.Add(model);
                 Close();
             }
-        }
-
-        private void price_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
         }
 
         private void dodajEtiketu_Click(object sender, RoutedEventArgs e)

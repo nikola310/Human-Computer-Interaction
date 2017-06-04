@@ -30,13 +30,13 @@
         <PasswordBox x:Name="confirmPassword" Grid.Column="1" HorizontalAlignment="Left" Margin="10,18,0,0" Grid.Row="2" TabIndex="2"
                      MaxLength="16" VerticalAlignment="Top" Width="244" Height="20" PasswordChanged="confirmPassword_PasswordChanged"/>
         <TextBox x:Name="usrName" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="10,15,0,0" TextWrapping="Wrap"
-                 VerticalAlignment="Top" Width="244" MaxLength="10" TabIndex="0">
+                 VerticalAlignment="Top" Width="244" MaxLength="20" TabIndex="0">
             <TextBox.Text>
                 <Binding Path="Name" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
                     <Binding.ValidationRules>
                         <val:EmptyStringValidationRule ValidationStep="RawProposedValue" />
                         <val:UserRegistrationValidation ValidationStep="RawProposedValue" />
-                        <val:AsciiValidationRule ValidationStep="RawProposedValue" />
+                        <val:LettersValidationRule ValidationStep="RawProposedValue" />
                     </Binding.ValidationRules>
                 </Binding>
             </TextBox.Text>

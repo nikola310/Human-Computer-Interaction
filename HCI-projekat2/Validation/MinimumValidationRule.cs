@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Globalization;
 using System.Windows.Controls;
 
 namespace HCI_projekat2.Validation
@@ -28,17 +23,6 @@ namespace HCI_projekat2.Validation
              {
                  return new ValidationResult(false, "Došlo je do greške.");
              }
-            /*double r;
-            if (double.TryParse(value as string, out r))
-            {
-                double d = r;
-                if (d < Min) return new ValidationResult(false, "Premali broj.");
-                return new ValidationResult(true, null);
-            }
-            else
-            {
-                return new ValidationResult(false, "Unknown error occured.");
-            }*/
         }
     }
 }

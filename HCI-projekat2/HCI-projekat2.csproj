@@ -138,6 +138,7 @@
     <Compile Include="Validation\AsciiValidationRule.cs" />
     <Compile Include="Validation\LabelIDValidationRule.cs" />
     <Compile Include="Validation\EmptyStringValidationRule.cs" />
+    <Compile Include="Validation\LettersValidationRule.cs" />
     <Compile Include="Validation\MinimumValidationRule.cs" />
     <Compile Include="Validation\ResourceIDValidationRule.cs" />
     <Compile Include="Validation\StringToDoubleValidationRule.cs" />
@@ -289,6 +290,7 @@
   <ItemGroup />
   <ItemGroup>
     <Content Include="Help\Pages\changeLabel.htm" />
+    <Content Include="Help\Pages\chooseType.htm" />
     <Content Include="Help\Pages\changeType.htm" />
     <Content Include="Help\Pages\error.htm">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

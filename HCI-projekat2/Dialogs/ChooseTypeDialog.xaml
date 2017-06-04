@@ -24,7 +24,7 @@
         <DataGrid Name="dgrType" Grid.Row="1" ItemsSource="{Binding Path=tipovi}" IsReadOnly="True" AutoGenerateColumns="False" IsSynchronizedWithCurrentItem="True" Margin="0,5,0,0">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ID" MinWidth="60" Width="SizeToCells" Binding="{Binding ID}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Naziv" MinWidth="60" Width="SizeToCells" Binding="{Binding Name}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Ime" MinWidth="60" Width="SizeToCells" Binding="{Binding Name}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Opis" MinWidth="70" Width="*" Binding="{Binding Desc}"></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
