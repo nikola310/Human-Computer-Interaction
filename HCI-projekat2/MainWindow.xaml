@@ -59,7 +59,7 @@
                     </Style>
                 </Canvas.Resources>
             </Canvas>
-            <ListView Name="listaIkonica" Grid.Row="1" MinWidth="65"  ItemsSource="{Binding ikoniceResursa}">
+            <ListView Name="listaIkonica" Grid.Row="1" MinWidth="65"  ItemsSource="{Binding ikoniceResursa}" AllowDrop="True" Drop="ReturnToPanel">
                 <ListView.ItemsPanel>
                     <ItemsPanelTemplate>
                         <StackPanel Orientation="Horizontal" />

@@ -725,7 +725,6 @@ namespace HCI_projekat2
             return cm;
         }
 
-        //????
         internal void doThings(string param)
         {
             throw new NotImplementedException();
@@ -736,7 +735,6 @@ namespace HCI_projekat2
             HelpProvider.ShowHelp("main", this);
         }
 
-        //DODATI JOS NESTO U TOOLTIP???
         public string addTooltip(ResourceModel model)
         {
             return model.Name + Environment.NewLine + model.Date.ToShortDateString() + Environment.NewLine + model.Price + "$"
@@ -751,12 +749,6 @@ namespace HCI_projekat2
         private void Help_Executed(object sender, ExecutedRoutedEventArgs e)
         {
             HelpProvider.ShowHelp("main", this);
-            /*IInputElement focusedControl = FocusManager.GetFocusedElement(Application.Current.Windows[0]);
-            if (focusedControl is DependencyObject)
-            {
-                string str = HelpProvider.GetHelpKey((DependencyObject)focusedControl);
-                HelpProvider.ShowHelp(str, this);
-            }*/
         }
 
         private void New_Resource_Command_Executed(object sender, ExecutedRoutedEventArgs e)
@@ -792,6 +784,21 @@ namespace HCI_projekat2
         private void Save_Project_Executed(object sender, ExecutedRoutedEventArgs e)
         {
             Sacuvaj_Sve_Click(sender, e);
+        }
+
+        private void ReturnToPanel(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent("ikonica"))
+            {
+                Point p = new Point(0, 0);
+                Image img = e.Data.GetData("ikonica") as Image;
+                RemovePreview();
+                ((ResourceModel)img.Tag).Point = p;
+                ikoniceResursa.Add((ResourceModel)img.Tag);
+                Canvas.Children.Remove(img);
+                iscrtajOpet();
+
+            }
         }
     }
 }
