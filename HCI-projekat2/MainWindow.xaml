@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:HCI_projekat2"
         mc:Ignorable="d"
         xmlns:cmd="clr-namespace:HCI_projekat2.Commands"
-        Title="Mapa Resursa" Height="616.705" Width="1031.098" FontFamily="/HCI-projekat2;component/#Pragmata Pro" FontSize="16">
+        Title="Mapa Resursa" Height="639.705" Width="1031.098" FontFamily="/HCI-projekat2;component/#Pragmata Pro" FontSize="16">
     <Window.CommandBindings>
         <CommandBinding Command="cmd:Commands.Help" CanExecute="Help_CanExecute" Executed="Help_Executed" />
         <CommandBinding Command="cmd:Commands.newResource" Executed="New_Resource_Command_Executed" />
@@ -40,8 +40,8 @@
         </Menu>
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="517*" />
-                <RowDefinition Height="51*" />
+                <RowDefinition Height="505*" />
+                <RowDefinition Height="74*" />
             </Grid.RowDefinitions>
             <Canvas x:Name="Canvas" AllowDrop="True"  Grid.Row="0" Drop="Canvas_Drop" 
                     DragOver="Canvas_DragOver" DragEnter="Canvas_DragEnter">
@@ -67,12 +67,12 @@
                 </ListView.ItemsPanel>
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <StackPanel Orientation="Horizontal">
+                        <StackPanel Orientation="Vertical">
                             <Image Source="{Binding IconPath}" Tag="{Binding}" MaxWidth="45" MaxHeight="45" MinHeight="45" MinWidth="45"
                                    ToolTip="{Binding Name}" Width="45" Height="45" PreviewMouseLeftButtonDown="Image_PreviewMouseLeftButtonDown"
                                    MouseMove="Image_MouseMove"
                                    HorizontalAlignment="Center" VerticalAlignment="Center" />
-                            <!--TextBlock Text="{Binding Name}" TextWrapping="Wrap" HorizontalAlignment="Center" /-->
+                            <TextBlock Text="{Binding Name}" TextWrapping="Wrap" HorizontalAlignment="Center" />
                         </StackPanel>
                     </DataTemplate>
                 </ListView.ItemTemplate>
