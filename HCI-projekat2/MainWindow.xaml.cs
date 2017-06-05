@@ -516,7 +516,7 @@ namespace HCI_projekat2
 
                     cpy.Tag = model;
 
-
+                    cpy.ContextMenu = createContextMenu();
                     cpy.ToolTip = addTooltip(model);
 
                     Canvas.SetLeft(cpy, model.Point.X - cpy.Width / 2);
